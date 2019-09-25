@@ -46,7 +46,6 @@
                 xhr.send(JSON.stringify(body));
                 return;
             }
-        
             xhr.send();
         }
     }
