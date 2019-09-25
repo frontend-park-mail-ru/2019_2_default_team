@@ -1,0 +1,11 @@
+mixin item(title, href, section)
+	li
+		a(href=href data-section=section)= title
+ul
+	+item('Афиша', '/poster', 'poster')
+	if authorized
+		+item('Профиль', '/profile', 'profile')
+	unless authorized
+		+item('Вход', '/signin', 'signin')
+		+item('Регистрация', '/signup', 'signup')
+	+item('О нас', '/about', 'about')

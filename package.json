@@ -1,0 +1,31 @@
+{
+  "name": "2019_2_default_team",
+  "version": "1.0.0",
+  "description": "Репозиторий команды \"Команда\". Технопарк@mail.ru, осень, 2019",
+  "main": "index.js",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "pug": "^2.0.0-rc.4",
+    "pug-cli": "^1.0.0-alpha6",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node ./server/server.js",
+    "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/",
+    "prestart": "npm run compile-pug"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frontend-park-mail-ru/2019_2_default_team.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frontend-park-mail-ru/2019_2_default_team/issues"
+  },
+  "homepage": "https://github.com/frontend-park-mail-ru/2019_2_default_team#readme"
+}
