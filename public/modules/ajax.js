@@ -50,9 +50,6 @@
             xhr.send();
         }
     }
-
-    const noop = () => null;
-
     globalThis.AjaxModule = new AjaxModule();
 })();
 

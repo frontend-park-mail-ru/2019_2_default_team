@@ -81,7 +81,7 @@ function createProfile() {
 				try {
 					const responseBody = JSON.parse(responseText);
 					const profile = new ProfileComponent(application);
-					profile.data = responseBody;
+					profile.setData(responseBody);
 					profile.render();
 				}
 				catch (err) {
@@ -105,7 +105,7 @@ function createPoster() {
 	poster.render();
 }
 
-const functions = {
+const routerMap = {
 	signup: createSignup,
 	signin: createSignin,
 	profile: createProfile,
@@ -117,7 +117,7 @@ application.addEventListener('click', function (evt) {
 	const {target} = evt;
 	if (target instanceof HTMLAnchorElement) {
 		evt.preventDefault();
-		functions[target.dataset.section]();
+		routerMap[target.dataset.section]();
 	}
 });
 

@@ -6,11 +6,11 @@ export class AboutComponent {
         this._data = {};
     }
 
-    get data() {
+    getData() {
         return this._data;
     }
 
-    set data(dataToSet = {}) {
+    setData(dataToSet = {}) {
         this._data = {...dataToSet};
     }
 

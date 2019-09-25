@@ -1,7 +1,7 @@
 mixin item(title, href, section)
-	li
-		a(href=href data-section=section)= title
-ul
+	li.menu-element
+		a.inner-menu-element(href=href data-section=section)= title
+ul.menu
 	+item('Афиша', '/poster', 'poster')
 	if authorized
 		+item('Профиль', '/profile', 'profile')

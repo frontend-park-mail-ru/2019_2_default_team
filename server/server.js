@@ -46,6 +46,7 @@ app.post('/signup', function (req, res) {
 
   res.cookie('id', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
   res.status(201).json({id});
+  res.authorized = true;
 });
 
 app.post('/signin', function (req, res) {
@@ -63,6 +64,7 @@ app.post('/signin', function (req, res) {
 
   res.cookie('id', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
   res.status(200).json({id});
+  res.authorized = true;
 });
 
 app.get('/profile', function (req, res) {
@@ -71,10 +73,10 @@ app.get('/profile', function (req, res) {
   if (!email || !users[email]) {
     return res.status(401).end();
   }
-
   users[email].score += 1;
 
   res.json(users[email]);
+  res.authorized = true;
 });
 
 const port = process.env.PORT || 3000;

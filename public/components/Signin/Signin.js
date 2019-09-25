@@ -2,15 +2,15 @@ import {MenuComponent} from '/components/Menu/Menu.js';
 
 export class SigninComponent {
     constructor(parent = document.body) {
-        this._parent = parent;
+		this._parent = parent;
 		this._data = {};
     }
 
-    get data() {
+    getData() {
         return this._data;
     }
 
-    set data(dataToSet = {}) {
+    setData(dataToSet = {}) {
         this._data = {...dataToSet};
 	}
 
@@ -57,5 +57,3 @@ export class SigninComponent {
 		this._parent.append(form);
 	}
 }
-
-const noop = () => null;
