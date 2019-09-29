@@ -16,7 +16,8 @@
   "scripts": {
     "start": "node ./server/server.js",
     "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/",
-    "prestart": "npm run compile-pug"
+    "build": "npm run compile-pug",
+    "prestart": "npm run build"
   },
   "repository": {
     "type": "git",
