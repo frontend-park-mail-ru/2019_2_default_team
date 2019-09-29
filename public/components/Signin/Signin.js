@@ -42,7 +42,7 @@ export class SigninComponent {
 			const password = passwordInput.value.trim();
 	
 			AjaxModule.doPost({
-				url: '/signin',
+				url: '/api/signin',
 				body: {email, password},
 				callback: function (status, response) {
 					if (status === 200) {
