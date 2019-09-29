@@ -4,3 +4,17 @@
 a, input{
 	display: block;
 }
+.container{
+	display: flex;
+	height: 100vh;
+	align-items: center;
+	justify-content: space-around;
+}
+.card{
+
+}
+.card-item{
+	background-color: aliceblue;
+	width: 250px;
+	height: 250px;
+}

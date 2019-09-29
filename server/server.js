@@ -79,6 +79,14 @@ app.get('/profile', function (req, res) {
   res.authorized = true;
 });
 
+app.get('/', function (req, res) {
+  res.number = 10;
+});
+
+app.get('/poster', function (req, res) {
+  res.number = 10;
+});
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, function () {

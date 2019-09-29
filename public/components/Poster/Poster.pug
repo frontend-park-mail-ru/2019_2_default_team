@@ -1,1 +1,12 @@
-h1 Здесь мог бы быть список фильмов
+style
+    include Poster.css
+mixin card-deck(title, href)
+    .card
+        .card-item
+            .img.card-img
+            h1 title
+.card-deck
+    -var number = 10
+    while number > 1
+        +card-deck
+        -number--

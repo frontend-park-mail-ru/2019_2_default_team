@@ -1,4 +1,4 @@
-import {MenuComponent} from '/components/Menu/Menu.js';
+import {MenuComponent} from '../Menu/Menu.js';
 
 export class ProfileComponent {
     constructor(parent = document.body) {
