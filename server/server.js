@@ -86,6 +86,14 @@ app.get('/api/signout', function (req, res) {
   res.status(200).end();
 });
 
+app.get('/', function (req, res) {
+  res.number = 10;
+});
+
+app.get('/poster', function (req, res) {
+  res.number = 10;
+});
+
 const port = process.env.PORT || 3000;
 
 app.listen(port, function () {
