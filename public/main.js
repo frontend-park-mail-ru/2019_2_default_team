@@ -19,7 +19,6 @@ function createSignin() {
 }
 
 function createProfile() {
-	application.innerHTML = '';
 	AjaxModule.doGet({
 		url: '/profile',
 		body: null,
@@ -52,12 +51,21 @@ function createPoster() {
 	poster.render();
 }
 
+function signout() {
+	AjaxModule.doGet({
+		url: '/api/signout',
+		body: null,
+		callback: createSignin
+	});
+}
+
 const routerMap = {
 	signup: createSignup,
 	signin: createSignin,
 	profile: createProfile,
 	about: createAbout,
 	poster: createPoster,
+	signout: signout
 };
 
 application.addEventListener('click', function (evt) {
