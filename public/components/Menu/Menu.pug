@@ -1,0 +1,12 @@
+mixin item(title, href, section)
+	li.menu-element
+		a.inner-menu-element(href=href data-section=section)= title
+ul.menu
+	+item('Афиша', '/poster', 'poster')
+	//- if authorized
+	+item('Профиль', '/profile', 'profile')
+	+item('Выход', '/signout', 'signout')
+	//- unless authorized
+	+item('Вход', '/signin', 'signin')
+	+item('Регистрация', '/signup', 'signup')
+	+item('О нас', '/about', 'about')

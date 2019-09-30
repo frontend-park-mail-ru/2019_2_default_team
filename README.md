@@ -1,5 +1,5 @@
 # 2019_2_default_team
-Репозиторий команды "Команда". Технопарк@mail.ru, осень, 2019
+Репозиторий команды "default_team". Технопарк@mail.ru, осень, 2019
 
 [Репозиторий бэка](https://github.com/go-park-mail-ru/2019_2_default_team/)
 

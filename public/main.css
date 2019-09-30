@@ -1,0 +1,6 @@
+@import url('components/Profile/Profile.css');
+@import url('components/Menu/Menu.css');
+
+a, input{
+	display: block;
+}
