@@ -6,17 +6,38 @@
 
 .card-item{
     background-color: aliceblue;
-    width: 350px;
+    width: 360px;
     height: 450px;
     padding: 10px;
 }
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 350px;
-    margin: auto;
     text-align: center;
     font-family: arial;
+    max-width: 380px;
+    align-self: stretch;
+    padding: 10px 11px;
+    -webkit-transition: all 0.3s ease;;
+    -moz-transition: all 0.3s ease;;
+    -o-transition: all 0.3s ease;;
+    transition: all 0.3s ease;
+    background-color: #c7ecee;
+}
+
+.wrapper{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+    max-height: 490px;
+    justify-items: center;
+    background-color: #c7ecee;
     padding: 10px;
+
+}
+
+.card:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .price {
@@ -25,15 +46,17 @@
 }
 
 .card button {
+    display: flex;
     border: none;
     outline: 0;
     padding: 12px;
     color: white;
-    background-color: #000;
+    background-color: #c7ecee;
     text-align: center;
     cursor: pointer;
     width: 100%;
     font-size: 18px;
+    flex-direction: column;
 }
 
 .card button:hover {
@@ -41,5 +64,16 @@
 }
 
 .card-deck {
+    max-height: 550px;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background-color: #c7ecee;
+}
+
+h1{
+    margin-bottom: auto;
 }
