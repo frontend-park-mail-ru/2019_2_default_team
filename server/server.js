@@ -23,7 +23,7 @@ const users = {
 };
 const ids = {};
 
-app.post('/signup', function (req, res) {
+app.post('/api/signup', function (req, res) {
   const password = req.body.password;
   const email = req.body.email;
   const age = req.body.age;
@@ -46,10 +46,9 @@ app.post('/signup', function (req, res) {
 
   res.cookie('id', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
   res.status(201).json({id});
-  res.authorized = true;
 });
 
-app.post('/signin', function (req, res) {
+app.post('/api/signin', function (req, res) {
   const password = req.body.password;
   const email = req.body.email;
   if (!password || !email) {
@@ -64,10 +63,9 @@ app.post('/signin', function (req, res) {
 
   res.cookie('id', id, {expires: new Date(Date.now() + 1000 * 60 * 10)});
   res.status(200).json({id});
-  res.authorized = true;
 });
 
-app.get('/profile', function (req, res) {
+app.get('/api/profile', function (req, res) {
   const id = req.cookies['id'];
   const email = ids[id];
   if (!email || !users[email]) {
@@ -76,7 +74,16 @@ app.get('/profile', function (req, res) {
   users[email].score += 1;
 
   res.json(users[email]);
-  res.authorized = true;
+});
+
+app.get('/api/signout', function (req, res) {
+  const id = req.cookies['id'];
+  const email = ids[id];
+  if (!email || !users[email]) {
+    return res.status(401).end();
+  }
+  ids[id] = '';
+  res.status(200).end();
 });
 
 app.get('/', function (req, res) {

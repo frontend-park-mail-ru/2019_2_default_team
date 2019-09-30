@@ -7,6 +7,7 @@
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
+    "now": "^16.2.0",
     "pug": "^2.0.0-rc.4",
     "pug-cli": "^1.0.0-alpha6",
     "uuid": "^3.3.3",
@@ -16,7 +17,8 @@
   "scripts": {
     "start": "node ./server/server.js",
     "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/",
-    "prestart": "npm run compile-pug"
+    "build": "npm run compile-pug",
+    "prestart": "npm run build"
   },
   "repository": {
     "type": "git",
