@@ -20,7 +20,7 @@ function createSignin() {
 
 function createProfile() {
 	AjaxModule.doGet({
-		url: '/profile',
+		url: '/api/profile',
 		body: null,
 		callback: function (status, responseText) {
 			if (status === 200) {

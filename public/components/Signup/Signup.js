@@ -52,7 +52,7 @@ export class SignupComponent {
             const password = form.elements['password'].value;
 
             AjaxModule.doPost({
-                url: '/signup',
+                url: '/api/signup',
                 body: {email, age, password},
                 callback: function (status, responseText) {
                     if (status === 201) {

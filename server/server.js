@@ -23,7 +23,7 @@ const users = {
 };
 const ids = {};
 
-app.post('/signup', function (req, res) {
+app.post('/api/signup', function (req, res) {
   const password = req.body.password;
   const email = req.body.email;
   const age = req.body.age;
@@ -48,7 +48,7 @@ app.post('/signup', function (req, res) {
   res.status(201).json({id});
 });
 
-app.post('/signin', function (req, res) {
+app.post('/api/signin', function (req, res) {
   const password = req.body.password;
   const email = req.body.email;
   if (!password || !email) {
@@ -65,7 +65,7 @@ app.post('/signin', function (req, res) {
   res.status(200).json({id});
 });
 
-app.get('/profile', function (req, res) {
+app.get('/api/profile', function (req, res) {
   const id = req.cookies['id'];
   const email = ids[id];
   if (!email || !users[email]) {
