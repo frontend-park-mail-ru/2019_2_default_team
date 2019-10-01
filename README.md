@@ -10,4 +10,3 @@
 - [Ершов Михаил](https://github.com/maershov)
 
 Ментор - [Гаджиев Кирилл](https://github.com/kirBMSTU)
-
