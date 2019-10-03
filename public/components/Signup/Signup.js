@@ -33,7 +33,7 @@ export class SignupComponent {
         const ageInput = document.createElement('input');
         ageInput.type = 'number';
         ageInput.name = 'age';
-        ageInput.placeholder = 'Возраст';
+        ageInput.placeholder = 'Возраст!';
 
         const submitBtn = document.createElement('input');
         submitBtn.type = 'submit';
