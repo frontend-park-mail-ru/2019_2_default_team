@@ -27,7 +27,6 @@
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     max-height: 360px;
     justify-items: center;
-    background: linear-gradient(135deg, #EA5C54 0%, #bb6dec 100%);
     padding: 10px;
 
 }
