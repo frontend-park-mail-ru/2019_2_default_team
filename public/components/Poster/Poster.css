@@ -72,7 +72,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #EA5C54 0%, #bb6dec 100%);
+    height: 100%;
     margin: 0;
 }
 
@@ -93,3 +93,6 @@ h1{
     display: block;
 }
 
+html {
+    height: 100%;
+}
