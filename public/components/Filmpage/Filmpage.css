@@ -13,8 +13,9 @@
     text-align: left;
 }
 .tip {
-    color: #95afc0;
-    font-size: 0.875em;
+    color: #2bcbba;
+    font-size: large;
+    font-weight: bold;
     margin-right: 0.7em;
 }
 .title {
