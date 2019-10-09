@@ -2,33 +2,19 @@ style
     include Poster.css
 -var title = "Joker"
 -var href ="https://static.karofilm.ru/uploads/film/desktop/e3/b6/4b/5215d5811b80298172dad73fd1.jpg"
--var filmUrl="/about"
+-var filmUrl="/film"
 mixin card-deck(title, href, filmUrl)
-    .wrapper
-        div(class='card')
-            div(class='card-item')
-                img(src= href)
-            div(class = "card-item-blur hidden-xs blur" src = href)
-                h1= title
-                a(onclick= "/about" href= "/about" data-section="about") Подробнее
-        div(class='card')
-            div(class='card-item')
-                img(src= href)
-                h1= title
-                a(onclick= "/about" href= "/about" data-section="about") Подробнее
-        div(class='card')
-            div(class='card-item')
-                img(src= href)
-                h1= title
-                a(onclick= "/about" href= "/about" data-section="about") Подробнее
-        div(class='card')
-            div(class='card-item')
-                img(src= href)
-                h1= title
-                a(onclick= "/about" href= "/about" data-section="about") Подробнее
+    div(class='card')
+        div(class='card-item')
+            img(src= href)
+        div(class = "card-item-blur hidden-xs blur" src = href)
+            h1= title
+            a(onclick= filmUrl href= filmUrl data-section="film") Подробнее
 
 .body
-    -var number = 3
-    while number > 1
-        +card-deck(title, href)
-        -number--
+    -var decks = 3;
+    while decks > 1
+        .wrapper
+            each val in [1,2,3,4]
+                +card-deck(title, href)
+        -decks--

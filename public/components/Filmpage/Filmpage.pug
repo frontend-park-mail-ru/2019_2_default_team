@@ -1,0 +1,43 @@
+style
+    include Filmpage.css
+-var imgHref =  "https://static.karofilm.ru/uploads/film/desktop/90/38/b9/df8c1ab57507b6d31a6808fe1a.jpg"
+-var filmName = "Joker"
+-var description = "Готэм, начало 1980-х годов. Комик Артур Флек живет с больной матерью, которая с детства учит его «ходить с улыбкой». Пытаясь нести в мир хорошее и дарить людям радость, Артур сталкивается с человеческой жестокостью и постепенно приходит к выводу, что этот мир получит от него не добрую улыбку, а ухмылку злодея Джокера."
+-var genre = "Драмма, Триллер"
+-var videosrc="https://www.youtube.com/embed/4V_3YANA5Wc"
+mixin film(filmName, description, imgHref, genre)
+    .wrapper
+        div(class="row")
+            div(class="title")
+                h1= filmName
+                p= genre
+        div(class="row")
+            div(class="column-left")
+                img(src= imgHref)
+            div(class="column-right")
+                p
+                    span.tip Продолжительность:
+                    |  122 мин.
+                p
+                    span.tip Режиссёр:
+                    |  Тодд Филлипс
+                p
+                    span.tip Производство:
+                    |  США
+                p
+                    span.tip Год выпуска:
+                    |  2019
+                p
+                    span.tip В ролях:
+                    |  Хоакин Феникс, Зази Битц
+                p
+                 div
+                    tr= description
+    .container
+        div(class="row")
+            h1 Trailers
+        div(class="row film-trailer")
+            iframe(src=videosrc, allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture', allowfullscreen='', width='560', height='315', frameborder='0')
+
+
++film(filmName, description, imgHref, genre, videosrc)

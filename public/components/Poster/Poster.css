@@ -15,10 +15,10 @@
     font-family: arial;
     max-width: 380px;
     align-self: stretch;
-    -webkit-transition: all 0.3s ease;;
-    -moz-transition: all 0.3s ease;;
-    -o-transition: all 0.3s ease;;
-    transition: all 0.3s ease;
+    /*-webkit-transition: all 0.3s ease;;*/
+    /*-moz-transition: all 0.3s ease;;*/
+    /*-o-transition: all 0.3s ease;;*/
+    /*transition: all 0.3s ease;*/
     background-color: #c7ecee;
 }
 
@@ -31,11 +31,11 @@
 
 }
 
-.card:hover {
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
-}t
+/*.card:hover {*/
+/*    -webkit-transform: scale(1.2);*/
+/*    -ms-transform: scale(1.2);*/
+/*    transform: scale(1.2);*/
+/*}*/
 
 .price {
     color: grey;
@@ -74,4 +74,23 @@ body {
 
 h1{
     margin-bottom: auto;
+}
+
+.afisha-info .afisha-info-inner {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: all 200ms ease-out 0s;
+    width: 200%;
+}
+.afisha-info-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(104, 105, 104, 0.32);
+    background: rgba(1, 0, 0, 0.4);
 }

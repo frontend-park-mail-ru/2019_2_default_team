@@ -3,6 +3,7 @@ import {SignupComponent} from './components/Signup/Signup.js';
 import {ProfileComponent} from './components/Profile/Profile.js';
 import {AboutComponent} from './components/About/About.js';
 import {PosterComponent} from './components/Poster/Poster.js';
+import {FilmpageComponent} from "./components/Filmpage/Filmpage.js";
 
 const AjaxModule = globalThis.AjaxModule;
 
@@ -59,13 +60,18 @@ function signout() {
 	});
 }
 
+function createFilmpage() {
+	const filmpage = new FilmpageComponent(application);
+	filmpage.render();
+}
 const routerMap = {
 	signup: createSignup,
 	signin: createSignin,
 	profile: createProfile,
 	about: createAbout,
 	poster: createPoster,
-	signout: signout
+	signout: signout,
+	film: createFilmpage
 };
 
 application.addEventListener('click', function (evt) {

@@ -1,0 +1,41 @@
+
+.column-left {
+    float: left;
+    width: 45%;
+    margin-top: 30px;
+    text-align: right;
+}
+
+.column-right{
+    float: right;
+    width: 45%;
+    margin-top: 30px;
+    text-align: left;
+}
+.tip {
+    color: #95afc0;
+    font-size: 0.875em;
+    margin-right: 0.7em;
+}
+.title {
+    text-align: center;
+}
+
+body {
+    background: linear-gradient(135deg, #EA5C54 0%, #bb6dec 40%);
+    margin: 0;
+}
+
+.wrapper {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 11px;
+    padding-right: 11px;
+    height: 800px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+    text-align: center;
+    padding-bottom: 50px;
+}
