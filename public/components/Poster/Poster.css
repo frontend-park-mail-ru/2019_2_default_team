@@ -30,7 +30,7 @@
     grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     max-height: 360px;
     justify-items: center;
-    padding: 10px;
+    padding: 20px 10px 0px;
 
 }
 
