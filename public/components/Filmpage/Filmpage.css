@@ -11,6 +11,7 @@
     width: 45%;
     margin-top: 30px;
     text-align: left;
+    color: white;
 }
 .tip {
     color: #2bcbba;
@@ -23,8 +24,12 @@
 }
 
 body {
-    background: linear-gradient(135deg, #EA5C54 0%, #bb6dec 40%);
+    background: rgba(13, 13, 13, 0) linear-gradient(135deg, rgb(115, 32, 27) 0%, rgb(74, 27, 104) 40%);
     margin: 0;
+}
+
+.row {
+    color: white;
 }
 
 .wrapper {
@@ -37,6 +42,7 @@ body {
 }
 
 .container {
+    color: white;
     text-align: center;
     padding-bottom: 50px;
 }
