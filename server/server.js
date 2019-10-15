@@ -21,7 +21,34 @@ const users = {
     score: 3,
   },
 };
+
+const cinemaLayouts = {
+  'Layout1': [
+    [1, 2, null, null, null],
+    [3, 4, 5, 6, 7],
+    [8, 9, 10, 11, 12],
+    [13, 14, 15, 16, 17]
+  ],
+  'Layout2': [
+    [1, null, null, 2],
+    [3, 4, 5, 6],
+    [7, 8, 9, 10]
+  ]
+}
+
+const movieLayout = {
+  'Joker': 'Layout1',
+  'Meet Fockers': 'Layout2',
+};
+
 const ids = {};
+
+app.post('/api/layout', function (req, res) {
+  const movie = req.body.movie;
+  const layout = cinemaLayouts[movieLayout[movie]];
+
+  res.json({layout});
+});
 
 app.post('/api/signup', function (req, res) {
   const password = req.body.password;

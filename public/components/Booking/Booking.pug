@@ -1,0 +1,17 @@
+doctype html
+html
+    head
+        style
+            include Booking.css
+        title Booking
+    body
+        h1 Пожалуйста, выберите место:
+        table
+            //- layout приходит нам из booking() в main.js
+            for row, idx in layout
+                tr
+                    for seat in row
+                        td
+                            .cell
+                                if seat != null
+                                    button(onclick="console.log(" + seat + ")")= seat

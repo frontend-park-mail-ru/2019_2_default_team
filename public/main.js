@@ -3,6 +3,7 @@ import { SignupComponent } from './components/Signup/Signup.js';
 import { ProfileComponent } from './components/Profile/Profile.js';
 import { AboutComponent } from './components/About/About.js';
 import { PosterComponent } from './components/Poster/Poster.js';
+import { BookingComponent } from './components/Booking/Booking.js';
 
 const AjaxModule = globalThis.AjaxModule;
 
@@ -66,13 +67,33 @@ function signout() {
 	});
 }
 
+function createBooking() {
+	console.log("In createBooking()");
+	AjaxModule.doPost({
+		url: '/api/layout',
+		body: {'movie': 'Joker'},
+		callback: booking
+	});
+}
+
+function booking() {
+	const response = JSON.parse(arguments[1]);
+	console.log(response)
+	const { layout } = response;
+	console.log(layout)
+	const booking = new BookingComponent(application);
+	booking.setData({layout});
+	booking.render();
+}
+
 const routerMap = {
 	signup: createSignup,
 	signin: createSignin,
 	profile: createProfile,
 	about: createAbout,
 	poster: createPoster,
-	signout: signout
+	signout: signout,
+	booking: createBooking,
 };
 
 application.addEventListener('click', function (evt) {
@@ -84,4 +105,3 @@ application.addEventListener('click', function (evt) {
 });
 
 createPoster();
-

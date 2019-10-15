@@ -1,0 +1,23 @@
+.cell {
+    height: 100px;
+    width: 100px;
+    border-color: red;
+    border-width: 2px;
+}
+
+.wrapper {
+    position: absolute;
+    left: 50%;
+    border-color: black;
+    border-width: 4px;
+}
+
+h1 {
+    color: red;
+}
+
+button {
+    height: 50px;
+    width: 50px;
+    align-content: center;
+}
