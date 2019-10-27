@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "node ./server/server.js",
-    "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./public/",
+    "compile-pug": "pug -c --extension 'pug.js' --name-after-file src/",
     "build": "npm run compile-pug",
     "prestart": "npm run build"
   },
