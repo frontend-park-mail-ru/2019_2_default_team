@@ -1,4 +1,4 @@
-const serverUrl: string = '';
+const serverUrl: string = 'localhost:3000';
 
 /**
  * New Network obj
@@ -86,7 +86,7 @@ export default class Network {
      *  @returns {Promise<Response>}
      */
 
-    static doPostFormData(path = '/', formData) {
+    static doPostFormData(path = '/', formData: object) {
         return fetch(Network.getServerUrl() + path, {
             method: 'POST',
             mode: 'cors',
@@ -101,7 +101,7 @@ export default class Network {
      * @param {Object} formData
      * @returns {Promise<Response>}
      */
-    static doPutFormData(path = '/', formData) {
+    static doPutFormData(path = '/', formData: object) {
         return fetch(Network.getServerUrl() + path, {
             method: 'PUT',
             mode: 'cors',
