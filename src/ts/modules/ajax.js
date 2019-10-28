@@ -4,7 +4,8 @@
         doGet({
             url ='/',
             body = null,
-            callback = noop} = {}
+            callback
+        } = {}
             ) {
                 this._ajax({
                     method: 'GET',
@@ -13,10 +14,12 @@
                     callback
                 });
             }
+
         doPost({
             url ='/',
             body = null,
-            callback = noop} = {}
+            callback
+        } = {}
             ) {
                 this._ajax({
                     method: 'POST',
@@ -25,6 +28,7 @@
                     callback
                 });
             }
+
         _ajax({
             method = 'GET',
             url ='/',

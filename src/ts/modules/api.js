@@ -98,6 +98,7 @@ export default class Api {
     static getProfileInfo() {
         return Network.doGet('/api/users/');
     }
+
     /**
      * API Get another user info
      * Отправляет запрос на получение информации о пользователе
@@ -106,9 +107,8 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static getAnotherUserInfo({userID}) {
-        return Network.doGet(`/api/users/${userID}`);
+        return Network.doGet(`/api/users/${userID}/`);
     }
-
 
     /**
      * API Get film info

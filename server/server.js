@@ -66,7 +66,7 @@ app.post('/api/signin', function (req, res) {
 });
 
 app.get('/api/profile', function (req, res) {
-  const id = req.cookies['id'];
+  const id = req.cookies.id;
   const email = ids[id];
   if (!email || !users[email]) {
     return res.status(401).end();
@@ -77,7 +77,7 @@ app.get('/api/profile', function (req, res) {
 });
 
 app.get('/api/signout', function (req, res) {
-  const id = req.cookies['id'];
+  const id = req.cookies.id;
   const email = ids[id];
   if (!email || !users[email]) {
     return res.status(401).end();
