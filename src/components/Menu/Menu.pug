@@ -1,12 +1,16 @@
-mixin item(title, href, section)
-	li.menu-element
+mixin item-right(title, href, section)
+	li.menu-el-right
 		a.inner-menu-element(href=href data-section=section)= title
+mixin item-left(title, href, section)
+	li.menu-el-left
+		a.inner-menu-element(href=href data-section=section)= title
+
 ul.menu
-	+item('Афиша', '/poster', 'poster')
+	+item-left('Афиша', '/poster', 'poster')
+	+item-right('О нас', '/about', 'about')
 	//- if authorized
-	+item('Профиль', '/profile', 'profile')
-	+item('Выход', '/signout', 'signout')
+	+item-left('Выход', '/signout', 'signout')
+	+item-left('Профиль', '/profile', 'profile')
 	//- unless authorized
-	+item('Вход', '/signin', 'signin')
-	+item('Регистрация', '/signup', 'signup')
-	+item('О нас', '/about', 'about')
+	+item-left('Вход', '/signin', 'signin')
+	+item-left('Регистрация', '/signup', 'signup')

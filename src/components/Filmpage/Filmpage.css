@@ -23,11 +23,6 @@
     text-align: center;
 }
 
-body {
-    background: rgba(13, 13, 13, 0) linear-gradient(135deg, rgb(115, 32, 27) 0%, rgb(74, 27, 104) 40%);
-    margin: 0;
-}
-
 .row {
     color: white;
 }

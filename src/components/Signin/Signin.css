@@ -12,7 +12,7 @@ body {
     /* Chrome10+,Safari5.1+ */
     /* Opera 11.10+ */
     /* IE10+ */
-    background: rgba(13, 13, 13, 0) linear-gradient(135deg, rgb(115, 32, 27) 0%, rgb(74, 27, 104) 60%);
+    /* background: rgba(13, 13, 13, 0) linear-gradient(135deg, rgb(115, 32, 27) 0%, rgb(74, 27, 104) 60%); */
     /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EA5C54 ', endColorstr='#bb6dec',GradientType=1 );
     /* IE6-9 fallback on horizontal gradient */
