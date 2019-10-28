@@ -33,7 +33,7 @@
             method = 'GET',
             url ='/',
             body = null,
-            callback = noop} = {}
+            callback} = {}
             ) {
             const xhr = new XMLHttpRequest();
             xhr.open(method, url, true);

@@ -92,7 +92,7 @@ app.get('/*', function (req, res) {
   if(/\/$/.test(url)){
     url += 'index.html';
   }
-  const filePath = path.join(__dirname, '/../src/', url);
+  const filePath = path.join(__dirname, '../src/', url);
   console.log(filePath);
   const file = fs.readFileSync(filePath);
   res.end(file);
