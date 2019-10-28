@@ -1,4 +1,4 @@
-const serverUrl: string = 'localhost:3000';
+const serverUrl = 'localhost:3000';
 
 /**
  * New Network obj
@@ -15,7 +15,7 @@ export default class Network {
      * @returns {Promise<Response>}
      */
 
-    static doGet(path: string = '/') {
+    static doGet(path = '/') {
         return fetch(Network.getServerUrl() + path, {
             method: 'GET',
             mode: 'cors',
@@ -32,7 +32,7 @@ export default class Network {
      * @returns {Promise<Response>}
      */
 
-    static doPost(path: string = '/', body: object = {}, host = Network.getServerUrl()) {
+    static doPost(path = '/', body  = {}, host = Network.getServerUrl()) {
         return fetch(host + path, {
             method: "POST",
             mode: 'cors',
@@ -50,7 +50,7 @@ export default class Network {
      * @returns {Promise<Response>}
      */
 
-    static doDelete(path: string = '/') {
+    static doDelete(path = '/') {
         return fetch(Network.getServerUrl() + path, {
             method: "DELETE",
             mode: "cors",
@@ -66,7 +66,7 @@ export default class Network {
      * @return {Promise<Response>}
      */
 
-    static doPut(path: string = '/', body: object = {}) {
+    static doPut(path = '/', body = {}) {
         return fetch(Network.getServerUrl() + path, {
             method: "PUT",
             mode: "cors",
@@ -86,7 +86,7 @@ export default class Network {
      *  @returns {Promise<Response>}
      */
 
-    static doPostFormData(path = '/', formData: object) {
+    static doPostFormData(path = '/', formData) {
         return fetch(Network.getServerUrl() + path, {
             method: 'POST',
             mode: 'cors',
@@ -101,7 +101,7 @@ export default class Network {
      * @param {Object} formData
      * @returns {Promise<Response>}
      */
-    static doPutFormData(path = '/', formData: object) {
+    static doPutFormData(path = '/', formData) {
         return fetch(Network.getServerUrl() + path, {
             method: 'PUT',
             mode: 'cors',
@@ -115,7 +115,7 @@ export default class Network {
      * @returns {Promise<Response>}
      */
 
-    static getServerUrl(): string {
+    static getServerUrl() {
         return serverUrl
     }
 }
