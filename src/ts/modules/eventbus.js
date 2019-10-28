@@ -21,7 +21,7 @@ export class EventBus {
      * @param {string} eventName
      * @param {function} callback
      */
-    subscribeToEvent (eventName: string, callback) {
+    subscribeToEvent (eventName, callback) {
         if (!this.events.has(eventName)) {
             throw new Error(`EventBus: Unknown event ${eventName}`);
         }
@@ -34,7 +34,7 @@ export class EventBus {
      * @param {string} eventName
      * @param {object} args
      */
-    triggerEvent (eventName: string, ...args) {
+    triggerEvent (eventName, ...args) {
         if (!this.events.has(eventName)) {
             throw new Error(`EventBus: Unknown event ${eventName}`);
         }
@@ -49,7 +49,7 @@ export class EventBus {
      * @param {object} args
      * @return {*}
      */
-    dispatchEvent(eventName: string, ...args) {
+    dispatchEvent(eventName, ...args) {
         if (eventName === undefined) {
             console.log('No event value');
             return;

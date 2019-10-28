@@ -14,7 +14,7 @@ export class SignupComponent {
         this._data = {...dataToSet};
     }
 
-    render(callback = noop) {
+    render(callback) {
         const menu = new MenuComponent(this._parent);
         menu.render({authorized: false});
 
