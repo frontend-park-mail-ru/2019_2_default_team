@@ -21,6 +21,7 @@ const users = {
     score: 3,
   },
 };
+
 const ids = {};
 
 const layout = [
