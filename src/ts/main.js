@@ -20,33 +20,64 @@ function createSignin() {
 }
 
 function createProfile() {
-	AjaxModule.doPromiseGet({
-		url: '/api/profile',
-		body: null
+
+	//  fetch срабатывает не когда загружено все тело ответа (xhr), а когда пришли только заголовки.
+	fetch('/api/profile', {
+		method: 'GET',
+		credentials: 'include',
 	})
-		.then(function (obj) {
-			const { responseText } = obj;
-			try {
-				const responseBody = JSON.parse(responseText);
-				const profile = new ProfileComponent(application);
-				profile.setData(responseBody);
-				profile.render();
-			}
-			catch (err) {
-				console.log(err);
-				return;
-			}
-		})
-		.catch(function (obj) {
-			if (obj instanceof Error) {
-				console.error(obj);
-				return;
-			}
-			else {
-				alert("Хэй, я вас не звал! Идите на страницу авторизации.");
-			}
-			createSignin();
-		})
+	//  в объекте response есть множество методов, возвращающие тело ответа,
+	//  когда оно дойдет, которые могут сразу его распарсить
+	.then(response => {
+		console.log("response: ");
+		console.dir(response);
+		if(response.status >= 300) {
+			throw Error(`Неверный статус: ${response.status}`);
+		}
+		return response.json();
+	})
+	.then(json => {
+		console.log("json: ");
+		console.dir(json);
+		const profile = new ProfileComponent(application);
+		profile.setData(json);
+		profile.render();
+	})
+	.catch(err => {
+		console.log("err: ");
+		console.dir(err);
+		console.error(err);
+		createSignin();
+	})
+
+
+	// AjaxModule.doPromiseGet({
+	// 	url: '/api/profile',
+	// 	body: null
+	// })
+	// .then(function (obj) {
+	// 	const { responseText } = obj;
+	// 	try {
+	// 		const responseBody = JSON.parse(responseText);
+	// 		const profile = new ProfileComponent(application);
+	// 		profile.setData(responseBody);
+	// 		profile.render();
+	// 	}
+	// 	catch (err) {
+	// 		console.log(err);
+	// 		return;
+	// 	}
+	// })
+	// .catch(function (obj) {
+	// 	if (obj instanceof Error) {
+	// 		console.error(obj);
+	// 		return;
+	// 	}
+	// 	else {
+	// 		alert("Хэй, я вас не звал! Идите на страницу авторизации.");
+	// 	}
+	// 	createSignin();
+	// })
 }
 
 function createAbout() {

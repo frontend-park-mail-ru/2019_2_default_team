@@ -1,4 +1,4 @@
-import {MenuComponent} from '/components/Menu/Menu.js';
+import {MenuComponent} from '../Menu/Menu.js';
 
 export class PosterComponent {
     constructor(parent = document.body) {
