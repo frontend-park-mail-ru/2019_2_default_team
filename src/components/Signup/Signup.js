@@ -18,32 +18,9 @@ export class SignupComponent {
         const menu = new MenuComponent(this._parent);
         menu.render({authorized: false});
 
-        const form = document.createElement('form');
-
-        const emailInput = document.createElement('input');
-        emailInput.type = 'email';
-        emailInput.name = 'email';
-        emailInput.placeholder = 'Емайл';
-
-        const passwordInput = document.createElement('input');
-        passwordInput.type = 'password';
-        passwordInput.name = 'password';
-        passwordInput.placeholder = 'Пароль';
-
-        const ageInput = document.createElement('input');
-        ageInput.type = 'number';
-        ageInput.name = 'age';
-        ageInput.placeholder = 'Возраст!';
-
-        const submitBtn = document.createElement('input');
-        submitBtn.type = 'submit';
-        submitBtn.value = 'Зарегистрироваться!';
-
-        form.appendChild(emailInput);
-        form.appendChild(passwordInput);
-        form.appendChild(ageInput);
-        form.appendChild(submitBtn);
-
+        this._parent.innerHTML += signupTemplate(this._data);
+        
+        const form = document.getElementsByTagName('form')[0];
         form.addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -64,6 +41,5 @@ export class SignupComponent {
                 }
             });
         });
-        this._parent.appendChild(form);
     }
 }

@@ -19,11 +19,11 @@ export class SigninComponent {
         menu.render();
 
         this._parent.innerHTML += signinTemplate(this._data);
-        let form = document.getElementById("Sub");
-        form.addEventListener("click", function (e) {
+        const form = document.getElementsByTagName('form')[0];
+        form.addEventListener("submit", function (e) {
             e.preventDefault();
-            const email = document.getElementById('Login').value;
-            const password = document.getElementById('Pass').value;
+            const email = form.elements['email'].value;
+            const password = form.elements['password'].value;
             AjaxModule.doPost({
                 url: '/api/signin',
                 body: {email, password},
@@ -37,7 +37,6 @@ export class SigninComponent {
                 }
             });
         });
-        document.getElementById("Sub")._parent.appendChild(form);
     }
 
 }

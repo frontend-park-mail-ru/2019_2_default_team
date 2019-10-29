@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    width: 250px;
+    height: 50px;
+    margin: 25px;
+    border-radius: 25px;
+    border: 0px;
+    text-align: center;
+}
+
+.menu {
+    margin-bottom: 50px;
+}
+
+#btn:active {
+    background-color: #c4c4c4;
+}
+
+.field {
+    transition-property: transform;
+    transition-duration: 0.25s;
+}
+
+.field:focus {
+    transform: scale(1.25);
+}

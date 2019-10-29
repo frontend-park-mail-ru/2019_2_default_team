@@ -1,29 +1,7 @@
 style
     include Signin.css
-div(id = "Form" class = "form" , type = "submit")
-    .login
-        .login_title
-            span Login to your account
-        .login_fields
-            .login_fields__user
-                .icon
-                    img(src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/user_icon_copy.png')
-                input(id = "Login", placeholder='Username', type='text')
-                .validation
-                    img(src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png')
-            .login_fields__password
-                .icon
-                    img(src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/lock_icon_copy.png')
-                input(id = "Pass", placeholder='Password', type='password')
-                .validation
-                    img(src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tick.png')
-            .login_fields__submit
-                input(id = 'Sub', type='submit', value = "Log in")
-                .forgot
-                    a(href='#') Forgotten password?
-        .success
-            h2 Authentication Success
-            p Welcome back
-    .authent
-        img(src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/puff.svg')
-        p Authenticating...
+div.container
+    form
+        input.field(type="email" name="email" placeholder="e-mail")
+        input.field(type="password" name="password" placeholder="Пароль")
+        input#btn(type="submit" value="Войти")
