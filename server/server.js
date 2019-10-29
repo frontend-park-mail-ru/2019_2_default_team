@@ -7,7 +7,6 @@ const morgan = require('morgan');
 const uuid = require('uuid/v4');
 const path = require('path');
 const app = express();
-const fs = require('fs');
 
 app.use(morgan('dev'));
 app.use(express.static(path.resolve(__dirname, '..', 'src')));
@@ -84,19 +83,10 @@ app.get('/api/signout', function (req, res) {
     return res.status(401).end();
   }
   ids[id] = '';
+  res.cookie('id', 'null', {expires: new Date(0)});
   res.status(200).end();
 });
 
-app.get('/*', function (req, res) {
-  var {url} = req;
-  if(/\/$/.test(url)){
-    url += 'index.html';
-  }
-  const filePath = path.join(__dirname, '../src/', url);
-  console.log(filePath);
-  const file = fs.readFileSync(filePath);
-  res.end(file);
-});
 
 app.get('/poster', function (req, res) {
   res.number = 10;

@@ -5,12 +5,16 @@ mixin item-left(title, href, section)
 	li.menu-el-left
 		a.inner-menu-element(href=href data-section=section)= title
 
+- const getCookie = (name) => {var re = new RegExp(name + "=([^;]+)"); var value = re.exec(document.cookie); return (value != null) ? unescape(value[1]) : null;}
+
 ul.menu
 	+item-left('Афиша', '/poster', 'poster')
-	+item-right('О нас', '/about', 'about')
+	+item-left('О нас', '/about', 'about')
 	//- if authorized
-	+item-left('Выход', '/signout', 'signout')
-	+item-left('Профиль', '/profile', 'profile')
+	if getCookie('id') != null
+		+item-right('Выход', '/signout', 'signout')
+		+item-right('Профиль', '/profile', 'profile')
 	//- unless authorized
-	+item-left('Вход', '/signin', 'signin')
-	+item-left('Регистрация', '/signup', 'signup')
+	else
+		+item-right('Регистрация', '/signup', 'signup')
+		+item-right('Вход', '/signin', 'signin')
