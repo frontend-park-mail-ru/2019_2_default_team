@@ -16,8 +16,19 @@ export class FilmpageComponent {
 
     render() {
         const menu = new MenuComponent(this._parent);
+    
         menu.setData({authorized: this.getData().authorized});
         menu.render();
         this._parent.innerHTML += filmpageTemplate(this._data)
+
+        document.seatNumber = 0;
+        const bookBtn = document.getElementById("bookBtn");
+        bookBtn.addEventListener('click', (event) => {
+            if(document.seatNumber <= 0) {
+                window.alert("Место не выбрано")
+            } else {
+                window.alert("Выбрано место номер: " + document.seatNumber);
+            }
+        });
     }
 }

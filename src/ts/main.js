@@ -61,8 +61,23 @@ function signout() {
 }
 
 function createFilmpage() {
-	const filmpage = new FilmpageComponent(application);
-	filmpage.render();
+	AjaxModule.doGet({
+		url: '/layout',
+		body: null,
+		callback: (status, response) => {
+			if(status === 200) {
+				try {
+					const responseBody = JSON.parse(response);
+					const filmpage = new FilmpageComponent(application);
+					filmpage.setData(responseBody);
+					filmpage.render();
+				} catch (e) {
+					console.log("ERROR::createFilmpage")
+					console.log(e)
+				}
+			}
+		}
+	})
 }
 const routerMap = {
 	signup: createSignup,

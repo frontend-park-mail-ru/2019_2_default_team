@@ -40,4 +40,53 @@
     color: white;
     text-align: center;
     padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+.booking {
+    display: block;
+    align-content: center;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    margin: 15px;
+    border: 0px;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 25px;
+    background-color: #ffffff;
+    transition-property: transform;
+    transition-duration: 0.25s;
+}
+
+.cell:hover {
+    transform: scale(1.2);
+}
+
+.cell:active {
+    transform: scale(1.2);
+    background-color: #c4c4c4;
+}
+
+.tbl {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 20px;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+#bookBtn {
+    width: 250px;
+    height: 50px;
+    margin: 25px;
+    border-radius: 25px;
+    border: 0px;
+    text-align: center;
+    background-color: rgb(142, 137, 228);
+}
+
+#bookBtn:active {
+    background-color: rgb(120, 115, 222);
 }

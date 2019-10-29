@@ -23,6 +23,15 @@ const users = {
 };
 const ids = {};
 
+const layout = [
+  [1, 2, 3],
+  [4, 5, 6, 7],
+  [8, 9, 10, 11, 12],
+  [13, 14, 15, 16, 17],
+  [18, 19, 20, 21, 22],
+  [23, 24, 25, 26, 27]
+];
+
 app.post('/api/signup', function (req, res) {
   const password = req.body.password;
   const email = req.body.email;
@@ -85,6 +94,10 @@ app.get('/api/signout', function (req, res) {
   ids[id] = '';
   res.cookie('id', 'null', {expires: new Date(0)});
   res.status(200).end();
+});
+
+app.get('/layout', function (req, res) {
+  res.json({layout});
 });
 
 
