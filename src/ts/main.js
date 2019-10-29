@@ -5,7 +5,7 @@ import {AboutComponent} from '../components/About/About.js';
 import {PosterComponent} from '../components/Poster/Poster.js';
 import {FilmpageComponent} from "../components/Filmpage/Filmpage.js";
 
-const AjaxModule = globalThis.AjaxModule;
+const AjaxModule = globalThis.Api;
 
 const application = document.getElementById('application');
 

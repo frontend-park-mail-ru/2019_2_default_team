@@ -5,7 +5,6 @@
  */
 
 export class EventBus {
-    events: Map<any, any>;
     /**
      * @param listOfEvents Array[string] available events
      */
@@ -34,15 +33,17 @@ export class EventBus {
      * @param {string} eventName
      * @param {object} args
      */
+
     triggerEvent (eventName, ...args) {
         if (!this.events.has(eventName)) {
             throw new Error(`EventBus: Unknown event ${eventName}`);
         }
-        let eventListeners = this.events.get(eventName);
+        const eventListeners = this.events.get(eventName);
         eventListeners.forEach((callback) =>
             callback(...args)
         );
     }
+
     /**
      * Call func by event
      * @param {string} eventName
