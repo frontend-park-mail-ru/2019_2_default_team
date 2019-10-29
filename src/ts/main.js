@@ -49,35 +49,6 @@ function createProfile() {
 		console.error(err);
 		createSignin();
 	})
-
-
-	// AjaxModule.doPromiseGet({
-	// 	url: '/api/profile',
-	// 	body: null
-	// })
-	// .then(function (obj) {
-	// 	const { responseText } = obj;
-	// 	try {
-	// 		const responseBody = JSON.parse(responseText);
-	// 		const profile = new ProfileComponent(application);
-	// 		profile.setData(responseBody);
-	// 		profile.render();
-	// 	}
-	// 	catch (err) {
-	// 		console.log(err);
-	// 		return;
-	// 	}
-	// })
-	// .catch(function (obj) {
-	// 	if (obj instanceof Error) {
-	// 		console.error(obj);
-	// 		return;
-	// 	}
-	// 	else {
-	// 		alert("Хэй, я вас не звал! Идите на страницу авторизации.");
-	// 	}
-	// 	createSignin();
-	// })
 }
 
 function createAbout() {
