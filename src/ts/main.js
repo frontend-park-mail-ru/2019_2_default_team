@@ -5,7 +5,7 @@ import {AboutComponent} from '../components/About/About.js';
 import {PosterComponent} from '../components/Poster/Poster.js';
 import {FilmpageComponent} from "../components/Filmpage/Filmpage.js";
 
-const AjaxModule = globalThis.Api;
+const AjaxModule = globalThis.AjaxModule;
 
 const application = document.getElementById('application');
 
@@ -20,26 +20,33 @@ function createSignin() {
 }
 
 function createProfile() {
-	AjaxModule.doGet({
+	AjaxModule.doPromiseGet({
 		url: '/api/profile',
-		body: null,
-		callback: function (status, responseText) {
-			if (status === 200) {
-				try {
-					const responseBody = JSON.parse(responseText);
-					const profile = new ProfileComponent(application);
-					profile.setData(responseBody);
-					profile.render();
-				}
-				catch (err) {
-					console.log(err);
-					return;
-				}
-			} else {
-				createSignin();
+		body: null
+	})
+		.then(function (obj) {
+			const { responseText } = obj;
+			try {
+				const responseBody = JSON.parse(responseText);
+				const profile = new ProfileComponent(application);
+				profile.setData(responseBody);
+				profile.render();
 			}
-		}
-	});
+			catch (err) {
+				console.log(err);
+				return;
+			}
+		})
+		.catch(function (obj) {
+			if (obj instanceof Error) {
+				console.error(obj);
+				return;
+			}
+			else {
+				alert("Хэй, я вас не звал! Идите на страницу авторизации.");
+			}
+			createSignin();
+		})
 }
 
 function createAbout() {
@@ -62,7 +69,7 @@ function signout() {
 
 function createFilmpage() {
 	AjaxModule.doGet({
-		url: '/layout',
+		url: '/api/layout',
 		body: null,
 		callback: (status, response) => {
 			if(status === 200) {
@@ -79,6 +86,7 @@ function createFilmpage() {
 		}
 	})
 }
+
 const routerMap = {
 	signup: createSignup,
 	signin: createSignin,
@@ -90,7 +98,7 @@ const routerMap = {
 };
 
 application.addEventListener('click', function (evt) {
-	const {target} = evt;
+	const { target } = evt;
 	if (target instanceof HTMLAnchorElement) {
 		evt.preventDefault();
 		routerMap[target.dataset.section]();
@@ -98,4 +106,3 @@ application.addEventListener('click', function (evt) {
 });
 
 createPoster();
-
