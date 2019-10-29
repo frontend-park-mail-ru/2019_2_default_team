@@ -1,6 +1,6 @@
 {
   "name": "2019_2_default_team",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Репозиторий команды \"Команда\". Технопарк@mail.ru, осень, 2019",
   "main": "index.js",
   "dependencies": {
