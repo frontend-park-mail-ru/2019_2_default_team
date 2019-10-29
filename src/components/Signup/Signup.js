@@ -36,7 +36,7 @@ export class SignupComponent {
                         callback();
                         return;
                     }
-                    const {error} = JSON.parse(responseText);
+                    const error = JSON.parse(responseText).error;
                     alert(error);
                 }
             });

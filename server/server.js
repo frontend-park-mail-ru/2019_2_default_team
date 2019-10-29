@@ -58,7 +58,23 @@ app.post('/api/signup', function (req, res) {
     res.status(201).json({id});
 });
 
+app.options('/api/signin', function (req, res) {
+    console.log(req.headers);
+    console.log(req.body);
+    res.set('Access-Control-Allow-Origin', 'http://127.0.0.1:3000');
+    res.set('Access-Control-Allow-Methods', 'POST,PUT');
+    res.set('Access-Control-Allow-Headers', 'Content-Type');
+    res.set('Access-Control-Allow-Credentials', 'true');
+    res.status(204).end();
+});
+
+// admin@corp.mail.ru
+
 app.post('/api/signin', function (req, res) {
+    console.log(req.headers);
+    console.log(req.body);
+    res.set('Access-Control-Allow-Origin', 'http://127.0.0.1:3000');
+    res.set('Access-Control-Allow-Credentials', 'true');
     const password = req.body.password;
     const email = req.body.email;
     if (!password || !email) {
@@ -76,8 +92,15 @@ app.post('/api/signin', function (req, res) {
 });
 
 app.get('/api/profile', function (req, res) {
+    console.log(req.headers);
+    console.log(req.body);
+    res.set('Access-Control-Allow-Origin', 'http://127.0.0.1:3000');
+    res.set('Access-Control-Allow-Credentials', 'true');
+    
     const id = req.cookies.id;
+    console.log(id);
     const email = ids[id];
+    console.log(email);
     if (!email || !users[email]) {
         return res.status(401).end();
     }
