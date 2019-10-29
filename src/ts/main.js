@@ -62,7 +62,7 @@ function signout() {
 
 function createFilmpage() {
 	AjaxModule.doGet({
-		url: '/layout',
+		url: '/api/layout',
 		body: null,
 		callback: (status, response) => {
 			if(status === 200) {
