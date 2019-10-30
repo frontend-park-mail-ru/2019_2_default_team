@@ -11,10 +11,11 @@ mixin card-deck(title, href, filmUrl)
             h1= title
             a(onclick= filmUrl href= filmUrl data-section="film") Подробнее
 
-.body
-    -var decks = 3;
-    while decks > 1
-        .wrapper
+div.container
+    h1 Фильмы
+    .body
+        -var decks = 3;
+        while decks > 0
             each val in [1,2,3,4]
                 +card-deck(title, href)
-        -decks--
+            -decks--
