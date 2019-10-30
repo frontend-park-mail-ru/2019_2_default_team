@@ -1,8 +1,8 @@
-(function() {
-    
-    class AjaxModule{
+(function () {
+
+    class AjaxModule {
         doGet({
-            url ='/',
+            url = '/',
             body = null,
             callback
         } = {}
@@ -16,35 +16,53 @@
             }
 
         doPost({
-            url ='/',
+            url = '/',
             body = null,
             callback
         } = {}
             ) {
+            this._ajax({
+                method: 'POST',
+                url,
+                body,
+                callback
+            });
+        }
+
+        doPromiseGet({ url = '/', body = null }) {
+            return new Promise(function (res, rej) {
                 this._ajax({
-                    method: 'POST',
+                    method: 'GET',
                     url,
                     body,
-                    callback
+                    callback(status, responseText) {
+                        if (status < 300) {
+                            res({ responseText });
+                        }
+                        else {
+                            rej({ status });
+                        }
+                    }
                 });
-            }
+            }.bind(this));
+        }
 
         _ajax({
             method = 'GET',
-            url ='/',
+            url = '/',
             body = null,
             callback} = {}
             ) {
             const xhr = new XMLHttpRequest();
             xhr.open(method, url, true);
             xhr.withCredentials = true;
-        
-            xhr.addEventListener('readystatechange', function() {
+
+            xhr.addEventListener('readystatechange', function () {
                 if (xhr.readyState !== xhr.DONE) return;
-        
+
                 callback(xhr.status, xhr.responseText);
             });
-        
+
             if (body) {
                 xhr.setRequestHeader('Content-type', 'application/json; charset=utf8');
                 xhr.send(JSON.stringify(body));

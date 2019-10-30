@@ -112,7 +112,7 @@ export default class Network {
 
     /**
      * Server URL
-     * @returns {Promise<Response>}
+     * @returns {string}
      */
 
     static getServerUrl() {

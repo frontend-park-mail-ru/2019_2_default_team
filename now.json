@@ -3,7 +3,7 @@
     "name": "default_name",
     "alias": ["default-name"],
     "builds": [
-        { "src": "package.json", "use": "@now/static-build" },
+        { "src": "package.json", "use": "@now/static-build", "config": { "distDir": "src" } },
         { "src": "server/server.js", "use": "@now/node-server" },
         { "src": "src/**", "use": "@now/static" }
     ],

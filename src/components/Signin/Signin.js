@@ -31,7 +31,7 @@ export class SigninComponent {
                     if (status === 200) {
                         callback();
                     } else {
-                        const {error} = JSON.parse(response);
+                        const error = JSON.parse(response).error;
                         alert(error);
                     }
                 }
