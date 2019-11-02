@@ -1,5 +1,5 @@
-import {SigninComponent} from '../../../components/Signin/Signin.js';
-import {SignupComponent} from '../../../components/Signup/Signup.js';
+import {SigninComponent} from '../../../components/Login/Login.js';
+import {SignupComponent} from '../../../components/Register/Register.js';
 import {ProfileComponent} from '../../../components/Profile/Profile.js';
 import {AboutComponent} from '../../../components/About/About.js';
 import {PosterComponent} from '../../../components/Poster/Poster.js';

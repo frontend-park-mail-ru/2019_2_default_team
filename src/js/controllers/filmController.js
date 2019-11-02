@@ -1,6 +1,6 @@
 import { EventBus } from '../modules/eventbus';
-import { PosterView } from '../views/Poster/Poster';
-import { PosterModel } from '../models/posterModel';
+import { FilmView } from '../views/Filmpage/Filmpage';
+import { FilmModel } from '../models/filmModel';
 
 const eventList = [
     'loadPage',
@@ -12,7 +12,7 @@ export class PosterController {
     constructor (root, globalEventBus, router) {
         const eventBus = new EventBus(eventList);
 
-        this.posterView = new PosterView(root, eventBus);
-        this.posterModel = new PosterModel(eventBus);
+        this.filmView = new FilmView(root, eventBus);
+        this.filmModel = new FilmModel(eventBus);
     }
 }

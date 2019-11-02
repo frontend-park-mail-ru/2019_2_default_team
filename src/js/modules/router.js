@@ -6,7 +6,7 @@
 
 export default class Router {
 
-    /** Router constru  ctor
+    /** Router constructor
      * @constructor
      * @param {Element} root
      */

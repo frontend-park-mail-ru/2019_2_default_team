@@ -120,6 +120,16 @@ export default class Api {
     }
 
     /**
+     * API Get all films for certain page
+     * GET /api/films/{pageID}/
+     * @param pageID
+     * @returns {Promise<Response>}
+     */
+    static getPageFilms({pageID}){
+        return Network.doGet(`/api/films/${pageID}/`);
+    }
+
+    /**
      * API Add new film
      * POST /api/films/
      * @static

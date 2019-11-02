@@ -1,23 +1,19 @@
-import {MenuComponent} from '../Menu/Menu.js';
+import template from './Poster.pug';
+import View from '../../modules/view';
 
-export class PosterComponent {
-    constructor(parent = document.body) {
-        this._parent = parent;
-        this._data = {};
+export class PosterView extends View {
+
+    constructor (root, eventBus) {
+        super(root, template, eventBus);
+
+        this._eventBus.subscribeToEvent('loadSuccess', this._onLoadSuccess.bind(this));
     }
 
-    getData() {
-        return this._data;
+    render (data = {}) {
+        this._eventBus.triggerEvent('loadPage', data);
     }
 
-    setData(dataToSet = {}) {
-        this._data = {...dataToSet};
-    }
-
-    render() {
-        const menu = new MenuComponent(this._parent);
-        menu.setData({authorized: this.getData().authorized});
-        menu.render();
-        this._parent.innerHTML += posterTemplate(this._data);
+    _onLoadSuccess(data){
+        super.render(data);
     }
 }

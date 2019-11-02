@@ -1,6 +1,6 @@
-import {MenuComponent} from '../Menu/Menu.js';
+import {MenuView} from '../Menu/Menu.js';
 
-export class FilmpageComponent {
+export class FilmView {
     constructor(parent = document.body) {
         this._parent = parent;
         this._data = {};
@@ -15,7 +15,7 @@ export class FilmpageComponent {
     }
 
     render() {
-        const menu = new MenuComponent(this._parent);
+        const menu = new MenuView(this._parent);
     
         menu.setData({authorized: this.getData().authorized});
         menu.render();
