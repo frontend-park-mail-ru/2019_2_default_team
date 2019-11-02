@@ -1,6 +1,6 @@
 import {MenuComponent} from '../Menu/Menu.js';
 
-export class ProfileComponent {
+export class ProfileView {
     constructor(parent = document.body) {
         this._parent = parent;
         this._data = {};

@@ -90,7 +90,6 @@ export default class Api {
 
     /**
      * API Get profile info
-     * Отправляет запрос на получение информации о пользователе
      * GET /api/users/
      * @static
      * @returns {Promise<Response>}
@@ -101,7 +100,6 @@ export default class Api {
 
     /**
      * API Get another user info
-     * Отправляет запрос на получение информации о пользователе
      * GET /api/users/{user_id}
      * @static
      * @returns {Promise<Response>}
@@ -112,7 +110,6 @@ export default class Api {
 
     /**
      * API Get film info
-     * Отправляет запрос на получение информации о фильме
      * GET /api/films/{film_id}/
      * @static
      * @param {string} filmID
@@ -124,7 +121,6 @@ export default class Api {
 
     /**
      * API Add new film
-     * Отправляет запрос на добавление нового фильма
      * POST /api/films/
      * @static
      * @param {string} title
@@ -146,5 +142,14 @@ export default class Api {
             directors,
             rating,
         });
+    }
+
+    /**
+     * API Check session
+     * @static
+     * @returns {Promise<Response>}
+     */
+    static checkSession () {
+        return Network.doGet({ url: '/auth' });
     }
 }
