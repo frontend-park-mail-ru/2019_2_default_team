@@ -3,8 +3,8 @@ import {View} from '../../modules/view';
 import {AUTH} from '../../modules/events'
 
 export class PosterView extends View {
-    constructor(root, eventBus, globalEventBus) {
-        super(root, template, eventBus, globalEventBus);
+    constructor(root, globalEventBus) {
+        super(root, template, globalEventBus);
         this._globalEventBus.subscribeToEvent(AUTH.checkAuthResponse, this._onAuthResponse.bind(this));
     }
 

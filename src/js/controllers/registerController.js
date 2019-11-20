@@ -1,22 +1,12 @@
 import { EventBus } from '../modules/eventbus';
-import { RegisterView } from '../views/SignupSeeker/SignupSeekerView';
-import { RegisterModel } from '../models/registerModel';
+import {RegisterView} from "../views/Register/Register";
+import {AUTH} from "../modules/events";
+import {Controller} from "../modules/controller";
 
-const eventList = [
-    'register',
-    'registerSuccess',
-    'registerFailed',
-];
-
-export class RegisterController {
+export class RegisterController extends Controller{
     constructor (root, globalEventBus, router) {
-        const eventBus = new EventBus(eventList);
-        eventBus.subscribeToEvent('registerSuccess', (data) => {
-            globalEventBus.triggerEvent('headerLoad', data);
-            router.startPage();
-        });
+        super(root, globalEventBus, router);
 
-        this.registerView = new RegisterView(root, eventBus);
-        this.registerModel = new RegisterModel(eventBus);
+        this._view = new RegisterView(this._root, this._globalEventBus);
     }
 }

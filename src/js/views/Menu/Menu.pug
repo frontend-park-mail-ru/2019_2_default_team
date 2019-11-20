@@ -14,9 +14,9 @@ ul.menu
 	+item-left('О нас', '/about', 'about')
 	//- if authorized
 	if getCookie('id') != null
-		+item-right('Выход', '/signout', 'signout')
+		+item-right('Выход', '/logout', 'logout')
 		+item-right('Профиль', '/profile', 'profile')
 	//- unless authorized
 	else
-		+item-right('Регистрация', '/signup', 'signup')
-		+item-right('Вход', '/signin', 'signin')
+		+item-right('Регистрация', '/register', 'register')
+		+item-right('Вход', '/login', 'login')

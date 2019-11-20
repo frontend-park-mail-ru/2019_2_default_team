@@ -1,12 +1,13 @@
 import template from './Login.pug';
-import View from '../../modules/view';
+import {View} from '../../modules/view';
 import Validation from '../../modules/validate';
+import {AUTH} from "../../modules/events";
 
 export class LoginView extends View {
 
-    constructor (root, eventBus) {
-        super(root, template, eventBus);
-        this._eventBus.subscribeToEvent('LoginFailed', this._onSubmitFailed.bind(this));
+    constructor (root, globalEventBus) {
+        super(root, template, globalEventBus);
+        this._globalEventBus.subscribeToEvent(AUTH.signInFailed, this._onSubmitFailed.bind(this));
     }
 
     render (data = {}) {

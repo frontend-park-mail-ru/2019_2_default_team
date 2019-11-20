@@ -1,17 +1,18 @@
 import template from './Register.pug';
-import View from '../../modules/view';
+import {View} from '../../modules/view';
 import Validation from '../../modules/validate';
+import {AUTH} from "../../modules/events";
 
 const errInvalidPasswordData = 'Must contain at least 8 chars';
 
 export class RegisterView extends View {
 
-    constructor (root, eventBus) {
-        super(root, template, eventBus);
-        this._eventBus.subscribeToEvent('registerFailed', this._onSubmitFailed.bind(this));
+    constructor(root, globalEventBus) {
+        super(root, template, globalEventBus);
+        this._globalEventBus.subscribeToEvent(AUTH.signUpFailed, this._onSubmitFailed.bind(this));
     }
 
-    render (data = {}) {
+    render(data = {}) {
         super.render(data);
 
         this._signupForm = this._root.querySelector('.signup-form');
@@ -20,7 +21,7 @@ export class RegisterView extends View {
         this.setValidationOnChangeListeners();
     }
 
-    setValidationOnChangeListeners () {
+    setValidationOnChangeListeners() {
         const login = this._signupForm.elements.login;
         const password = this._signupForm.elements.password;
 
@@ -45,7 +46,7 @@ export class RegisterView extends View {
         }, false);
     }
 
-    _onSubmitFailed (data) {
+    _onSubmitFailed(data) {
         const login = this._signupForm.querySelector('[name="login"]');
         login.classList.add('invalid');
 
@@ -53,7 +54,7 @@ export class RegisterView extends View {
         error.innerHTML = data.error;
     }
 
-    _onSubmit (ev) {
+    _onSubmit(ev) {
         ev.preventDefault();
         let wasfail = false;
 

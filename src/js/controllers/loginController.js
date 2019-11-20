@@ -1,22 +1,14 @@
-import { EventBus } from '../modules/eventbus';
 import { LoginView } from '../views/Login/Login';
-import { LoginModel } from '../models/loginModel';
+import {Controller} from "../modules/controller";
+import {AUTH} from "../modules/events";
 
-const eventList = [
-    'signIn',
-    'signInSuccess',
-    'signInFailed',
-];
-
-export class LoginController {
+export class LoginController extends Controller{
     constructor (root, globalEventBus, router) {
-        const eventBus = new EventBus(eventList);
-        eventBus.subscribeToEvent('signInSuccess', (data) => {
-            globalEventBus.triggerEvent('headerLoad', data);
-            router.startPage();
-        });
+        super(root, globalEventBus, router);
 
-        this.loginView = new LoginView(root, eventBus);
-        this.loginModel = new LoginModel(eventBus);
+        this._globalEventBus.subscribeToEvent(AUTH.signInSuccess, (data) => {
+            this._router.redirect('/');
+        });
+        this._view = new LoginView(this._root, this._globalEventBus);
     }
 }
