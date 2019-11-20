@@ -112,21 +112,20 @@ export default class Api {
      * API Get film info
      * GET /films/{film_id}/
      * @static
-     * @param {string} filmID
+     * @param {number} filmID
      * @returns {Promise<Response>}
      */
-    static getFilmInfo({filmID}) {
-        return Network.doGet(`/films/${filmID}/`);
+    static getFilmInfo(filmID) {
+        return Network.doGet(`/films/${filmID}/` );
     }
 
     /**
-     * API Get all films for certain page
-     * GET /films/{pageID}/
-     * @param pageID
+     * API Get all films
+     * GET /films/
      * @returns {Promise<Response>}
      */
-    static getPageFilms({pageID}){
-        return Network.doGet(`/films/${pageID}/`);
+    static getAllFilms(){
+        return Network.doGet(`/films/`);
     }
 
     /**

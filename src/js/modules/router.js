@@ -1,7 +1,7 @@
 const pathsWithId = [
     '/profile',
     '/poster',
-    '/film'
+    '/films'
 ];
 
 export class Router {

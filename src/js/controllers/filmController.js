@@ -1,18 +1,10 @@
-import { EventBus } from '../modules/eventbus';
-import { FilmView } from '../views/Filmpage/Filmpage';
-import { FilmModel } from '../models/filmModel';
+import { FilmpageView } from '../views/Filmpage/Filmpage';
+import {Controller} from "../modules/controller";
 
-const eventList = [
-    'loadPage',
-    'loadPageSuccess',
-    'loadPageFailed'
-];
-
-export class PosterController {
+export class FilmpageController extends Controller{
     constructor (root, globalEventBus, router) {
-        const eventBus = new EventBus(eventList);
+        super(root, globalEventBus, router);
 
-        this.filmView = new FilmView(root, eventBus);
-        this.filmModel = new FilmModel(eventBus);
+        this._view = new FilmpageView(this._root, this._globalEventBus);
     }
 }

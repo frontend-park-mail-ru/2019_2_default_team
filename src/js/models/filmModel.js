@@ -1,26 +1,46 @@
 import api from "../modules/api";
+import {FILM} from "../modules/events";
 
-export class FilmModel {
-    constructor(eventBus){
-        this._eventBus = eventBus;
+class FilmModel {
+    setGlobalEventBus(globalEventBus) {
+        this._globalEventBus = globalEventBus;
 
-        this._eventBus.subscribeToEvent('loadPage', this._loadPage.bind(this))
+        this._globalEventBus.subscribeToEvent(FILM.getFilm, this._onLoadFilm.bind(this));
+        this._globalEventBus.subscribeToEvent(FILM.getFilms, this._onLoadFilms.bind(this));
     }
 
-    _loadPage(id){
-        api.getFilmInfo(id).then(response => {
-            if (response.ok) {
-                response.json().then(data => {
-                    this._eventBus.triggerEvent('loadSuccess', data);
-                });
-            } else {
-                response.json().then(data => {
-                    this._eventBus.triggerEvent('loadFailed', data);
-                })
-            }
-        })
-            .catch(error => {
-                console.error(error);
+    _onLoadFilm = (id) => {
+        api.getFilmInfo(id.id)
+            .then(res => {
+                if (res.ok) {
+                    res.json().then(data => {
+                        this._globalEventBus.triggerEvent(FILM.getFilmSuccess, data);
+                    });
+                } else {
+                    res.json().then(data => {
+                        this._globalEventBus.triggerEvent(FILM.getFilmFailed, data);
+                    });
+                }
             })
-    }
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
+    _onLoadFilms = () => {
+        api.getAllFilms()
+            .then(res => {
+                if (res.ok) {
+                    res.json().then(data => {
+                        this._globalEventBus.triggerEvent(FILM.getFilmsSuccess, data);
+                    });
+                } else {
+                    res.json().then(data => {
+                        this._globalEventBus.triggerEvent(FILM.getFilmsFailed, data);
+                    });
+                }
+            });
+    };
 }
+
+export default new FilmModel();

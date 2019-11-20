@@ -10,7 +10,7 @@ mixin card-deck(title, href, filmUrl)
             img(src= href)
         div(class = "card-item-blur" src = href)
             h1= title
-            a(onclick= filmUrl href= filmUrl data-section="film") Подробнее
+            a(onclick= '/films/1' href= '/films/1' data-section="films") Подробнее
 
 div.container
     h1 Фильмы

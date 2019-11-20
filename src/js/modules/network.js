@@ -18,7 +18,7 @@ export default class Network {
     static doGet(path = '/') {
         return fetch(Network.getServerUrl() + path, {
             method: 'GET',
-            mode: 'no-cors',
+            mode: 'cors',
             credentials: 'include',
         });
     }

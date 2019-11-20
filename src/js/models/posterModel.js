@@ -2,8 +2,8 @@ import api from "../modules/api";
 import {AUTH} from "../modules/events";
 
 class PosterModel {
-    _loadPage(id){
-        api.getPageFilms(id).then(response => {
+    _loadPage(){
+        api.getAllFilms().then(response => {
             if (response.ok) {
                 response.json().then(data => {
                     this._globalEventBus.triggerEvent('loadSuccess', data);

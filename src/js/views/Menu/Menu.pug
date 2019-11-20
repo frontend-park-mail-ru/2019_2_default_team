@@ -10,7 +10,7 @@ mixin item-left(title, href, section)
 - const getCookie = (name) => {var re = new RegExp(name + "=([^;]+)"); var value = re.exec(document.cookie); return (value != null) ? unescape(value[1]) : null;}
 
 ul.menu
-	+item-left('Афиша', '/poster', 'poster')
+	+item-left('Афиша', '/', 'poster')
 	+item-left('О нас', '/about', 'about')
 	//- if authorized
 	if getCookie('id') != null
