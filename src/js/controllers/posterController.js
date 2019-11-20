@@ -1,18 +1,11 @@
-import { EventBus } from '../modules/eventbus';
 import { PosterView } from '../views/Poster/Poster';
-import { PosterModel } from '../models/posterModel';
+import { Controller } from '../modules/controller';
 
-const eventList = [
-    'loadPage',
-    'loadPageSuccess',
-    'loadPageFailed'
-];
-
-export class PosterController {
+export class PosterController extends Controller {
     constructor (root, globalEventBus, router) {
-        const eventBus = new EventBus(eventList);
+        super(root, globalEventBus, router);
 
-        this.posterView = new PosterView(root, eventBus);
-        this.posterModel = new PosterModel(eventBus);
+        this._view = new PosterView(this._root, this._globalEventBus);
     }
+
 }

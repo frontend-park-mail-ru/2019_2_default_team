@@ -1,22 +1,9 @@
-import {EventBus} from '../modules/eventbus';
 import {MenuView} from "../views/Menu/Menu";
-import {MenuModel} from "../models/menuModel";
+import {Controller} from "../modules/controller";
 
-const eventList = [
-    'checkAuth',
-    'checkAuthResponse',
-    'signOut',
-    'signOutResponse'
-];
-
-export class MenuController {
-    constructor(root, globalEventBus, router) {
-        const eventBus = new EventBus(eventList);
-        eventBus.subscribeToEvent('signOutResponse', () => {
-            router.startPage();
-        });
-
-        this.headerView = new MenuView(root, eventBus, globalEventBus);
-        this.headerModel = new MenuModel(eventBus);
+export class MenuController extends Controller{
+    constructor (root, globalEventBus, router) {
+        super(root, globalEventBus, router);
+        this._view = new MenuView(this._root, this._globalEventBus);
     }
 }

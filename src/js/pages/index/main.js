@@ -1,9 +1,9 @@
-import {SigninComponent} from '../../../components/Login/Login.js';
-import {SignupComponent} from '../../../components/Register/Register.js';
-import {ProfileComponent} from '../../../components/Profile/Profile.js';
-import {AboutComponent} from '../../../components/About/About.js';
-import {PosterComponent} from '../../../components/Poster/Poster.js';
-import {FilmpageComponent} from "../../../components/Filmpage/Filmpage.js";
+import {SigninComponent} from '../../views/Login/Login.js';
+import {SignupComponent} from '../../views/Register/Register.js';
+import {ProfileComponent} from '../../views/Profile/Profile.js';
+import {AboutComponent} from '../../views/About/About.js';
+import {PosterComponent} from '../../views/Poster/Poster.js';
+import {FilmpageComponent} from "../../views/Filmpage/Filmpage.js";
 
 const AjaxModule = globalThis.AjaxModule;
 

@@ -9,14 +9,14 @@ export default class Api {
 
     /**
      * API Login
-     * POST /api/sessions/
+     * POST /sessions/
      * @static
      * @param {string} email
      * @param {string} password
      * @returns {Promise<Response>}
      */
     static login({email, password}) {
-        return Network.doPost('/api/sessions/', {
+        return Network.doPost('/sessions/', {
             email,
             password,
         });
@@ -24,27 +24,27 @@ export default class Api {
 
     /**
      * API Check auth
-     * GET /api/sessions/
+     * GET /sessions/
      * @static
      * @returns {Promise<Response>}
      */
     static authCheck() {
-        return Network.doGet('/api/sessions/');
+        return Network.doGet('/session');
     }
 
     /**
      * API Logout
-     * delete /api/sessions/
+     * delete /sessions/
      * @static
      * @returns {Promise<Response>}
      */
     static logout() {
-        return Network.doDelete('/api/sessions/');
+        return Network.doDelete('/session/');
     }
 
     /**
      * API Registration
-     * POST /api/users/
+     * POST /users/
      * @static
      * @param {string} email
      * @param {string} password
@@ -52,7 +52,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static register({email, password, username}) {
-        return Network.doPost('/api/users/', {
+        return Network.doPost('/users/', {
             email,
             password,
             username,
@@ -61,7 +61,7 @@ export default class Api {
 
     /**
      * API Edit avatar
-     * POST /api/images/
+     * POST /images/
      * @static
      * @param {string} avatar - новое изображение
      * @param {string} userID
@@ -70,19 +70,19 @@ export default class Api {
     static editAvatar({avatar}) {
         const formData = new FormData();
         formData.append('file', avatar.avatar);
-        return Network.doPostFormData('/api/users/images/', formData);
+        return Network.doPostFormData('/users/images/', formData);
     }
 
     /**
      * API Edit profile
-     * PUT /api/users/
+     * PUT /users/
      * @static
      * @param {string} email
      * @param {string} description
      * @returns {Promise<Response>}
      */
     static editProfile({username, description}) {
-        return Network.doPut('/api/users/', {
+        return Network.doPut('/users/', {
             username,
             description,
         });
@@ -90,48 +90,48 @@ export default class Api {
 
     /**
      * API Get profile info
-     * GET /api/users/
+     * GET /users/
      * @static
      * @returns {Promise<Response>}
      */
     static getProfileInfo() {
-        return Network.doGet('/api/users/');
+        return Network.doGet('/users/');
     }
 
     /**
      * API Get another user info
-     * GET /api/users/{user_id}
+     * GET /users/{user_id}
      * @static
      * @returns {Promise<Response>}
      */
     static getAnotherUserInfo({userID}) {
-        return Network.doGet(`/api/users/${userID}/`);
+        return Network.doGet(`/users/${userID}/`);
     }
 
     /**
      * API Get film info
-     * GET /api/films/{film_id}/
+     * GET /films/{film_id}/
      * @static
      * @param {string} filmID
      * @returns {Promise<Response>}
      */
     static getFilmInfo({filmID}) {
-        return Network.doGet(`/api/films/${filmID}/`);
+        return Network.doGet(`/films/${filmID}/`);
     }
 
     /**
      * API Get all films for certain page
-     * GET /api/films/{pageID}/
+     * GET /films/{pageID}/
      * @param pageID
      * @returns {Promise<Response>}
      */
     static getPageFilms({pageID}){
-        return Network.doGet(`/api/films/${pageID}/`);
+        return Network.doGet(`/films/${pageID}/`);
     }
 
     /**
      * API Add new film
-     * POST /api/films/
+     * POST /films/
      * @static
      * @param {string} title
      * @param {string} description
@@ -143,7 +143,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static addNewFilm({title, description, genres, date, actors, directors, rating}) {
-        return Network.doPost('/api/films/', {
+        return Network.doPost('/films/', {
             title,
             description,
             genres,

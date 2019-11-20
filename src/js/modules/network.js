@@ -1,4 +1,4 @@
-const serverUrl = 'localhost:3000';
+const serverUrl = 'http://127.0.0.1:8080';
 
 /**
  * New Network obj
@@ -18,7 +18,7 @@ export default class Network {
     static doGet(path = '/') {
         return fetch(Network.getServerUrl() + path, {
             method: 'GET',
-            mode: 'cors',
+            mode: 'no-cors',
             credentials: 'include',
         });
     }
@@ -82,31 +82,35 @@ export default class Network {
      *  Post formData
      *  @param {string} path
      *  @static
-     *  @param {Object} formData
+     *  @param {Object} body
      *  @returns {Promise<Response>}
      */
 
-    static doPostFormData(path = '/', formData) {
-        return fetch(Network.getServerUrl() + path, {
+    static doPostFormData ({ url = '/', body = {} } = {}) {
+        let token = localStorage.getItem('token');
+        return fetch(Network.getServerUrl() + url, {
             method: 'POST',
+            body,
             mode: 'cors',
             credentials: 'include',
-            body: formData,
+            headers: {
+                'X-CSRF-Token': token
+            }
         });
     }
 
     /**
      * PUT form-data request
      * @param {string} path
-     * @param {Object} formData
+     * @param {Object} body
      * @returns {Promise<Response>}
      */
-    static doPutFormData(path = '/', formData) {
+    static doPutFormData(path = '/', body) {
         return fetch(Network.getServerUrl() + path, {
             method: 'PUT',
             mode: 'cors',
             credentials: 'include',
-            body: formData,
+            body,
         });
     }
 

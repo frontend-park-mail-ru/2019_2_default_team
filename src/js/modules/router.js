@@ -1,89 +1,106 @@
-/**
- *  Router
- *  @class
- *  @type Router
- */
+const pathsWithId = [
+    '/profile',
+    '/poster',
+    '/film'
+];
 
-export default class Router {
-
-    /** Router constructor
-     * @constructor
-     * @param {Element} root
-     */
-
-    constructor(root) {
+export class Router {
+    constructor (root) {
         this.root = root;
         this.routes = new Map();
-        this.currentPath = null;
-    }
 
-    /**
-     * Router start
-     * @listens onclick
-     * @listens onpopstate
-     */
-    start() {
-        window.addEventListener('popstate', () => {
-            this.route(window.location.pathname, window.location.search);
-        });
-        this.root.addEventListener('click', (event) => {
-            if (event.target.tagName === 'A' && event.target.hostname === location.hostname) {
-                event.preventDefault();
-                this.route(event.target.pathname, event.target.search);
+        this.currentRoute = null;
+
+        window.onpopstate = _ => {
+            if (window.location.pathname) {
+                this.route({ path: window.location.pathname, addToHistory: false });
             }
-        });
-        this.route(window.location.pathname, window.location.search);
+        };
+
     }
 
     /**
-     * Return to start page
-     */
-    startPage() {
-        this.route("/");
-    }
-
-    /**
-     * Add route
-     * @method
-     * @param {string} path
-     * @param {View} view
+     * To path with data
+     * @param {String} path
      * @param {Object} data
      */
-    add(path, view, data = {}) {
-        this.routes.set(path, {view: view, data: data});
+    redirect (path, data = {}) {
+        this.route({ path, data, addToHistory: true });
+    }
+
+    /**
+     * Add controller to path
+     * @param {String} path
+     * @param {Controller} controller
+     */
+    add (path, controller) {
+        this.routes.set(path, controller);
+    }
+
+    route ({ path, data = {}, addToHistory = true } = {}) {
+        const currentController = this.routes.get(this._getRoutePath(this.currentRoute));
+        if (currentController) {
+            currentController.close();
+        }
+
+        if (addToHistory) {
+            window.history.pushState(null, null, path);
+        }
+
+        const pathWithoutParameters = path.split('?')[0];
+        console.log(pathWithoutParameters);
+        const routePath = this._getRoutePath(pathWithoutParameters);
+
+        if (this.routes.has(routePath)) {
+            const controller = this.routes.get(routePath);
+
+            if (pathsWithId.find(el => el === routePath)) {
+                let id = this._extractIdFromPath(path);
+                data = { id, ...data };
+            }
+            console.log('router-> render(data)', data);
+            this.currentRoute = path;
+            controller.openWithData(data);
+
+        } else {
+            if (this.routes.has(pathWithoutParameters)) {
+                const controller = this.routes.get(pathWithoutParameters);
+                console.log('router-> render(data)', data);
+                this.currentRoute = path;
+                controller.openWithData(data);
+            }
+            //Error 404
+        }
     }
 
     /**
      * Route
-     * @method
-     * @param {string} path
-     * @param {string} searchParams
+     * @param pathWithoutParameters
+     * @returns {string}
+     * @private
      */
-    route(path, searchParams = '') {
-        if (this.currentPath === path + searchParams) {
-            return;
+    _getRoutePath (pathWithoutParameters) {
+        if (pathWithoutParameters) {
+            return '/' + pathWithoutParameters.split('/')[1];
         }
+    }
 
-        const currentData = this.routes.get(this.currentPath);
-        if (currentData) {
-            currentData.view.close();
-            currentData.view.hide();
-        }
+    static _normalizePath (path) {
+        return path.charAt(path.length - 1) === '/' && path !== '/' ? path.slice(0, path.length - 1) : path;
+    }
 
-        if (window.location.href !== path + searchParams) {
-            window.history.pushState(null, null, path + searchParams);
-        }
+    start () {
+        window.addEventListener('click', (ev) => {
+            if (ev.target.tagName === 'A') {
+                ev.preventDefault();
+                this.route({ path: Router._normalizePath(ev.target.pathname), addToHistory: true });
+            }
+        }, true);
 
-        const route = this.routes.get(path);
-        route.data = {};
-        if (searchParams !== '') {
-            const urlSearchRarams = new URLSearchParams(searchParams);
-            urlSearchRarams.forEach((value, name) => {
-                route.data[name] = value;
-            });
-        }
+        this.route({ path: Router._normalizePath(window.location.pathname), addToHistory: true });
+    }
 
-        this.currentPath = path + searchParams;
-        route.view.render(route.data);
+    _extractIdFromPath (path) {
+        return path.split('/').pop();
     }
 }

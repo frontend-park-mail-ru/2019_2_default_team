@@ -1,0 +1,7 @@
+a, input{
+    display: block;
+}
+body{
+    font-family: 'Gudea', sans-serif;
+    background: rgba(13, 13, 13, 0) linear-gradient(135deg, rgb(115, 32, 27) 0%, rgb(74, 27, 104) 70%);
+}

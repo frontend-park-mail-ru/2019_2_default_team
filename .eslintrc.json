@@ -1,21 +1,13 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "node": true
     },
-    "extends": [
-        "standard",
-        "prettier"
-    ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
+    "extends": ["prettier"],
+    "plugins": ["prettier", "import"],
+    "rules": {},
     "parserOptions": {
-        "ecmaVersion": 2018,
         "sourceType": "module"
-    },
-    "rules": {
-    },
-    "plugins": ["prettier"]
+    }
 }
