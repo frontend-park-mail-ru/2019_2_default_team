@@ -51,11 +51,11 @@ export default class Api {
      * @param {string} username
      * @returns {Promise<Response>}
      */
-    static register({email, password, username}) {
-        return Network.doPost('/users/', {
+    static register({email, password, nickname}) {
+        return Network.doPost('/profile', {
             email,
             password,
-            username,
+            nickname,
         });
     }
 

@@ -15,15 +15,16 @@ export class RegisterView extends View {
     render(data = {}) {
         super.render(data);
 
-        this._signupForm = this._root.querySelector('.signup-form');
+        this._signupForm = this._root.querySelector('form');
         this._signupForm.addEventListener('submit', this._onSubmit.bind(this), false);
 
         this.setValidationOnChangeListeners();
     }
 
     setValidationOnChangeListeners() {
-        const login = this._signupForm.elements.login;
+        const login = this._signupForm.elements.email;
         const password = this._signupForm.elements.password;
+        const nickname = this._signupForm.elements.nickname;
 
         password.addEventListener('input', function (event) {
             const error = event.target.nextElementSibling;
@@ -47,7 +48,7 @@ export class RegisterView extends View {
     }
 
     _onSubmitFailed(data) {
-        const login = this._signupForm.querySelector('[name="login"]');
+        const login = this._signupForm.querySelector('[name="email"]');
         login.classList.add('invalid');
 
         const error = login.nextElementSibling;
@@ -58,10 +59,9 @@ export class RegisterView extends View {
         ev.preventDefault();
         let wasfail = false;
 
-        const firstName = this._signupForm.elements.firstName;
-        const lastName = this._signupForm.elements.lastName;
-        const email = this._signupForm.elements.login;
+        const email = this._signupForm.elements.email;
         const password = this._signupForm.elements.password;
+        const nickname = this._signupForm.elements.nickname;
 
         const inputs = this._signupForm.querySelectorAll('.input');
         inputs.forEach(input => {
@@ -102,11 +102,10 @@ export class RegisterView extends View {
         } else {
             const user = {
                 email: email.value,
-                first_name: firstName.value,
-                second_name: lastName.value,
-                password: password.value
+                password: password.value,
+                nickname: nickname.value
             };
-            this._eventBus.triggerEvent('signUp', user);
+            this._globalEventBus.triggerEvent(AUTH.signUpCustomer, user);
         }
     }
 }

@@ -34,7 +34,7 @@ export default class Network {
 
     static doPost(path = '/', body  = {}, host = Network.getServerUrl()) {
         return fetch(host + path, {
-            method: "POST",
+            method: 'POST',
             mode: 'cors',
             credentials: "include",
             body: JSON.stringify(body),

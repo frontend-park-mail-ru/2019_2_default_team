@@ -3,7 +3,7 @@ import {EventBus} from './modules/eventbus';
 
 import PosterModel from './models/posterModel'
 import FilmModel from "./models/filmModel";
-import LoginModel from './models/loginModel';
+import LoginModel from './models/authModel';
 
 import {AUTH, FILM, PROFILE} from "./modules/events";
 
@@ -40,6 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     router.add('/film', filmController);
     router.add('/about', aboutController);
     router.add('/login', loginController);
-    //router.add('/register', registerController);
+    router.add('/register', registerController);
     router.start();
 });
