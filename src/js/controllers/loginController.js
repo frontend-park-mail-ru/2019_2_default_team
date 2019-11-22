@@ -9,6 +9,7 @@ export class LoginController extends Controller{
         this._globalEventBus.subscribeToEvent(AUTH.signInSuccess, (data) => {
             this._router.redirect('/');
         });
+
         this._view = new LoginView(this._root, this._globalEventBus);
     }
 }

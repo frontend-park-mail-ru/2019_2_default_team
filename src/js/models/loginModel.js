@@ -1,23 +1,23 @@
-import Api from '../modules/api';
+import api from '../modules/api';
+import {AUTH} from "../modules/events";
 
-export class LoginModel {
+class LoginModel {
+    setGlobalEventBus (globalEventBus) {
+        this._globalEventBus = globalEventBus;
 
-    constructor (eventBus) {
-        this._eventBus = eventBus;
-
-        this._eventBus.subscribeToEvent('login', this._onSignIn.bind(this));
+        this._globalEventBus.subscribeToEvent(AUTH.signIn, this._onSignIn.bind(this));
     }
 
     _onSignIn (user) {
-        Api.login(user)
+        console.log('here');
+        console.log(user);
+        api.login(user)
             .then(response => {
-                if (response.status === 200) {
-                    response.json().then(data => {
-                        this._eventBus.triggerEvent('loginSuccessful', data);
-                    });
+                if (response.ok) {
+                    this._globalEventBus.triggerEvent(AUTH.signInSuccess, {});
                 } else {
                     response.json().then(data => {
-                        this._eventBus.triggerEvent('loginFailed', data);
+                        this._globalEventBus.triggerEvent(AUTH.signInFailed, data);
                     });
                 }
             })
@@ -26,3 +26,5 @@ export class LoginModel {
             });
     }
 }
+
+export default new LoginModel();

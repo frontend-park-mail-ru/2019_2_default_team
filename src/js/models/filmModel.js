@@ -6,7 +6,6 @@ class FilmModel {
         this._globalEventBus = globalEventBus;
 
         this._globalEventBus.subscribeToEvent(FILM.getFilm, this._onLoadFilm.bind(this));
-        this._globalEventBus.subscribeToEvent(FILM.getFilms, this._onLoadFilms.bind(this));
     }
 
     _onLoadFilm = (id) => {
@@ -18,27 +17,13 @@ class FilmModel {
                     });
                 } else {
                     res.json().then(data => {
+                        console.log(data.title);
                         this._globalEventBus.triggerEvent(FILM.getFilmFailed, data);
                     });
                 }
             })
             .catch(err => {
                 console.log(err);
-            });
-    };
-
-    _onLoadFilms = () => {
-        api.getAllFilms()
-            .then(res => {
-                if (res.ok) {
-                    res.json().then(data => {
-                        this._globalEventBus.triggerEvent(FILM.getFilmsSuccess, data);
-                    });
-                } else {
-                    res.json().then(data => {
-                        this._globalEventBus.triggerEvent(FILM.getFilmsFailed, data);
-                    });
-                }
             });
     };
 }

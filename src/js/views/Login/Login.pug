@@ -2,6 +2,11 @@ style
     include Login.css
 div.container
     form
-        input.field(type="email" name="email" placeholder="e-mail")
-        input.field(type="password" name="password" placeholder="Пароль")
-        input#btn(type="submit" value="Войти")
+        div.container_login
+            input.field(type="email" name="email" placeholder="e-mail")
+            span.error_login(aria-live='polite')
+        div.container_pass
+            input.field(type="password" name="password" placeholder="Пароль")
+            span.error_pass(aria-live='polite')
+        div.container_sub
+            input#btn(type="submit" value="Войти")

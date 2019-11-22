@@ -6,25 +6,10 @@ export class FilmpageView extends View{
     constructor(root, globalEventBus) {
         super(root, template, globalEventBus);
 
-        this._globalEventBus.subscribeToEvent(FILM.getFilmsSuccess, this._onLoadFilmSuccess.bind(this));
+        this._globalEventBus.subscribeToEvent(FILM.getFilmSuccess, this._onLoadFilmSuccess.bind(this));
     }
 
     render(data = {}) {
-        // const menu = new MenuView(this._parent);
-        //
-        // menu.setData({authorized: this.getData().authorized});
-        // menu.render();
-        // this._parent.innerHTML += filmpageTemplate(this._data)/film/1
-        //
-        // document.seatNumber = 0;
-        // const bookBtn = document.getElementById("bookBtn");
-        // bookBtn.addEventListener('click', (event) => {
-        //     if(document.seatNumber <= 0) {
-        //         window.alert("Место не выбрано")
-        //     } else {
-        //         window.alert("Выбрано место номер: " + document.seatNumber);
-        //     }
-        // });
         super.render(data);
         this._data = data.id;
         console.log(data);
@@ -36,9 +21,23 @@ export class FilmpageView extends View{
      * @param data
      * @private
      */
-    _onLoadFilmSuccess (data) {
+    _onLoadFilmsSuccess (data) {
         this._data = { ...data, ...this._data };
+        console.log(this._data);
+        this._data = {items: data};
+        console.log(this._data);
+        super.render(data);
+    }
 
+    /**
+     * Call if film load is successful
+     * @param data
+     * @private
+     */
+    _onLoadFilmSuccess (data) {
+        console.log(this._data);
+        this._data = { ...data, ...this._data };
+        console.log(this._data);
         super.render(data);
     }
 }

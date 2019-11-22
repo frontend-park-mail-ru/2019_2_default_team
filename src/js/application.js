@@ -3,6 +3,7 @@ import {EventBus} from './modules/eventbus';
 
 import PosterModel from './models/posterModel'
 import FilmModel from "./models/filmModel";
+import LoginModel from './models/loginModel';
 
 import {AUTH, FILM, PROFILE} from "./modules/events";
 
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const models = {
         poster: PosterModel,
         film: FilmModel,
+        login: LoginModel,
     };
     Object.values(models).forEach(model => model.setGlobalEventBus(globalEventBus));
 
@@ -35,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     menuController.openWithData();
     router.add('/', posterController);
-    router.add('/films', filmController);
+    router.add('/film', filmController);
     router.add('/about', aboutController);
     router.add('/login', loginController);
     //router.add('/register', registerController);

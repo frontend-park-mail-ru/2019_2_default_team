@@ -16,7 +16,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static login({email, password}) {
-        return Network.doPost('/sessions/', {
+        return Network.doPost('/session', {
             email,
             password,
         });
@@ -116,16 +116,16 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static getFilmInfo(filmID) {
-        return Network.doGet(`/films/${filmID}/` );
+        return Network.doGet(`/film/${filmID}` );
     }
 
     /**
      * API Get all films
-     * GET /films/
+     * GET /films
      * @returns {Promise<Response>}
      */
     static getAllFilms(){
-        return Network.doGet(`/films/`);
+        return Network.doGet(`/allfilms`);
     }
 
     /**

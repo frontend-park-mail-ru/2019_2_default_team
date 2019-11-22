@@ -1,22 +1,18 @@
 style
     include Poster.css
--var title = "Joker"
--var href ="https://static.karofilm.ru/uploads/film/desktop/e3/b6/4b/5215d5811b80298172dad73fd1.jpg"
--var filmUrl="/film"
 
-mixin card-deck(title, href, filmUrl)
+-var href ="https://static.karofilm.ru/uploads/film/desktop/e3/b6/4b/5215d5811b80298172dad73fd1.jpg"
+-var filmPath = '/film/${items[0].id}'
+
+mixin card-deck(href, title, genre, id)
     div(class='card')
         div(class='card-item')
             img(src= href)
         div(class = "card-item-blur" src = href)
-            h1= title
-            a(onclick= '/films/1' href= '/films/1' data-section="films") Подробнее
+            h1 #{title}
+            a(onclick= `film/${id}` href= `film/${id}` data-section="films") Подробнее
 
 div.container
-    h1 Фильмы
     .body
-        -var decks = 3;
-        while decks > 0
-            each val in [1,2,3,4]
-                +card-deck(title, href)
-            -decks--
+        each val in items
+            +card-deck(href, val.title, val, val.id)
