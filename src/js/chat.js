@@ -5,8 +5,8 @@ import chatModel from './models/chatModel';
 import { ChatController } from './controllers/chatController';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const body = document.querySelector('.page');
-
+    const body = document.querySelector('.chat');
+    console.log("HERE!");
     const globalEventBus = new EventBus([AUTH, CHAT].map(model => Object.values(model)).flat());
 
     const models = {
@@ -17,6 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.chatModel=chatModel;
 
     Object.values(models).forEach(model => model.setGlobalEventBus(globalEventBus));
-
+    console.log("HERE!!!");
     new ChatController(body, globalEventBus).start();
 });

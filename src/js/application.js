@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
         poster: PosterModel,
         film: FilmModel,
         login: LoginModel,
-        chat: ChatModel,
     };
     Object.values(models).forEach(model => model.setGlobalEventBus(globalEventBus));
 
@@ -38,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const aboutController = new AboutController(content,globalEventBus,router);
     const loginController = new LoginController(content, globalEventBus, router);
     const registerController = new RegisterController(content, globalEventBus, router);
-    const chatController = new ChatController(iframe, globalEventBus, router);
 
     menuController.openWithData();
     router.add('/', posterController);

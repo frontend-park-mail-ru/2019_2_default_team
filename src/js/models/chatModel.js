@@ -1,6 +1,6 @@
 import { CHAT } from '../modules/events';
 
-const ChatUrl = 'ws://127.0.0.1:8080/chat';
+const ChatUrl = 'ws://127.0.0.1:8080/support';
 
 class ChatModel {
     setGlobalEventBus (globalEventBus) {
@@ -26,6 +26,7 @@ class ChatModel {
     }
 
     _onSend =(message) => {
+        console.log("HERE!");
         this.ws.send(message);
     }
 
@@ -40,5 +41,4 @@ class ChatModel {
 
 }
 
-window.chatModel=new ChatModel();
 export default new ChatModel();

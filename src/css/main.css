@@ -6,3 +6,37 @@ body{
     font-family: 'Gudea', sans-serif;
     background: rgba(13, 13, 13, 0) linear-gradient(135deg, rgb(115, 32, 27) 0%, rgb(74, 27, 104) 70%);
 }
+
+.chat{
+    display: flex;
+    height: 100%;
+    padding: 0 16px;
+    flex-direction: column;
+    background-color: white;
+    justify-content: space-around;
+}
+
+.chat__content{
+    display: flex;
+    flex-basis: 90%;
+    flex-direction: column;
+    padding: 16px;
+    justify-content: start;
+}
+
+.chat__row{
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.message_my{
+    margin: 8px;
+    align-self: end;
+}
+
+.message_other{
+    margin: 8px;
+    align-self: start;
+}
