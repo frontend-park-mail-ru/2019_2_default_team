@@ -21,6 +21,7 @@
     "@babel/preset-env": "^7.7.1",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
+    "html-loader": "^0.5.5",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-config-standard": "^14.1.0",
@@ -43,6 +44,7 @@
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "watch": "webpack --watch --mode development",
+    "compile-pug": "pug -c --extension 'pug.js' --name-after-file ./src/js/",
     "now-build": "npm run build",
     "eslint": "./node_modules/eslint/bin/eslint.js",
     "precommit": "lint-staged"

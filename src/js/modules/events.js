@@ -42,3 +42,9 @@ export const PROFILE = {
     saveAvatarSuccess: 'saveAvatarS',
     saveAvatarFailed: 'saveAvatarF',
 };
+
+export const CHAT = {
+    sendMessage: 'sendMessage',
+    openWebSocket: 'openws',
+    receive: 'rec',
+};

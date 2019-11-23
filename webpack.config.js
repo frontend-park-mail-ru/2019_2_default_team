@@ -31,13 +31,17 @@ module.exports = {
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.pug/,
+                test: /\.pug$/,
                 use: 'pug-loader',
             },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
+            },
+            {
+                test: /\.html$/,
+                use: "html-loader"
             },
         ],
     },

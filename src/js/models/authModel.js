@@ -15,6 +15,8 @@ class AuthModel {
         api.login(user)
             .then(response => {
                 if (response.ok) {
+                    let token = response.headers.get('X-Csrf-Token');
+                    localStorage.setItem('token', token);
                     this._globalEventBus.triggerEvent(AUTH.signInSuccess, {});
                 } else {
                     response.json().then(data => {
