@@ -94,8 +94,8 @@ export default class Api {
      * @static
      * @returns {Promise<Response>}
      */
-    static getProfileInfo() {
-        return Network.doGet('/users/');
+    static getProfileInfo(userID) {
+        return Network.doGet(`/profile/${userID}`);
     }
 
     /**

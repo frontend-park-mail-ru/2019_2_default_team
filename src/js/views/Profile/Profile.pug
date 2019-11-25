@@ -1,0 +1,42 @@
+style
+    include Profile.css
+div.left-column
+    h1.title-h1 Профиль пользователя
+
+    form.form.profile__form(method='POST', enctype='multipart/form-data')
+    span.form__legend Email
+    div.form__input
+        input.input(type='text', name='email', value="Email")
+        div
+            span.form__legend Имя
+            div.form__input
+                input.input(type='text', name='first_name', value="FirstName")
+            span.form__legend Фамилия
+            div.form__input
+                input.input(type='text', name='second_name', value="Surname")
+
+        span.form__legend Новый пароль
+        div.form__input
+            input.input.password(type='password', name='password', value="password")
+            span.error(aria-live='polite')
+
+        span.form__legend Подтверждение пароля
+        div.form__input
+            input.input.password(type='password', name='passwordConfirm', value="password")
+            span.error(aria-live='polite')
+        div
+            button.button.button_blue.save-profile(type='submit') Сохранить профиль
+
+div.right-column
+    h1.title-h1 Фотография:
+    div
+        img.thumb(src="Path image")
+        span.error
+
+    div.profile__avatar.mb10
+        label.form__legend Загрузить новую фотографию
+        div.mb5
+            div.profile__hint jpg, png, bmp, gif
+        input.upload(type='file', name='my_file', accept='image/*')
+
+    button.button.button_blue.profile__save-avatar(name='save_avatar') Сохранить

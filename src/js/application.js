@@ -4,6 +4,7 @@ import {EventBus} from './modules/eventbus';
 import PosterModel from './models/posterModel'
 import FilmModel from "./models/filmModel";
 import LoginModel from './models/authModel';
+import ProfileModel from './models/profileModel';
 
 import {AUTH, FILM, PROFILE} from "./modules/events";
 
@@ -13,6 +14,7 @@ import {FilmpageController} from "./controllers/filmController";
 import {AboutController} from "./controllers/aboutController";
 import {LoginController} from "./controllers/loginController";
 import {RegisterController} from "./controllers/registerController";
+import {ProfileController} from "./controllers/profileController";
 
 document.addEventListener('DOMContentLoaded', () => {
     const body = document.querySelector('.page');
@@ -23,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         poster: PosterModel,
         film: FilmModel,
         login: LoginModel,
+        profile: ProfileModel,
     };
     Object.values(models).forEach(model => model.setGlobalEventBus(globalEventBus));
 
@@ -34,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const aboutController = new AboutController(content,globalEventBus,router);
     const loginController = new LoginController(content, globalEventBus, router);
     const registerController = new RegisterController(content, globalEventBus, router);
+    const profileController = new ProfileController(content, globalEventBus, router);
 
     menuController.openWithData();
     router.add('/', posterController);
@@ -41,5 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     router.add('/about', aboutController);
     router.add('/login', loginController);
     router.add('/register', registerController);
+    router.add('/profile', profileController);
+
     router.start();
 });

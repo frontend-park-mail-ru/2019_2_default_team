@@ -1,28 +1,15 @@
-import { EventBus } from '../modules/eventbus';
 import { ProfileView } from '../views/Profile/Profile';
-import { ProfileModel } from '../models/profileModel';
+import { Controller } from '../modules/controller';
+import { PROFILE } from '../modules/events';
 
-const eventList = [
-    'loadProfile',
-    'loadProfileSuccess',
-    'loadProfileFailed',
-    'saveButtonClicked',
-    'saveProfile',
-    'saveProfileSuccess',
-    'saveProfileFailed',
-    'saveAvatar',
-    'saveAvatarSuccess',
-    'saveAvatarFailed'
-];
+export class ProfileController extends Controller {
+    constructor (root, globalEventBus, router) {
+        super(root, globalEventBus, router);
 
-export class ProfileController {
-    constructor (root, router) {
-        const eventBus = new EventBus(eventList);
-        eventBus.subscribeToEvent('saveProfileSuccess', () => {
-            router.startPage();
+        this._globalEventBus.subscribeToEvent(PROFILE.saveProfileSuccess, () => {
+            router.redirect('/');
         });
-
-        this.profileView = new ProfileView(root, eventBus);
-        this.profileModel = new ProfileModel(eventBus);
+        console.log("Controller");
+        this._view = new ProfileView(this._root, this._globalEventBus);
     }
 }

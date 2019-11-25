@@ -1,45 +1,44 @@
-import Network from "../modules/network";
-import Api from "../modules/api";
+import Api  from '../modules/api';
+import Net from '../modules/network';
+import { PROFILE } from '../modules/events';
 
 export class ProfileModel {
-    constructor(eventBus){
-        this._eventBus = eventBus;
+    setGlobalEventBus (globalEventBus) {
+        this._globalEventBus = globalEventBus;
 
-        this._eventBus.subscribeToEvent('loadProfile', this._onLoadProfile.bind(this));
-        this._eventBus.subscribeToEvent('saveAvatar', this._onSaveAvatar.bind(this));
-        this._eventBus.subscribeToEvent('saveProfile', this._onSaveProfile.bind(this));
+        this._globalEventBus.subscribeToEvent(PROFILE.loadProfile, this._onLoadProfile.bind(this));
+        this._globalEventBus.subscribeToEvent(PROFILE.saveProfile, this._onSaveProfile.bind(this));
+        this._globalEventBus.subscribeToEvent(PROFILE.saveAvatar, this._onSaveAvatar.bind(this));
     }
 
     _onLoadProfile () {
-        Api.getProfileInfo()
+        console.log("LOAD PROFILE");
+        Api.getProfileInfo(1)
             .then(res => {
                 if (res.ok) {
                     res.json().then(data => {
-                        data.profile.path_to_img= `${Network.getServerUrl()}/${data.profile.path_to_img}`;
-                        this._eventBus.triggerEvent('loadProfileSuccess', data);
+                        data.profile.path_to_img = `${Net.getServerUrl()}/${data.profile.path_to_img}`;
+                        this._globalEventBus.triggerEvent(PROFILE.loadProfileSuccess, data);
                     });
                 } else {
-                    this._eventBus.triggerEvent('loadProfileFailed');
+                    this._globalEventBus.triggerEvent(PROFILE.loadProfileFailed);
                 }
             })
             .catch(error => {
                 console.error(error);
+                //УБРАТЬ ПОСЛЕ КОНЕКТА К БЕКУ!!!!
+                this._globalEventBus.triggerEvent(PROFILE.loadProfileSuccess, {});
             });
     }
 
     _onSaveProfile (profile, role) {
-            Api.editProfile(profile)
-                .then(this._onResponse.bind(this))
-                .catch(err => {
-                    console.error(err);
-                });
     }
 
     _onResponse (res) {
         if (res.ok) {
-            this._eventBus.triggerEvent('saveProfileSuccess');
+            this._globalEventBus.triggerEvent(PROFILE.saveProfileSuccess);
         } else {
-            res.json().then(data => this._eventBus.triggerEvent('saveProfileFailed', data));
+            res.json().then(data => this._globalEventBus.triggerEvent(PROFILE.saveProfileFailed, data));
         }
     }
 
@@ -47,10 +46,10 @@ export class ProfileModel {
         Api.editAvatar({ avatar })
             .then(res => {
                 if (res.ok) {
-                    this._eventBus.triggerEvent('saveAvatarSuccess');
+                    this._globalEventBus.triggerEvent(PROFILE.saveAvatarSuccess);
                 } else {
                     res.json().then(data => {
-                        this._eventBus.triggerEvent('saveAvatarFailed', data);
+                        this._globalEventBus.triggerEvent(PROFILE.saveAvatarFailed, data);
                     });
                 }
             })
@@ -59,3 +58,5 @@ export class ProfileModel {
             });
     }
 }
+
+export default new ProfileModel();
