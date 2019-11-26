@@ -92,3 +92,24 @@
 #bookBtn:active {
     background-color: #2a1010;
 }
+
+.buyticket__button{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition-property: transform;
+    transition-duration: 0.25s;
+    margin: auto;
+    border: 1px solid#2bcbba;
+    width: fit-content;
+}
+
+.buyticket__button:hover {
+    transform: translateY(-5px);
+}
+
+.buyticket__button:active {
+    transform: translateY(-5px) scale(1.33);
+}
