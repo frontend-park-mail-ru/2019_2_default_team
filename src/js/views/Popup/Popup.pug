@@ -1,0 +1,35 @@
+style
+    include Popup.css
+-var currentDate = new Date()
+-var day = currentDate.getDate()
+-var month = currentDate.getMonth() + 1
+-var year = currentDate.getFullYear()
+- const getCookie = (name) => {var re = new RegExp(name + "=([^;]+)"); var value = re.exec(document.cookie); return (value != null) ? unescape(value[1]) : null;}
+div.overlay
+    div.menu__row
+        div.top__row
+            li.menu__backbutton(href = "/film") Назад
+            if getCookie('id') != null
+                li.menu__profilebutton(href = "/profile") Профиль
+            else
+                li.menu__loginbutton(href = "/login") Вход
+        div.filter__row
+            input.search__bar
+            select
+                option(value="3D")
+                option(value="2D")
+                option(value="IMAX")
+            select
+                -var utc = "<b>" + day + "/" + month + "/" + year + "</b>"
+                option(value= `сегодня #{utc}`)
+                -day++
+                -var utc = "<b>" + day + "/" + month + "/" + year + "</b>"
+                option(value= `завтра #{utc}`)
+                -day++
+                -var utc = "<b>" + day + "/" + month + "/" + year + "</b>"
+                option(value `#{utc}`)
+    div.preview__row
+        .image__preview(href  #{href})
+        .h1 #{title}
+        .tr #{description}
+    div.cinemas__row

@@ -3,7 +3,7 @@ style
 div.left-column
     h1.title-h1 Профиль пользователя
 
-    form.form.profile__form(method='POST', enctype='multipart/form-data')
+    form.profile__form(method='POST', enctype='multipart/form-data' name = "profile_form")
     span.form__legend Email
     div.form__input
         input.input(type='text', name='email', value="Email")
@@ -25,7 +25,7 @@ div.left-column
             input.input.password(type='password', name='passwordConfirm', value="password")
             span.error(aria-live='polite')
         div
-            button.button.button_blue.save-profile(type='submit') Сохранить профиль
+            button.button.button_blue.save-profile(type='submit' name='save_profile') Сохранить профиль
 
 div.right-column
     h1.title-h1 Фотография:

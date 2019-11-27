@@ -6,3 +6,42 @@
     max-width: 295px;
     font-size: 14px;
 }
+
+.profile__avatar {
+    font-size: 14px;
+}
+
+.profile__hint {
+    font-size: 12px;
+    line-height: 1.3;
+    color: #8e939b;
+    margin-top: 6px;
+}
+
+.profile__save-avatar {
+    width: 100px;
+}
+
+.left-column {
+    margin: 0;
+    display: grid;
+    flex-basis: 60%;
+    padding: 40px 40px;
+    box-sizing: border-box;
+}
+
+.right-column {
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 40px;
+}
+
+.title-h1 {
+    text-align: center;
+}
+
+.main-content {
+    display: flex;
+}

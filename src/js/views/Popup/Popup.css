@@ -1,0 +1,30 @@
+.overlay {
+    width: 100%;
+    overflow: hidden;
+    font-family: Roboto,sans-serif;
+    background-color: #23262a;
+}
+.search__bar{
+    width: fit-content;
+}
+
+.menu__backbutton {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    idth: 96px;
+    height: 40px;
+}
+
+.menu__loginbutton {
+    border: 1px solid rgba(255,255,255,.3);
+    background: 0 0;
+    border-radius: 2px;
+    width: 56px;
+    height: 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #fff;
+    transition: background-color 250ms ease-in-out,color 250ms ease-in-out,border-color 250ms ease-in-out;
+    cursor: pointer;
+}

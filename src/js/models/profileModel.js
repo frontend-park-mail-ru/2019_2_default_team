@@ -1,4 +1,4 @@
-import Api  from '../modules/api';
+import api  from '../modules/api';
 import Net from '../modules/network';
 import { PROFILE } from '../modules/events';
 
@@ -13,7 +13,7 @@ export class ProfileModel {
 
     _onLoadProfile () {
         console.log("LOAD PROFILE");
-        Api.getProfileInfo(1)
+        api.getProfileInfo(1)
             .then(res => {
                 if (res.ok) {
                     res.json().then(data => {
@@ -31,7 +31,12 @@ export class ProfileModel {
             });
     }
 
-    _onSaveProfile (profile, role) {
+    _onSaveProfile (profile) {
+        api.editProfile(profile)
+            .then(this._onResponse.bind(this))
+            .catch(err => {
+                console.error(err);
+            });
     }
 
     _onResponse (res) {
@@ -43,7 +48,7 @@ export class ProfileModel {
     }
 
     _onSaveAvatar (avatar) {
-        Api.editAvatar({ avatar })
+        api.editAvatar({ avatar })
             .then(res => {
                 if (res.ok) {
                     this._globalEventBus.triggerEvent(PROFILE.saveAvatarSuccess);

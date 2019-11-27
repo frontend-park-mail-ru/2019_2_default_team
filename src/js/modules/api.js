@@ -29,7 +29,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static authCheck() {
-        return Network.doGet('/session');
+        return Network.doGet('/sessionservice');
     }
 
     /**
@@ -39,7 +39,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static logout() {
-        return Network.doDelete('/session/');
+        return Network.doDelete('/sessionservice/');
     }
 
     /**
@@ -56,6 +56,8 @@ export default class Api {
             email,
             password,
             nickname,
+            firstname,
+            secondname,
         });
     }
 
@@ -78,13 +80,17 @@ export default class Api {
      * PUT /users/
      * @static
      * @param {string} email
-     * @param {string} description
+     * @param {string} Firstname
+     * @param {string} Surname
+     * @param {string} Password
      * @returns {Promise<Response>}
      */
-    static editProfile({username, description}) {
+    static editProfile({Email, Firstname, Surname, Password}) {
         return Network.doPut('/users/', {
-            username,
-            description,
+            Email,
+            Firstname,
+            Surname,
+            Password,
         });
     }
 
@@ -154,11 +160,13 @@ export default class Api {
     }
 
     /**
-     * API Check session
+     * API Get all sessions for a film
+     * GET /films/${filmID}/sessions
      * @static
+     * @param {number}filmID
      * @returns {Promise<Response>}
      */
-    static checkSession () {
-        return Network.doGet({ url: '/auth' });
+    static getSessions(filmID){
+        return Network.doGet(`/films/${filmID}/sessions`);
     }
 }

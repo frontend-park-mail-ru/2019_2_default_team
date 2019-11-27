@@ -5,8 +5,9 @@ import PosterModel from './models/posterModel'
 import FilmModel from "./models/filmModel";
 import LoginModel from './models/authModel';
 import ProfileModel from './models/profileModel';
+import PopupModel from "./models/popupModel";
 
-import {AUTH, FILM, PROFILE} from "./modules/events";
+import {AUTH, FILM, PROFILE, CINEMA} from "./modules/events";
 
 import {MenuController} from "./controllers/menuController";
 import {PosterController} from "./controllers/posterController";
@@ -15,17 +16,21 @@ import {AboutController} from "./controllers/aboutController";
 import {LoginController} from "./controllers/loginController";
 import {RegisterController} from "./controllers/registerController";
 import {ProfileController} from "./controllers/profileController";
+import {PopupController} from "./controllers/popupController";
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const body = document.querySelector('.page');
     const header = document.querySelector('header');
     const content = document.querySelector('.main-content');
-    const globalEventBus = new EventBus([AUTH, PROFILE, FILM].map(model => Object.values(model)).flat());
+    const frame = document.querySelector('.frame-content');
+    const globalEventBus = new EventBus([AUTH, PROFILE, FILM, CINEMA].map(model => Object.values(model)).flat());
     const models = {
         poster: PosterModel,
         film: FilmModel,
         login: LoginModel,
         profile: ProfileModel,
+        popup: PopupModel,
     };
     Object.values(models).forEach(model => model.setGlobalEventBus(globalEventBus));
 
@@ -38,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginController = new LoginController(content, globalEventBus, router);
     const registerController = new RegisterController(content, globalEventBus, router);
     const profileController = new ProfileController(content, globalEventBus, router);
+    const popupController = new PopupController(frame, globalEventBus, router);
 
     menuController.openWithData();
     router.add('/', posterController);
@@ -46,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     router.add('/login', loginController);
     router.add('/register', registerController);
     router.add('/profile', profileController);
+    router.add('/filmoverlay', popupController);
 
     router.start();
 });

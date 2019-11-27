@@ -25,6 +25,8 @@ export class RegisterView extends View {
         const login = this._signupForm.elements.email;
         const password = this._signupForm.elements.password;
         const nickname = this._signupForm.elements.nickname;
+        const firstname = this._signupForm.elements.FirsName;
+        const secondname = this._signupForm.elements.SecondName;
 
         password.addEventListener('input', function (event) {
             const error = event.target.nextElementSibling;
@@ -62,6 +64,8 @@ export class RegisterView extends View {
         const email = this._signupForm.elements.email;
         const password = this._signupForm.elements.password;
         const nickname = this._signupForm.elements.nickname;
+        const firstname = this._signupForm.elements.FirsName;
+        const secondname = this._signupForm.elements.SecondName;
 
         const inputs = this._signupForm.querySelectorAll('.input');
         inputs.forEach(input => {
@@ -103,7 +107,9 @@ export class RegisterView extends View {
             const user = {
                 email: email.value,
                 password: password.value,
-                nickname: nickname.value
+                nickname: nickname.value,
+                firstname: firstname.value,
+                secondname: secondname.value,
             };
             this._globalEventBus.triggerEvent(AUTH.signUpCustomer, user);
         }

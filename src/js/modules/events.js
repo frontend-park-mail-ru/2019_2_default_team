@@ -28,17 +28,34 @@ export const FILM = {
     getFilm: 'getFilm',
     getFilmSuccess: 'getFilmS',
     getFilmFailed: 'getFilmF',
+
+    getCinemas : 'getCinemas',
+    getCinemasSuccess : 'getCinemasS',
+    getCinemasFailed : 'getCinemasF',
 };
 
 export const PROFILE = {
     loadProfile: 'loadProfile',
     loadProfileSuccess: 'loadProfileS',
     loadProfileFailed: 'loadProfileF',
+
     saveButtonClicked: 'saveButtonC',
+
     saveProfile: 'saveProfile',
     saveProfileSuccess: 'saveProfileS',
     saveProfileFailed: 'saveProfileF',
+
     saveAvatar: 'saveAvatar',
     saveAvatarSuccess: 'saveAvatarS',
     saveAvatarFailed: 'saveAvatarF',
+};
+
+export const CINEMA = {
+    getSessions: 'getSessions',
+    getSessionsSuccess: 'getSessionsS',
+    getSessionsFailed: 'getSessionsF',
+
+    getType: 'getType',
+    getTypeSuccess: 'getTypeS',
+    getTypeFailed: 'getTypeF',
 };

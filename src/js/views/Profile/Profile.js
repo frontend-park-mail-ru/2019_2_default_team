@@ -23,7 +23,6 @@ export class ProfileView extends View {
 
     render (data = {}) {
         console.log("RENDER");
-        //TODO везде вызывать дефолтный рендеринг super.render(data); => можно будет убрать this.isViewClosed=false;
         this.isViewClosed=false;
         this._globalEventBus.triggerEvent(PROFILE.loadProfile);
         console.log("done");
@@ -39,10 +38,9 @@ export class ProfileView extends View {
             return;
         }
         super.render(data);
-        // this._role = data.role;
 
-        this._profileForm = this._root.querySelector('.profile__form');
-        this._profileForm.addEventListener('submit', this._onSaveProfile.bind(this));
+        this._profileForm = this._root.querySelector('form[name ="profile_form"]');
+        this._profileForm.addEventListener('click', this._onSaveProfile.bind(this));
 
         this._fileInput = this._root.querySelector('input[name="my_file"]');
         this._fileInput.addEventListener('change', this._onHandleFileSelect.bind(this), false);
@@ -66,17 +64,6 @@ export class ProfileView extends View {
         console.log("AFter if");
         super.render(data);
         this._role = data.role;
-
-        this._profileForm = this._root.querySelector('.profile__form');
-        this._profileForm.addEventListener('submit', this._onSaveProfile.bind(this));
-
-        this._fileInput = this._root.querySelector('input[name="my_file"]');
-        this._fileInput.addEventListener('change', this._onHandleFileSelect.bind(this), false);
-
-        this._avatarButton = this._root.querySelector('button[name="save_avatar"]');
-        this._avatarButton.addEventListener('click', this._onSaveAvatar.bind(this));
-
-        this._avatar = this._root.querySelector('.thumb');
     }
 
     /**
@@ -167,7 +154,7 @@ export class ProfileView extends View {
             //     wasfail = true;
             // }
         }
-
+        console.log("HERE!!!!!!!!");
         if (wasfail) {
             passwordConfirm.value = '';
             password.value = '';
@@ -179,7 +166,8 @@ export class ProfileView extends View {
                 }
             });
             profile['path_to_img'] = this._avatar.src;
-            this._globalEventBus.triggerEvent(PROFILE.saveProfile, profile, this._role);
+            console.log("HERE!!!!!!!!");
+            this._globalEventBus.triggerEvent(PROFILE.saveProfile, profile);
         }
     }
 }
