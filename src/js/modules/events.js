@@ -14,6 +14,9 @@ export const AUTH = {
     signUpSuccess: 'signUpS',
     signUpFailed: 'signUpF',
 
+    logout: 'logout',
+    logoutSuccess: 'logoutS',
+
 };
 
 export const FILM = {

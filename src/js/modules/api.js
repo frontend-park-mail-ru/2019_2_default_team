@@ -29,7 +29,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static authCheck() {
-        return Network.doGet('/sessionservice');
+        return Network.doGet('/session');
     }
 
     /**
@@ -39,7 +39,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static logout() {
-        return Network.doDelete('/sessionservice/');
+        return Network.doDelete('/session');
     }
 
     /**
@@ -100,8 +100,8 @@ export default class Api {
      * @static
      * @returns {Promise<Response>}
      */
-    static getProfileInfo(userID) {
-        return Network.doGet(`/profile/${userID}`);
+    static getProfileInfo() {
+        return Network.doGet(`/profile`);
     }
 
     /**

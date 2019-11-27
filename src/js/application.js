@@ -6,6 +6,7 @@ import FilmModel from "./models/filmModel";
 import LoginModel from './models/authModel';
 import ProfileModel from './models/profileModel';
 import PopupModel from "./models/popupModel";
+import MenuModel from "./models/menuModel"
 
 import {AUTH, FILM, PROFILE, CINEMA} from "./modules/events";
 
@@ -17,6 +18,7 @@ import {LoginController} from "./controllers/loginController";
 import {RegisterController} from "./controllers/registerController";
 import {ProfileController} from "./controllers/profileController";
 import {PopupController} from "./controllers/popupController";
+import {LogoutController} from "./controllers/logoutController";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         login: LoginModel,
         profile: ProfileModel,
         popup: PopupModel,
+        menu: MenuModel,
     };
     Object.values(models).forEach(model => model.setGlobalEventBus(globalEventBus));
 
@@ -44,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerController = new RegisterController(content, globalEventBus, router);
     const profileController = new ProfileController(content, globalEventBus, router);
     const popupController = new PopupController(frame, globalEventBus, router);
+    const logoutController = new LogoutController(content, globalEventBus, router);
 
     menuController.openWithData();
     router.add('/', posterController);
@@ -53,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     router.add('/register', registerController);
     router.add('/profile', profileController);
     router.add('/filmoverlay', popupController);
+    router.add('/logout', logoutController);
 
     router.start();
 });

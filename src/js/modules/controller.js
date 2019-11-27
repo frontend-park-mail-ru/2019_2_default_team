@@ -1,6 +1,4 @@
 import {View} from "./view";
-import {Router} from "./router";
-import {EventBus} from "./eventbus";
 
 export class Controller {
     _view = new View();

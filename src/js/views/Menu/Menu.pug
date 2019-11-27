@@ -7,13 +7,12 @@ mixin item-left(title, href, section)
 	li.menu-el-left
 		a.inner-menu-element(href=href data-section=section)= title
 
-- const getCookie = (name) => {var re = new RegExp(name + "=([^;]+)"); var value = re.exec(document.cookie); return (value != null) ? unescape(value[1]) : null;}
 
 ul.menu
 	+item-left('Афиша', '/', 'poster')
 	+item-left('О нас', '/about', 'about')
 	//- if authorized
-	if getCookie('id') != null
+	if Auth
 		+item-right('Выход', '/logout', 'logout')
 		+item-right('Профиль', '/profile', 'profile')
 	//- unless authorized

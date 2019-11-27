@@ -13,7 +13,7 @@ export class ProfileModel {
 
     _onLoadProfile () {
         console.log("LOAD PROFILE");
-        api.getProfileInfo(1)
+        api.getProfileInfo()
             .then(res => {
                 if (res.ok) {
                     res.json().then(data => {

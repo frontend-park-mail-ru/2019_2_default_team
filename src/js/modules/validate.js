@@ -42,7 +42,7 @@ export default class Validation {
     }
 
     /**
-     * Validate password must have: 8 symbols, 1 numeral, 1 upper case letter and 1 lowercase.
+     * Validate, password must have: 8 symbols, 1 numeral, 1 upper case letter and 1 lowercase.
      * @param pass
      * @returns {boolean}
      */
@@ -60,7 +60,7 @@ export default class Validation {
     }
 
     /**
-     * Валидирует расширение и размер изображения.
+     * Validate extension and size of image.
      * @param avatar
      * @returns {string}
      */

@@ -10,7 +10,8 @@ export class MenuView extends View{
     }
 
     render (data = {}) {
-        super.render(data);
+
+        this._globalEventBus.triggerEvent(AUTH.checkAuth);
     }
 
     _onAuthResponse (data) {
