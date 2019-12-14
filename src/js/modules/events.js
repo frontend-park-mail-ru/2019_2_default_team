@@ -62,3 +62,10 @@ export const CINEMA = {
     getTypeSuccess: 'getTypeS',
     getTypeFailed: 'getTypeF',
 };
+
+export const POPUP = {
+    openPopup: 'openPopup',
+    closePopup: 'closePopup',
+    openPopupSuccess: 'openPopupSuccess',
+    closePopupSuccess: 'closePopupSuccess'
+};

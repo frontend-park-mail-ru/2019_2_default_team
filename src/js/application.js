@@ -8,7 +8,7 @@ import ProfileModel from './models/profileModel';
 import PopupModel from "./models/popupModel";
 import MenuModel from "./models/menuModel"
 
-import {AUTH, FILM, PROFILE, CINEMA} from "./modules/events";
+import {AUTH, FILM, PROFILE, CINEMA, POPUP} from "./modules/events";
 
 import {MenuController} from "./controllers/menuController";
 import {PosterController} from "./controllers/posterController";
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     const content = document.querySelector('.main-content');
     const frame = document.querySelector('.frame-content');
-    const globalEventBus = new EventBus([AUTH, PROFILE, FILM, CINEMA].map(model => Object.values(model)).flat());
+    const globalEventBus = new EventBus([AUTH, PROFILE, FILM, CINEMA, POPUP].map(model => Object.values(model)).flat());
     const models = {
         poster: PosterModel,
         film: FilmModel,

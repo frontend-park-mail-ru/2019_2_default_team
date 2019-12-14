@@ -1,35 +1,40 @@
 style
-    include Popup.css
--var currentDate = new Date()
--var day = currentDate.getDate()
--var month = currentDate.getMonth() + 1
--var year = currentDate.getFullYear()
-- const getCookie = (name) => {var re = new RegExp(name + "=([^;]+)"); var value = re.exec(document.cookie); return (value != null) ? unescape(value[1]) : null;}
-div.overlay
-    div.menu__row
-        div.top__row
-            li.menu__backbutton(href = "/film") Назад
-            if getCookie('id') != null
-                li.menu__profilebutton(href = "/profile") Профиль
-            else
-                li.menu__loginbutton(href = "/login") Вход
-        div.filter__row
-            input.search__bar
-            select
-                option(value="3D")
-                option(value="2D")
-                option(value="IMAX")
-            select
-                -var utc = "<b>" + day + "/" + month + "/" + year + "</b>"
-                option(value= `сегодня #{utc}`)
-                -day++
-                -var utc = "<b>" + day + "/" + month + "/" + year + "</b>"
-                option(value= `завтра #{utc}`)
-                -day++
-                -var utc = "<b>" + day + "/" + month + "/" + year + "</b>"
-                option(value `#{utc}`)
-    div.preview__row
-        .image__preview(href  #{href})
-        .h1 #{title}
-        .tr #{description}
-    div.cinemas__row
+    include popup.css
+
+- let posterURL = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.IzfMKABl5eseT1w1ZLWfhwHaK-%26pid%3DApi&f=1';
+- let popupFilmDesc = {'name': 'Шутник', 'genre': 'Сначала я думал, что этот фильм трагедия, но потом понял - это комедия', 'length': '2 часа 40 минут', 'year': '2019', 'actors': 'Евдаким Жар-птица'};
+- let sessions = ['10-00', '10-30', '12-00', '12-45', '13-30', '15-00', '16-30', '17-30', '19-00', '20-30', '21-00'];
+- let layout1 = [['1', null, '3'],['4', '5', '6'],['7', '8', '9']]
+- let layout2 = [[null, null, '3'],['4', '5', '6'],['7', '8', '9']]
+- let layout3 = [['1', null, '3'],['4', null, '6'],['7', '8', '9']]
+- let layouts = [layout1, layout2, layout3, layout3, layout2, layout1, layout3, layout3, layout1, layout2, layout1, layout1];
+- let timeIdx = 0;
+- let timeIsSelected = false;
+
+div.popup-window#popupWindow
+    div.popup-desc-wrapper
+        img.popup-poster(src=`${posterURL}`)
+        div.popup-desc
+            p Название: #{popupFilmDesc.name}
+            p Жанр:     #{popupFilmDesc.genre}
+            p Время:    #{popupFilmDesc.length}
+            p Год:      #{popupFilmDesc.year}
+            p Актёры:   #{popupFilmDesc.actors}
+            button#closePopupButton Закрыть
+    if timeIsSelected == false
+        div(style='font-size: 20px;') Выбор времени
+        div.popup-sessions-list-wrapper#sessionsList
+            each item, idx in sessions
+                button.popup-session-item(id=`popup-time-${idx}` onclick=`changeLayout(${idx});`) #{item}
+    else
+        div(style='font-size: 20px;') Выбор места
+        div.popup-session-seats-wrapper#seatsList
+            each row, idxRow in layouts[timeIdx]
+                each seat, idxSeat in row
+                    if seat != null
+                        button.popup-seat-item(id=`popup-seat-${idxRow}-${idxSeat}` onclick = (`console.log('Заказано место ' + ${seat})`)) #{seat}
+                    else
+                        button.popup-seat-item(disabled style='opacity: 0;')
+                br
+        button(onclick="back()") Назад
+
