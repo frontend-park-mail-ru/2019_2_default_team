@@ -127,11 +127,29 @@ export default class Api {
 
     /**
      * API Get all films
-     * GET /films
+     * GET /allfilms
      * @returns {Promise<Response>}
      */
     static getAllFilms(){
         return Network.doGet(`/allfilms`);
+    }
+
+    /**
+     * API Get all films for today
+     * GET /allfilms&today
+     * @returns {Promise<Response>}
+     */
+    static getFilmsForToday(){
+        return Network.doGet(`/allfilms&today`)
+    }
+
+    /**
+     * API Get all upcoming films
+     * GET /allfilms&upcoming
+     * @returns {Promise<Response>}
+     */
+    static getFilmsUpcoming(){
+        return Network.doGet(`/allfilms&upcoming`)
     }
 
     /**
@@ -168,5 +186,15 @@ export default class Api {
      */
     static getSessions(filmID){
         return Network.doGet(`/films/${filmID}/sessions`);
+    }
+
+    /**
+     * API Search films
+     * GET `/film?title=${title}`
+     * @param {string} title
+     * @returns {Promise<Response>}
+     */
+    static searchFilm(title){
+        return Network.doGet(`/film?title=${title}`);
     }
 }

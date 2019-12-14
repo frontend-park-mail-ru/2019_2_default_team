@@ -21,19 +21,6 @@ export class FilmpageView extends View{
      * @param data
      * @private
      */
-    _onLoadFilmsSuccess (data) {
-        this._data = { ...data, ...this._data };
-        console.log(this._data);
-        this._data = {items: data};
-        console.log(this._data);
-        super.render(data);
-    }
-
-    /**
-     * Call if film load is successful
-     * @param data
-     * @private
-     */
     _onLoadFilmSuccess (data) {
         console.log(this._data);
         this._data = { ...data, ...this._data };

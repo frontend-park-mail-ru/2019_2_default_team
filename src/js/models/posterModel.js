@@ -10,9 +10,9 @@ class PosterModel {
     }
 
     _onCheckAuth(){
-        api.authCheck()
-            .then(res =>{
-            })
+        // api.authCheck()
+        //     .then(res =>{
+        //     })
     }
 
     _onGetFilms(){

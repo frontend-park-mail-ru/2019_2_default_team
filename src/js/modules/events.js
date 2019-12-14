@@ -62,3 +62,13 @@ export const CINEMA = {
     getTypeSuccess: 'getTypeS',
     getTypeFailed: 'getTypeF',
 };
+
+export const FILTER = {
+    loadWithFilter: 'loadWithFilter',
+    loadWithFilterSuccess: 'loadWithFilterS',
+    loadTodayFilter: 'loadTodayFilter',
+    loadTodayFilterSuccess: 'loadTodayFilterS',
+    loadUpcomingFilter: 'loadUpcomingFilter',
+    loadUpcomingFilterSuccess: 'loadUpcomingFilterS',
+    search: 'search',
+};

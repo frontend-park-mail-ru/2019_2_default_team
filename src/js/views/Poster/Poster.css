@@ -116,6 +116,8 @@ a {
     transition-property: transform;
     transition-duration: 0.1s;
     cursor: pointer;
+    color: white;
+    text-decoration: none;
 }
 
 a:hover {
@@ -124,4 +126,19 @@ a:hover {
 
 a:active {
     transform: scale(1.25) translateY(-2px);
+}
+th {
+    padding: 14px 16px;
+    float: left;
+    width: 90px;
+    text-align: center;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+table {
+    border: 1px solid #dddddd;
+    width: 100%;
 }

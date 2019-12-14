@@ -1,6 +1,6 @@
 import template from './Poster.pug';
 import {View} from '../../modules/view';
-import {AUTH, FILM} from '../../modules/events'
+import {AUTH, FILM, FILTER} from '../../modules/events'
 
 export class PosterView extends View {
     constructor(root, globalEventBus) {
@@ -36,5 +36,26 @@ export class PosterView extends View {
         this._data = {items: data};
         console.log(this._data);
         super.render(this._data);
+        this._todayButton = document.getElementById('today');
+        this._todayButton.addEventListener('click', this._onTodayFilter.bind(this));
+        this._upcomingButton = document.getElementById('upcoming');
+        this._upcomingButton.addEventListener('click', this._onUpcomingFilter.bind(this));
+        this._searchFilm = document.getElementById('search');
+        this._searchFilm.addEventListener('submit', this._onSearch.bind(this), false);
     }
+
+    _onTodayFilter = () => {
+        this._globalEventBus.triggerEvent(FILTER.loadTodayFilter);
+    };
+
+    _onUpcomingFilter = () => {
+       this._globalEventBus.triggerEvent(FILTER.loadUpcomingFilter);
+    };
+
+    _onSearch = (ev) => {
+        ev.preventDefault();
+        console.log("CALL");
+        let data = document.getElementById('search-input').value;
+        this._globalEventBus.triggerEvent(FILTER.search, data);
+    };
 }

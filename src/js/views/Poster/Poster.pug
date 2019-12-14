@@ -13,6 +13,15 @@ mixin card-deck(href, title, genre, id)
             a(onclick= `film/${id}` href= `film/${id}` data-section="films") Подробнее
 
 div.container
+    table
+        tr
+            th
+                a(id = 'today' onclik = '/allfilms&today' href= '/allfilms&today') Сегодня
+            th
+                a(id = 'upcoming' onclik = '/allfilms&upcoming' href= '/allfilms&upcoming') Скоро
+            th(style="float: none")
+                form(id = 'search')
+                    input(id = 'search-input' type='text' style= "float: right"  placeholder= "Поиск")
     .body
         each val in items
             +card-deck(href, val.title, val, val.id)
