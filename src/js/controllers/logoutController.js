@@ -6,19 +6,17 @@ import {PosterView} from "../views/Poster/Poster";
 export class LogoutController extends Controller{
     constructor (root, globalEventBus, router) {
         super(root, globalEventBus, router);
-
+        this._globalEventBus.subscribeToEvent(AUTH.logout, this._onLogout.bind(this));
         this._globalEventBus.subscribeToEvent(AUTH.logoutSuccess, (data) => {
             this._router.redirect('/');
         });
-
-        this._onLogout();
         this._view = new  PosterView(this._root, this._globalEventBus);
     }
 
     _onLogout = () => {
         api.logout()
             .then(res => {
-                if (res.ok) {
+                    if (res.ok) {
                     console.log("Logged out");
                     this._globalEventBus.triggerEvent(AUTH.logoutSuccess, {});
                 }

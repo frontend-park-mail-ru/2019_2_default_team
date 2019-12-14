@@ -1,8 +1,8 @@
 style
 	include Menu.css
-mixin item-right(title, href, section)
+mixin item-right(id, title, href, section)
 	li.menu-el-right
-		a.inner-menu-element(href=href data-section=section)= title
+		a.inner-menu-element(id=id href=href data-section=section)= title
 mixin item-left(title, href, section)
 	li.menu-el-left
 		a.inner-menu-element(href=href data-section=section)= title
@@ -13,9 +13,9 @@ ul.menu
 	+item-left('О нас', '/about', 'about')
 	//- if authorized
 	if Auth
-		+item-right('Выход', '/logout', 'logout')
-		+item-right('Профиль', '/profile', 'profile')
+		+item-right('logout', 'Выход', '/logout', 'logout')
+		+item-right('profile', 'Профиль', '/profile', 'profile')
 	//- unless authorized
 	else
-		+item-right('Регистрация', '/register', 'register')
-		+item-right('Вход', '/login', 'login')
+		+item-right('login','Регистрация', '/register', 'register')
+		+item-right('register','Вход', '/login', 'login')

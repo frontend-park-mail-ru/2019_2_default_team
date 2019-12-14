@@ -16,7 +16,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static login({email, password}) {
-        return Network.doPost('/session', {
+        return Network.doPost('/sessionservice', {
             email,
             password,
         });
@@ -29,7 +29,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static authCheck() {
-        return Network.doGet('/session');
+        return Network.doGet('/sessionservice');
     }
 
     /**
@@ -39,7 +39,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static logout() {
-        return Network.doDelete('/session');
+        return Network.doDelete('/sessionservice');
     }
 
     /**

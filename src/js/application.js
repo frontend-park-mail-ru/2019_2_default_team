@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     router.add('/register', registerController);
     router.add('/profile', profileController);
     router.add('/filmoverlay', popupController);
-    router.add('/logout', logoutController);
 
     router.start();
 });
