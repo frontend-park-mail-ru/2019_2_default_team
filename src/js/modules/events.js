@@ -72,5 +72,6 @@ export const POPUP = {
     closePopupSuccess: 'closePopupSuccess',
     changePopupLayout: 'changePopupLayout',      // Переключение между режимами выбора места/времени
     changePopupLayoutSuccess: 'changePopupLayoutSuccess',
-    changePopupLayoutFailure: 'changePopupLayoutFailure'
+    changePopupLayoutFailure: 'changePopupLayoutFailure',
+    popupBookTicket: 'popupBookTicket'
 };

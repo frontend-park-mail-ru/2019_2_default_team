@@ -12,6 +12,7 @@ export class PopupController extends Controller {
         this._globalEventBus.subscribeToEvent(POPUP.openPopup, this._onOpenPopup.bind(this));
         this._globalEventBus.subscribeToEvent(POPUP.closePopup, this._onClosePopup.bind(this));
         this._globalEventBus.subscribeToEvent(POPUP.changePopupLayout, this._onChangeLayout.bind(this));
+        this._globalEventBus.subscribeToEvent(POPUP.popupBookTicket, this._onBookTicket.bind(this));
     }
 
     _onOpenPopup(data) {
@@ -24,6 +25,7 @@ export class PopupController extends Controller {
                         if(res.ok) {
                             res.json().then(sessionsJSON => {
                                 let popupJSON = this._constructPopupJSON(filmJSON, sessionsJSON);
+                                popupJSON.timeLayout = true;
                                 this._view.render(popupJSON);
                             });
                         } else {
@@ -45,16 +47,14 @@ export class PopupController extends Controller {
     }
     
     _onChangeLayout(data) {
-        // NOTE: Выпилить дебаг выводы
-        console.log('Inside _onChangeLayout');
-        console.log(data);
         if(data.sessionIndex !== undefined) {
             // TODO: Переделать callback'и на async/await
             api.getSeats(data.sessions[data.sessionIndex].ms_id).then(res => {
-                console.log('Inside getSeats method');  // NOTE: Выпилить дебаг вывод
                 if(res.ok) {
                     res.json().then(json => {
-                        console.log(json);  // NOTE:  Выпилить дебаг вывод
+                        data = {...data, ...this._constructSeatsArray(json)};
+                        data.timeLayout = false;
+                        this._view.render(data);
                     }).catch(err => {
                         console.log(err);
                     });
@@ -66,14 +66,64 @@ export class PopupController extends Controller {
             });
         } else {
             this._globalEventBus.triggerEvent(POPUP.changePopupLayoutFailure);
-            console.log("POPUP_CONTROLLER::_onChangeLayout::Session index is not set!") // NOTE: Выпилить дебаг вывод
         }
+    }
+
+    _onBookTicket(data) {
+        api.bookSeat(data.apiInfo).then(res => {
+            if(res.ok) {
+                this._onClosePopup();
+                alert('Вы заказали билет ' + data.seatNumber);
+            } else {
+                console.log("Could't book a ticket");
+            }
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     _constructPopupJSON(filmJSON, sessionsJSON) {
         let popupJSON = {...filmJSON, sessions: this._getSessionTime(sessionsJSON)};
-        popupJSON.timeLayout = true;
         return popupJSON;
+    }
+
+    _constructSeatsArray(seatsJSON) {
+        let maxRow = 0;
+        let maxSeatNumber= 0;
+        let layoutMap = new Map();
+        // Собираем мапу, в которой ключ: номер ряда, а значение: массив мест
+        for(let i = 0; i < seatsJSON.length; i++) {
+            if(seatsJSON[i].row > maxRow) {
+                maxRow = seatsJSON[i].row;
+            }
+            if(seatsJSON[i].seat_number > maxSeatNumber) {
+                maxSeatNumber = seatsJSON[i].seat_number;
+            }
+            if(layoutMap.has(seatsJSON[i].row)) {
+                layoutMap.get(seatsJSON[i].row).push({
+                    seatNumber: seatsJSON[i].seat_number,
+                    isTaken: seatsJSON[i].is_taken,
+                    seatId: seatsJSON[i].seat_id
+                });
+            } else {
+                layoutMap.set(seatsJSON[i].row, [{
+                    seatNumber: seatsJSON[i].seat_number,
+                    isTaken: seatsJSON[i].is_taken,
+                    seatId: seatsJSON[i].seat_id
+                }])
+            }
+        }
+
+        let seatsArray = [];
+        // Перекладываем массивы мест из мапы в массив
+        for(let i = 1; i <= maxRow; i++) {
+            layoutMap.get(i).sort((a, b) => {
+                return a.seatNumber - b.seatNumber;
+            })
+            seatsArray.push(layoutMap.get(i));
+        }
+
+        return {maxSeatNumber: maxSeatNumber, seatsArray: seatsArray};
     }
 
     _getSessionTime(sessionsJSON) {

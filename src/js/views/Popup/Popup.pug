@@ -1,5 +1,5 @@
 style
-    include popup.css
+    include Popup.css
 
 - let posterURL = 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.IzfMKABl5eseT1w1ZLWfhwHaK-%26pid%3DApi&f=1';
 - let layouts = []
@@ -22,12 +22,11 @@ div.popup-window#popupWindow
     else
         div(style='font-size: 20px;') Выбор места
         div.popup-session-seats-wrapper#seatsList
-            each row, idxRow in locals.layouts
-                each seat, idxSeat in row
-                    if seat != null
-                        button.popup-seat-item(id=`popup-seat-${idxRow}-${idxSeat}` onclick = (`console.log('Заказано место ' + ${seat})`)) #{seat}
+            each row, idxRow in locals.seatsArray
+                each seatItem, idxSeat in row
+                    if seatItem.isTaken
+                        button.popup-seat-item(id=`popup-seat-${seatItem.seatNumber}` disabled) #{seatItem.seatNumber}
                     else
-                        button.popup-seat-item(disabled style='opacity: 0;')
+                        button.popup-seat-item(id=`popup-seat-${seatItem.seatNumber}`) #{seatItem.seatNumber}
                 br
-        button(onclick="back()") Назад
-
+        button#backPopupSeatsButton Назад

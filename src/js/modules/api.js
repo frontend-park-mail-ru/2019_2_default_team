@@ -178,7 +178,10 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static getSeats(msID) {
-        console.log('msID: ' + msID);
         return Network.doGet(`/get_seats/${msID}`);
+    }
+
+    static bookSeat(data) {
+        return Network.doPost('/ticket', data);
     }
 }

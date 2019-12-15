@@ -31,7 +31,7 @@
 }
 
 .popup-sessions-list-wrapper {
-    display: flexbox;
+    display: flex;
     /* border: 1px solid red; */
     padding: 5px;
     overflow: auto;
@@ -47,9 +47,9 @@
 }
 
 .popup-seat-item {
-    height: 50px;
-    width: 50px;
-    font-size: 14px;
+    height: 35px;
+    width: 35px;
+    font-size: 10px;
     margin: 10px;
     align-content: center;
     justify-content: center;
