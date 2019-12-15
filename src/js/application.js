@@ -19,6 +19,7 @@ import {RegisterController} from "./controllers/registerController";
 import {ProfileController} from "./controllers/profileController";
 import {PopupController} from "./controllers/popupController";
 import {LogoutController} from "./controllers/logoutController";
+import {FilterController} from "./controllers/filterController";
 
 
 document.addEventListener('DOMContentLoaded', () => {
