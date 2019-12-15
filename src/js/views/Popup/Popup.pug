@@ -22,7 +22,7 @@ div.popup-window#popupWindow
     else
         div(style='font-size: 20px;') Выбор места
         div.popup-session-seats-wrapper#seatsList
-            each row, idxRow in layouts
+            each row, idxRow in locals.layouts
                 each seat, idxSeat in row
                     if seat != null
                         button.popup-seat-item(id=`popup-seat-${idxRow}-${idxSeat}` onclick = (`console.log('Заказано место ' + ${seat})`)) #{seat}

@@ -169,4 +169,16 @@ export default class Api {
     static getSessions(filmID){
         return Network.doGet(`/get_movie_sessions_times_for_today/${filmID}`);
     }
+
+    /**
+     * API Get all seats for a movie session
+     * GET /get_seats/${ms_id}
+     * @static
+     * @param {number} msID - movie session id
+     * @returns {Promise<Response>}
+     */
+    static getSeats(msID) {
+        console.log('msID: ' + msID);
+        return Network.doGet(`/get_seats/${msID}`);
+    }
 }

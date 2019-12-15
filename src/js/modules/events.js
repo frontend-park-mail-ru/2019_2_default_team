@@ -69,5 +69,8 @@ export const POPUP = {
     openPopupFailure: 'openPopupFailure',
     closePopup: 'closePopup',
     closePopupFailure: 'closePopupFailure',
-    closePopupSuccess: 'closePopupSuccess'
+    closePopupSuccess: 'closePopupSuccess',
+    changePopupLayout: 'changePopupLayout',      // Переключение между режимами выбора места/времени
+    changePopupLayoutSuccess: 'changePopupLayoutSuccess',
+    changePopupLayoutFailure: 'changePopupLayoutFailure'
 };

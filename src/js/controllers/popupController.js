@@ -11,6 +11,7 @@ export class PopupController extends Controller {
 
         this._globalEventBus.subscribeToEvent(POPUP.openPopup, this._onOpenPopup.bind(this));
         this._globalEventBus.subscribeToEvent(POPUP.closePopup, this._onClosePopup.bind(this));
+        this._globalEventBus.subscribeToEvent(POPUP.changePopupLayout, this._onChangeLayout.bind(this));
     }
 
     _onOpenPopup(data) {
@@ -41,6 +42,32 @@ export class PopupController extends Controller {
     _onClosePopup() {
         let popupLayer = document.getElementById("popupLayer");
         popupLayer.innerHTML = '';
+    }
+    
+    _onChangeLayout(data) {
+        // NOTE: Выпилить дебаг выводы
+        console.log('Inside _onChangeLayout');
+        console.log(data);
+        if(data.sessionIndex !== undefined) {
+            // TODO: Переделать callback'и на async/await
+            api.getSeats(data.sessions[data.sessionIndex].ms_id).then(res => {
+                console.log('Inside getSeats method');  // NOTE: Выпилить дебаг вывод
+                if(res.ok) {
+                    res.json().then(json => {
+                        console.log(json);  // NOTE:  Выпилить дебаг вывод
+                    }).catch(err => {
+                        console.log(err);
+                    });
+                } else {
+                    this._globalEventBus.triggerEvent(POPUP.changePopupLayoutFailure);
+                }
+            }).catch(err => {
+                console.log(err);
+            });
+        } else {
+            this._globalEventBus.triggerEvent(POPUP.changePopupLayoutFailure);
+            console.log("POPUP_CONTROLLER::_onChangeLayout::Session index is not set!") // NOTE: Выпилить дебаг вывод
+        }
     }
 
     _constructPopupJSON(filmJSON, sessionsJSON) {
