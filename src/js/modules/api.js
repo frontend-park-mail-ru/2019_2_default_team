@@ -210,6 +210,6 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static searchFilm(title){
-        return Network.doGet(`/film?title=${title}`);
+        return Network.doGet(`/allfilms?title=${title}`);
     }
 }
