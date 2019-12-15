@@ -140,7 +140,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static getFilmsForToday(){
-        return Network.doGet(`/allfilms&today`)
+        return Network.doGet(`/allfilms/today`)
     }
 
     /**
@@ -149,7 +149,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static getFilmsUpcoming(){
-        return Network.doGet(`/allfilms&upcoming`)
+        return Network.doGet(`/allfilms/soon`)
     }
 
     /**
