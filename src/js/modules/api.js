@@ -167,6 +167,6 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static getSessions(filmID){
-        return Network.doGet(`/films/${filmID}/sessions`);
+        return Network.doGet(`/get_movie_sessions_times_for_today/${filmID}`);
     }
 }

@@ -34,7 +34,6 @@ export class FilmpageView extends View{
     }
 
     _openPopup() {
-        console.log("FILMPAGE::OPEN POPUP");
-        this._globalEventBus.triggerEvent(POPUP.openPopup);
+        this._globalEventBus.triggerEvent(POPUP.openPopup, this._data);
     }
 }

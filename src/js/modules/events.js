@@ -65,7 +65,9 @@ export const CINEMA = {
 
 export const POPUP = {
     openPopup: 'openPopup',
-    closePopup: 'closePopup',
     openPopupSuccess: 'openPopupSuccess',
+    openPopupFailure: 'openPopupFailure',
+    closePopup: 'closePopup',
+    closePopupFailure: 'closePopupFailure',
     closePopupSuccess: 'closePopupSuccess'
 };
