@@ -12,7 +12,7 @@ module.exports = {
         extensions: [".ts", ".js"]
     },
     plugins: [
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin({inject: true, template: 'src/index.html'})
     ],
     module: {
         rules: [
