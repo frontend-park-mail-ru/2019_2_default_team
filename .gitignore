@@ -3,5 +3,5 @@ node_modules
 .vscode
 *.pug.js
 *.DS_Store
-src/dist
+dist
 package-lock.json
