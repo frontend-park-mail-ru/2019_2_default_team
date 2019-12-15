@@ -1,6 +1,6 @@
 import {Router} from './modules/router';
 import {EventBus} from './modules/eventbus';
-
+import '../css/main.css';
 import PosterModel from './models/posterModel'
 import FilmModel from "./models/filmModel";
 import LoginModel from './models/authModel';
