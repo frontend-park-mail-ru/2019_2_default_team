@@ -6,3 +6,15 @@ body{
     font-family: 'Gudea', sans-serif;
     background: rgba(13, 13, 13, 0) linear-gradient(135deg, rgb(115, 32, 27) 0%, rgb(74, 27, 104) 70%);
 }
+
+.frame-content {
+    position: fixed;
+    height: 100vh;
+    top: 5%;
+    left: 25%;
+    z-index: 100;
+}
+
+.page {
+    position: relative;
+}

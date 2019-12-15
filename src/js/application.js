@@ -8,7 +8,7 @@ import ProfileModel from './models/profileModel';
 import PopupModel from "./models/popupModel";
 import MenuModel from "./models/menuModel"
 
-import {AUTH, FILM, PROFILE, CINEMA, FILTER} from "./modules/events";
+import {AUTH, FILM, PROFILE, CINEMA, FILTER, POPUP} from "./modules/events";
 
 import {MenuController} from "./controllers/menuController";
 import {PosterController} from "./controllers/posterController";
@@ -19,14 +19,14 @@ import {RegisterController} from "./controllers/registerController";
 import {ProfileController} from "./controllers/profileController";
 import {PopupController} from "./controllers/popupController";
 import {LogoutController} from "./controllers/logoutController";
-import {FilterController} from "./controllers/filterController";
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const body = document.querySelector('.page');
     const header = document.querySelector('header');
     const content = document.querySelector('.main-content');
     const frame = document.querySelector('.frame-content');
-    const globalEventBus = new EventBus([AUTH, PROFILE, FILM, CINEMA, FILTER].map(model => Object.values(model)).flat());
+    const globalEventBus = new EventBus([AUTH, PROFILE, FILM, CINEMA, FILTER, POPUP].map(model => Object.values(model)).flat());
     const models = {
         poster: PosterModel,
         film: FilmModel,

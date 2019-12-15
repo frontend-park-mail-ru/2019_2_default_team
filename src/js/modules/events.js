@@ -72,3 +72,16 @@ export const FILTER = {
     loadUpcomingFilterSuccess: 'loadUpcomingFilterS',
     search: 'search',
 };
+
+export const POPUP = {
+    openPopup: 'openPopup',
+    openPopupSuccess: 'openPopupSuccess',
+    openPopupFailure: 'openPopupFailure',
+    closePopup: 'closePopup',
+    closePopupFailure: 'closePopupFailure',
+    closePopupSuccess: 'closePopupSuccess',
+    changePopupLayout: 'changePopupLayout',      // Переключение между режимами выбора места/времени
+    changePopupLayoutSuccess: 'changePopupLayoutSuccess',
+    changePopupLayoutFailure: 'changePopupLayoutFailure',
+    popupBookTicket: 'popupBookTicket'
+};
