@@ -26,6 +26,11 @@ export class PopupController extends Controller {
                             res.json().then(sessionsJSON => {
                                 let popupJSON = this._constructPopupJSON(filmJSON, sessionsJSON);
                                 popupJSON.timeLayout = true;
+                                // Доабвление промежуточного слоя с затемнением
+                                let middleLayer = document.getElementById('middleLayer');
+                                middleLayer.classList.add("middle-layer-dark");
+                                middleLayer.addEventListener('click', this._onClosePopup);
+                                
                                 this._view.render(popupJSON);
                             });
                         } else {
@@ -44,6 +49,9 @@ export class PopupController extends Controller {
     _onClosePopup() {
         let popupLayer = document.getElementById("popupLayer");
         popupLayer.innerHTML = '';
+        // Убираем промежуточный слой с затемнением
+        let middleLayer = document.getElementById('middleLayer');
+        middleLayer.classList.remove("middle-layer-dark");
     }
     
     _onChangeLayout(data) {
