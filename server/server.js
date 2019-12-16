@@ -5,7 +5,7 @@ const express = require('express');
 const path = require('path');
 
 const PORT = 3000;
-const PUBLIC = 'src';
+const PUBLIC = 'dist';
 const INDEX = 'index.html';
 
 const publicDirname = path.resolve(__dirname, '..', `${PUBLIC}`);
