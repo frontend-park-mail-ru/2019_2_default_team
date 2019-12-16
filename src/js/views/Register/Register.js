@@ -25,7 +25,7 @@ export class RegisterView extends View {
         const login = this._signupForm.elements.email;
         const password = this._signupForm.elements.password;
         const nickname = this._signupForm.elements.nickname;
-        const firstname = this._signupForm.elements.FirsName;
+        const firstname = this._signupForm.elements.FirstName;
         const secondname = this._signupForm.elements.SecondName;
 
         password.addEventListener('input', function (event) {
