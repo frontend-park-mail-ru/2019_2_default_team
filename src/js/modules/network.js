@@ -81,13 +81,13 @@ export default class Network {
 
     /**
      *  Post formData
-     *  @param {string} path
      *  @static
+     *  @param url
      *  @param {Object} body
      *  @returns {Promise<Response>}
      */
 
-    static doPostFormData ({ url = '/', body = {} } = {}) {
+    static doPostFormData (url = '/', body = {} ) {
         let token = localStorage.getItem('token');
         return fetch(Network.getServerUrl() + url, {
             method: 'POST',
