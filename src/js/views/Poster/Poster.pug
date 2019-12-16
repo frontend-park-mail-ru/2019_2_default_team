@@ -1,14 +1,13 @@
 style
     include Poster.css
 
--var href = poster
 -var filmPath = '/film/${items[0].id}'
 
-mixin card-deck(href, title, genre, id)
+mixin card-deck(poster, title, genre, id)
     div(class='card')
         div(class='card-item')
-            img(src= href)
-        div(class = "card-item-blur" src = href)
+            img(src= poster)
+        div(class = "card-item-blur" src = poster)
             h1 #{title}
             a(onclick= `film/${id}` href= `film/${id}` data-section="films") Подробнее
 
@@ -24,4 +23,4 @@ div.container
                     input(id = 'search-input' type='text' style= "float: right"  placeholder= "Поиск")
     .body
         each val in items
-            +card-deck(href, val.title, val, val.id)
+            +card-deck(val.poster, val.title, val, val.id)
