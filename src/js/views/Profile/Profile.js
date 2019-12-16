@@ -33,7 +33,7 @@ export class ProfileView extends View {
      * @param data
      * @private
      */
-    _onLoadProfileSuccess (data = {}) {
+    _onLoadProfileSuccess (data) {
         if(this.isViewClosed){
             return;
         }

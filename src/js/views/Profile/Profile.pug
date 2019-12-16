@@ -6,14 +6,14 @@ div.left-column
     form.profile__form(method='POST', enctype='multipart/form-data' name = "profile_form")
     span.form__legend Email
     div.form__input
-        input.input(type='text', name='email', value="Email")
+        input.input(type='text', name='email', value=#{email})
         div
             span.form__legend Имя
             div.form__input
-                input.input(type='text', name='first_name', value="FirstName")
+                input.input(type='text', name='first_name', value= #{first_name})
             span.form__legend Фамилия
             div.form__input
-                input.input(type='text', name='second_name', value="Surname")
+                input.input(type='text', name='second_name', value=#{last_name})
 
         span.form__legend Новый пароль
         div.form__input
