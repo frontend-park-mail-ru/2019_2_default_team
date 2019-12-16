@@ -51,7 +51,7 @@ export default class Api {
      * @param {string} username
      * @returns {Promise<Response>}
      */
-    static register({email, password, nickname}) {
+    static register({email, password, nickname, firstname, secondname}) {
         return Network.doPost('/profile', {
             email,
             password,
