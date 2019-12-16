@@ -9,7 +9,6 @@ body{
 
 .frame-content {
     position: fixed;
-    height: 100vh;
     top: 5%;
     left: 25%;
     z-index: 100;
@@ -17,4 +16,18 @@ body{
 
 .page {
     position: relative;
+}
+
+.middle-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.middle-layer-dark {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 50;
 }
