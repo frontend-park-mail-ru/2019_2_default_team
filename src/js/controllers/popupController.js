@@ -42,10 +42,17 @@ export class PopupController extends Controller {
         });
     }
 
-    _onClosePopup() {
+    _onClosePopup(data) {
         let popupLayer = document.getElementById("popupLayer");
         popupLayer.innerHTML = '';
-        this._removePopupStyles();
+        // this._removePopupStyles(); FIXME: For whatever reason binding is not working & this therefore this function is undefined
+        // TODO: Убрать код ниже после решения проблемы
+        // Убираем промежуточный слой с затемнением
+        let middleLayer = document.getElementById('middleLayer');
+        middleLayer.classList.remove("middle-layer-dark");
+        // Убираем стиль с основной страницы, чтобы она снова скроллилась
+        let body = document.getElementsByTagName('body')[0];
+        body.classList.remove('no-scroll');
     }
     
     _onChangeLayout(data) {
