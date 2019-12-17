@@ -1,14 +1,17 @@
 .popup-window {
+    position: fixed;
+    top: 10vh;
+    left: 25vw;
     display: flex;
     flex-direction: column;
-    min-width: 600px;
-    min-height: 400px;
-    width: 50%;
+    max-height: 80vh;
     padding: 10px;
     z-index: 100;
     background: rgba(13, 13, 13, 0) linear-gradient(135deg, rgb(115, 32, 27) 0%, rgb(74, 27, 104) 70%);
     border: 2px solid white;
     color: white;
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .popup-desc-wrapper {
@@ -39,8 +42,8 @@
 }
 
 .popup-session-item {
-    height: 50px;
-    font-size: 14px;
+    height: 5%;
+    font-size: 2%;
     margin: 10px;
     align-content: center;
     justify-content: center;

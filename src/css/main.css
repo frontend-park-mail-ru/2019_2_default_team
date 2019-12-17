@@ -8,10 +8,15 @@ body{
 }
 
 .frame-content {
-    position: fixed;
-    top: 5%;
-    left: 25%;
+    position: relative;
+    top: 0;
+    left: 0;
     z-index: 100;
+}
+
+.no-scroll {
+    overflow: hidden;
+    position: fixed;
 }
 
 .page {
