@@ -42,8 +42,8 @@
 }
 
 .popup-session-item {
-    height: 5%;
-    font-size: 2%;
+    height: 35px;
+    font-size: 14px;
     margin: 10px;
     align-content: center;
     justify-content: center;
