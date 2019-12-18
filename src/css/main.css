@@ -20,6 +20,7 @@ body{
 }
 
 .page {
+    margin: 0;
     position: relative;
 }
 
