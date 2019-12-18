@@ -18,7 +18,7 @@ export class MenuView extends View{
         this._logoutButton.addEventListener("click", this._onLogout.bind(this));
     }
 
-    _onLogout = (data) => {
+    _onLogout = (data = {}) => {
         this._globalEventBus.triggerEvent(AUTH.logout);
     }
 }
