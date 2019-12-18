@@ -26,7 +26,7 @@ export class Router {
      * @param prevState
      * @param {Object} data
      */
-    redirect ({ path, data = {}, prevState = {} }) {
+    redirect ( path, data = {}, prevState = {}) {
         this.route({ path, data, prevState, addToHistory: true });
     }
 
@@ -80,13 +80,11 @@ export class Router {
      */
     _getRoutePath (path) {
         if (path) {
-            return '/' + (path.split('?')[0]).split('/')[1];
+            return '/' + (path.split('&')[0]).split('/')[1];
         }
     }
 
     start () {
-        localStorage.removeItem('role');
-
         // вешаем обработчик на переход по ссылкам
         window.addEventListener('click', (ev) => {
             if (ev.target.tagName === 'A') {
