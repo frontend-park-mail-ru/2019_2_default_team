@@ -14,8 +14,10 @@ export class MenuView extends View{
 
     _onAuthResponse (data) {
         super.render(data);
-        this._logoutButton = document.getElementById("logout");
-        this._logoutButton.addEventListener("click", this._onLogout.bind(this));
+        if (data.Auth) {
+            this._logoutButton = document.getElementById("logout");
+            this._logoutButton.addEventListener("click", this._onLogout.bind(this));
+        }
     }
 
     _onLogout = (data = {}) => {

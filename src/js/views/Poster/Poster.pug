@@ -1,15 +1,13 @@
 style
     include Poster.css
 
--var filmPath = '/film/${items[0].id}'
-
 mixin card-deck(poster, title, genre, id)
     div(class='card')
-        div(class='card-item')
+        a(class='card-item' href= `film/${id}`)
             img(src= poster)
         div(class = "card-item-blur" src = poster)
             h1 #{title}
-            a(onclick= `film/${id}` href= `film/${id}` data-section="films") Подробнее
+            a(href= `film/${id}` data-section="films") Подробнее
 
 div.container
     table

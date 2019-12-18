@@ -87,3 +87,8 @@ export const POPUP = {
     changePopupLayoutFailure: 'changePopupLayoutFailure',
     popupBookTicket: 'popupBookTicket'
 };
+
+export const ACTIONS = {
+    changeRequest: 'cr',
+    goTo: 'goTo'
+};

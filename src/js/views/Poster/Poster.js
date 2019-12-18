@@ -31,10 +31,7 @@ export class PosterView extends View {
     }
 
     _onGetFilmsSuccess(data){
-        this._data = { ...data, ...this._data };
-        console.log(this._data);
         this._data = {items: data};
-        console.log(this._data);
         super.render(this._data);
         this._todayButton = document.getElementById('today');
         this._todayButton.addEventListener('click', this._onTodayFilter.bind(this));

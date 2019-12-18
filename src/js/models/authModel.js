@@ -6,7 +6,7 @@ class AuthModel {
         this._globalEventBus = globalEventBus;
 
         this._globalEventBus.subscribeToEvent(AUTH.signIn, this._onSignIn.bind(this));
-        // this._globalEventBus.subscribeToEvent(AUTH.signUpCustomer, this._onSignUpCustomer.bind(this));
+        this._globalEventBus.subscribeToEvent(AUTH.signUpCustomer, this._onSignUpCustomer.bind(this));
     }
 
     _onSignIn (user) {

@@ -8,7 +8,7 @@ import ProfileModel from './models/profileModel';
 import PopupModel from "./models/popupModel";
 import MenuModel from "./models/menuModel"
 
-import {AUTH, FILM, PROFILE, CINEMA, FILTER, POPUP} from "./modules/events";
+import {AUTH, FILM, PROFILE, CINEMA, FILTER, POPUP, ACTIONS} from "./modules/events";
 
 import {MenuController} from "./controllers/menuController";
 import {PosterController} from "./controllers/posterController";
@@ -60,4 +60,9 @@ document.addEventListener('DOMContentLoaded', () => {
     router.add('/profile', profileController);
     router.add('/filmoverlay', popupController);
     router.start();
+
+    globalEventBus.subscribeToEvent(ACTIONS.goTo, (info) => {
+        router.redirect({ path: info.path, data: info.data });
+    });
+
 });
