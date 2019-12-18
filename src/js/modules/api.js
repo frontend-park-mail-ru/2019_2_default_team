@@ -125,6 +125,16 @@ export default class Api {
         return Network.doGet(`/film/${filmID}` );
     }
 
+    // TODO: Дописать описание
+    static getFilmComments(filmName) {
+        return Network.doGet(`/commentByFilm/${filmName}`);
+    }
+
+    //TODO: Дописать описание
+    static sendComment(data) {
+        return Network.doPost(`/commentservice`, data);
+    }
+
     /**
      * API Get all films
      * GET /allfilms
@@ -199,6 +209,7 @@ export default class Api {
         return Network.doGet(`/get_seats/${msID}`);
     }
 
+    // TODO: Сделать описание
     static bookSeat(data) {
         return Network.doPost('/ticket', data);
     }

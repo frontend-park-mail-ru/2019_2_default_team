@@ -35,6 +35,8 @@ export const FILM = {
     getCinemas : 'getCinemas',
     getCinemasSuccess : 'getCinemasS',
     getCinemasFailed : 'getCinemasF',
+
+    sendComment: 'sendComment'
 };
 
 export const PROFILE = {
