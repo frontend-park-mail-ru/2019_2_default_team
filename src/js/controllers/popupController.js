@@ -26,11 +26,7 @@ export class PopupController extends Controller {
                             res.json().then(sessionsJSON => {
                                 let popupJSON = this._constructPopupJSON(filmJSON, sessionsJSON);
                                 popupJSON.timeLayout = true;
-                                // Доабвление промежуточного слоя с затемнением
-                                let middleLayer = document.getElementById('middleLayer');
-                                middleLayer.classList.add("middle-layer-dark");
-                                middleLayer.addEventListener('click', this._onClosePopup);
-                                
+                                this._applyPopupStyles();
                                 this._view.render(popupJSON);
                             });
                         } else {
@@ -46,12 +42,17 @@ export class PopupController extends Controller {
         });
     }
 
-    _onClosePopup() {
+    _onClosePopup(data) {
         let popupLayer = document.getElementById("popupLayer");
         popupLayer.innerHTML = '';
+        // this._removePopupStyles(); FIXME: For whatever reason binding is not working & this therefore this function is undefined
+        // TODO: Убрать код ниже после решения проблемы
         // Убираем промежуточный слой с затемнением
         let middleLayer = document.getElementById('middleLayer');
         middleLayer.classList.remove("middle-layer-dark");
+        // Убираем стиль с основной страницы, чтобы она снова скроллилась
+        let body = document.getElementsByTagName('body')[0];
+        body.classList.remove('no-scroll');
     }
     
     _onChangeLayout(data) {
@@ -143,4 +144,23 @@ export class PopupController extends Controller {
         }
         return sessions;
     }
+
+    _applyPopupStyles() {
+        // Доабвление промежуточного слоя с затемнением
+        let middleLayer = document.getElementById('middleLayer');
+        middleLayer.classList.add("middle-layer-dark");
+        middleLayer.addEventListener('click', this._onClosePopup);
+        //  Добавляем стиль на основную страницу, чтобы она не скроллилась
+        let body = document.getElementsByTagName('body')[0];
+        body.classList.add('no-scroll');
+    }
+
+    _removePopupStyles() {
+        // Убираем промежуточный слой с затемнением
+        let middleLayer = document.getElementById('middleLayer');
+        middleLayer.classList.remove("middle-layer-dark");
+        // Убираем стиль с основной страницы, чтобы она снова скроллилась
+        let body = document.getElementsByTagName('body')[0];
+        body.classList.remove('no-scroll');
+    }  
 }

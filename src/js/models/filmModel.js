@@ -9,11 +9,27 @@ class FilmModel {
     }
 
     _onLoadFilm = (id) => {
+        // Получаем информацию о фильме
         api.getFilmInfo(id.id)
             .then(res => {
                 if (res.ok) {
                     res.json().then(data => {
-                        this._globalEventBus.triggerEvent(FILM.getFilmSuccess, data);
+                        // Получаем комментарии для текущего фильма
+                        api.getFilmComments(data.title)
+                        .then(res => {
+                            if(res.ok) {
+                                res.json().then(json => {
+                                    data.comments = json.comments;
+                                    this._globalEventBus.triggerEvent(FILM.getFilmSuccess, data);
+                                }).catch(err => {
+                                    console.log(err);
+                                });
+                            } else {
+                                this._globalEventBus.triggerEvent(FILM.getFilmCommentsFailed);
+                            }
+                        }).catch(err => {
+                            console.log(err);
+                        });
                     });
                 } else {
                     res.json().then(data => {
