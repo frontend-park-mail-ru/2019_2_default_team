@@ -1,6 +1,8 @@
 # 2019_2_default_team
 Репозиторий команды "default_team". Технопарк@mail.ru, осень, 2019
 
+[Деплой](http://89.208.198.192/)
+
 [Репозиторий бэка](https://github.com/go-park-mail-ru/2019_2_default_team/)
 
 ## Состав
