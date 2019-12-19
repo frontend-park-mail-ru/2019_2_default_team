@@ -33,6 +33,8 @@ export class FilmpageView extends View{
                                 FilmTitle: data.title,
                                 Text: commentaryText
                             });
+                            // TODO: Добавить кастомный тултип о том, что комментарий отправлен
+                            this.addCommentArea.value = '';
                         }).catch(err => {
                             console.log(err);
                         }); 
