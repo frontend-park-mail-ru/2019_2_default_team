@@ -158,3 +158,27 @@
     font-size: 16px;
     font-weight: 400;
 }
+
+.recommendations-block {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    overflow-x: scroll;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+.recommendations-block_dark {
+    background-color: rgba(0, 0, 0, 0.33);
+    justify-content: center;
+}
+
+.recommendations-block__poster {
+    margin-left: 5vh;
+    height: 40vh;
+    transition: transform .5s;
+}
+
+.recommendations-block__poster:hover {
+    transform: scale(1.25);
+}

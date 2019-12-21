@@ -223,4 +223,9 @@ export default class Api {
     static searchFilm(title){
         return Network.doGet(`/allfilms?title=${title}`);
     }
+
+    // TODO: Сделать описание
+    static getRecommendations(genre) {
+        return Network.doGet(`/films_recommended?genre=${genre}`);
+    }
 }

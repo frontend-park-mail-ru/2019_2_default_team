@@ -33,6 +33,15 @@ mixin film()
                         tr #{description}
                 button#buyTicketButton Купить билет
     .container
+        h1 Смотрите также:
+        div.recommendations-block.recommendations-block_dark
+            if recommendations
+                each item, idx in recommendations
+                    a(href=`/film/${item.id}`)
+                        img.recommendations-block__poster(src=`${item.poster_popup}`)
+
+            
+    .container
         div(class="row")
             h1 Trailers
         div(class="row film-trailer")
