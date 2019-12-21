@@ -25,7 +25,7 @@ export class FilmpageController extends Controller{
                         user_id: profileInfo.id
                     }
                     api.voteForFilm(ratingJSON).then(res => {
-                        if(res.ok) {
+                        if(res.status == 201) {
                             this._globalEventBus.triggerEvent(FILM.plusRatingSuccess);
                         }
                     }).catch(err => {
