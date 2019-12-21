@@ -7,6 +7,7 @@ export class FilmpageView extends View{
     constructor(root, globalEventBus) {
         super(root, template, globalEventBus);
         this._globalEventBus.subscribeToEvent(FILM.getFilmSuccess, this._onLoadFilmSuccess.bind(this));
+        this._globalEventBus.subscribeToEvent(FILM.plusRatingSuccess, this._onPlusRatingSuccess.bind(this));
     }
 
     render(data = {}) {
@@ -17,8 +18,10 @@ export class FilmpageView extends View{
     }
 
     _addEventListeners(data) {
+        // Покупка билета и попап
         this.buyTicketButton = document.getElementById("buyTicketButton");
         this.buyTicketButton.addEventListener('click', this._openPopup.bind(this));
+        // Добавить комментарий
         this.submitCommentButton = document.getElementById("submitCommentButton");
         this.submitCommentButton.addEventListener('click', () => {
             this.addCommentArea = document.getElementById("addCommentArea");
@@ -46,10 +49,16 @@ export class FilmpageView extends View{
                 })
             }
         });
+        // Очистить комментарий
         this.clearCommentButton = document.getElementById("clearCommentButton");
         this.clearCommentButton.addEventListener('click', () => {
             this.addCommentArea = document.getElementById("addCommentArea");
             this.addCommentArea.value = '';
+        });
+        // Плюсануть рейтинг
+        this.ratingPlusButton = document.getElementById("ratingPlusButton");
+        this.ratingPlusButton.addEventListener('click', () => {
+            this._globalEventBus.triggerEvent(FILM.plusRating, data.id);
         });
     }
 
@@ -72,5 +81,10 @@ export class FilmpageView extends View{
 
     _openPopup() {
         this._globalEventBus.triggerEvent(POPUP.openPopup, this._data);
+    }
+
+    _onPlusRatingSuccess() {
+        let ratingCounter = document.getElementById("ratingCounter");
+        ratingCounter.innerText = Number(ratingCounter.innerText) + 1;
     }
 }

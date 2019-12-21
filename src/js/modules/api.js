@@ -228,4 +228,9 @@ export default class Api {
     static getRecommendations(genre) {
         return Network.doGet(`/films_recommended?genre=${genre}`);
     }
+
+    // TODO: Сделать описание
+    static voteForFilm(data) {
+        return Network.doPost('/film_vote', data);
+    }
 }

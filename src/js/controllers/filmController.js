@@ -9,9 +9,36 @@ export class FilmpageController extends Controller{
 
         this._view = new FilmpageView(this._root, this._globalEventBus);
         this._globalEventBus.subscribeToEvent(FILM.sendComment, this._onSendCommentary.bind(this));
+        this._globalEventBus.subscribeToEvent(FILM.plusRating, this._onPlusRating.bind(this));
     }
 
     _onSendCommentary(data) {
         api.sendComment(data);
+    }
+
+    _onPlusRating(filmId) {
+        api.getProfileInfo().then(res => {
+            if(res.ok) {
+                res.json().then(profileInfo => {
+                    let ratingJSON = {
+                        film_id: filmId,
+                        user_id: profileInfo.id
+                    }
+                    api.voteForFilm(ratingJSON).then(res => {
+                        if(res.status == 201) {
+                            this._globalEventBus.triggerEvent(FILM.plusRatingSuccess);
+                        }
+                    }).catch(err => {
+                        console.log(err);
+                    });
+                }).catch(err => {
+                    console.log(err);
+                })
+            } else {
+                alert('Вы не авторизованы!');
+            }
+        }).catch(err => {
+            console.log(err);
+        });
     }
 }

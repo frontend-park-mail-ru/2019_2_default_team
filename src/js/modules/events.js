@@ -36,7 +36,10 @@ export const FILM = {
     getCinemasSuccess : 'getCinemasS',
     getCinemasFailed : 'getCinemasF',
 
-    sendComment: 'sendComment'
+    sendComment: 'sendComment',
+
+    plusRating: 'plusRating',
+    plusRatingSuccess: 'plusRatingSuccess'
 };
 
 export const PROFILE = {

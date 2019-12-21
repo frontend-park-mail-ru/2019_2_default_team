@@ -28,6 +28,11 @@ mixin film()
                 p
                     span.tip В ролях:
                     | #{mainactor}
+                div.ratingGroup
+                    div.ratingText
+                        span.tip Рейтинг:
+                        div#ratingCounter #{rating}
+                    button#ratingPlusButton.ratingBtn ♥
                 p
                     div
                         tr #{description}
