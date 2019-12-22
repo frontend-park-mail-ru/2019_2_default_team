@@ -18,9 +18,11 @@ export class ProfileModel {
                 if (res.ok) {
                     res.json().then(data => {
                       //  data.profile.path_to_img = `${Net.getServerUrl()}/${data.profile.path_to_img}`;
+                        data.isAuthorized = true;
                         this._globalEventBus.triggerEvent(PROFILE.loadProfileSuccess, data);
                     });
                 } else {
+                    data.isAuthorized = false;
                     this._globalEventBus.triggerEvent(PROFILE.loadProfileFailed);
                 }
             })
@@ -32,11 +34,7 @@ export class ProfileModel {
     }
 
     _onSaveProfile (profile) {
-        api.editProfile(profile)
-            .then(this._onResponse.bind(this))
-            .catch(err => {
-                console.error(err);
-            });
+        api.editProfile(profile);
     }
 
     _onResponse (res) {

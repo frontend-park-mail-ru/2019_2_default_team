@@ -34,21 +34,125 @@ export class ProfileView extends View {
      * @private
      */
     _onLoadProfileSuccess (data) {
+        console.log(data);
         if(this.isViewClosed){
             return;
         }
         super.render(data);
+        // Переход в режим редактирования   
+        this.editProfileButton = document.getElementById('editProfileButton');
+        if(this.editProfileButton) {
+            this.editProfileButton.addEventListener('click', () => {
+                data.isEditingMode = true;
+                this._onLoadProfileSuccess(data);
+            });
+        }
+        if(data.isEditingMode) {
+            this.addEditingModeEventListeners(data);
+        }
+    }
 
-        this._profileForm = this._root.querySelector('form[name ="profile_form"]');
-        this._profileForm.addEventListener('click', this._onSaveProfile.bind(this));
+    addEditingModeEventListeners(data) {
+        // Кнопки управления в режиме редактирования
+        // Кнопка назад (без сохранения)
+        this.backProfileButton = document.getElementById('backProfileButton');
+        this.backProfileButton.addEventListener('click', () => {
+            data.isEditingMode = false;
+            this._onLoadProfileSuccess(data);
+        })
+        // Кнопка сохранить 
+        this.saveProfileButton = document.getElementById('saveProfileButton');
+        this.saveProfileButton.addEventListener('click', () => {
+            let inputsArray = document.getElementsByTagName('input');
+            
+            if(this._validateProfileData()) {
+                let profileJSON = {
+                    nickname: inputsArray[1].value,
+                    first_name: inputsArray[2].value,
+                    last_name: inputsArray[3].value,
+                    password: inputsArray[5].value
+                };
+                if(this.isEmailChanged) {
+                    profileJSON.email = inputsArray[4].value;
+                }
+                this._globalEventBus.triggerEvent(PROFILE.saveProfile, profileJSON);
+                data.isEditingMode = false;
+                this._globalEventBus.triggerEvent(PROFILE.loadProfile);
+            }
+        });
+        // Ставим вотчеры на все редактируемые поля
+        let inputsArray = document.getElementsByTagName('input');
+        let labelsArray = document.getElementsByClassName('profile-info__fieldname');
+        this.isNicknameValidated = true;
+        this.isFirstnameValidated = true;
+        this.isSurnameValidated = true;
+        this.isEmailValidated = true;
+        this.isEmailChanged = false;
+        this.isPasswordValidated = true;
+        inputsArray[1].addEventListener('input', () => {
+            this._validateOnChange(inputsArray[1], labelsArray[0], (value) => {
+                // Валидация имени
+                this.isNicknameValidated = value.length > 0 && value.match(/^[a-zA-Z].*/) !== null;
+                return this.isNicknameValidated;
+            });
+        });
+        inputsArray[2].addEventListener('input', () => {
+            this._validateOnChange(inputsArray[2], labelsArray[1], (value) => {
+                // Валидация имени
+                this.isFirstnameValidated = value.length > 0 && value.match(/^[a-zA-Z].*/) !== null;
+                return this.isFirstnameValidated;
+            });
+        });
+        inputsArray[3].addEventListener('input', () => {
+            this._validateOnChange(inputsArray[3], labelsArray[2], (value) => {
+                // Валидация фамилии
+                this.isSurnameValidated = value.length > 0 && value.match(/^[a-zA-Z].*/) !== null;
+                return this.isSurnameValidated;
+            });
+        });
+        inputsArray[4].addEventListener('input', () => {
+            this._validateOnChange(inputsArray[4], labelsArray[3], (value) => {
+                // Валидация email
+                this.isEmailChanged = true;
+                this.isEmailValidated = value.length > 0 && value.match(/^[a-zA-Z].*@[a-zA-Z].*\.[a-zA-Z].*/) !== null;
+                return this.isEmailValidated;
+            });
+        });
+        inputsArray[5].addEventListener('input', () => {
+            this._validatePassword(inputsArray, labelsArray);
+        });
+        inputsArray[6].addEventListener('input', () => {
+            this._validatePassword(inputsArray, labelsArray);
+        });
+    }
 
-        this._fileInput = this._root.querySelector('input[name="my_file"]');
-        this._fileInput.addEventListener('change', this._onHandleFileSelect.bind(this), false);
+    _validateProfileData() {
+        return this.isNicknameValidated && this.isFirstnameValidated && this.isSurnameValidated && this.isEmailValidated && this.isPasswordValidated;
+    }
 
-        this._avatarButton = this._root.querySelector('button[name="save_avatar"]');
-        this._avatarButton.addEventListener('click', this._onSaveAvatar.bind(this));
+    _validateOnChange(observableField, labelField, validationFunc) {
+        if(!validationFunc(observableField.value)) {
+            labelField.classList.add('profile-info__fieldname_error');
+        } else {
+            labelField.classList.remove('profile-info__fieldname_error');
+        }
+    }
 
-        this._avatar = this._root.querySelector('.thumb');
+    _validatePassword(inputsArray, labelsArray) {
+        // Валидация пароля
+        let thisPass = inputsArray[5].value;
+        let thisPassLabel = labelsArray[4];
+        let otherPass = inputsArray[6].value;
+        let otherPassLabel = labelsArray[5];
+        if(thisPass && otherPass && thisPass === otherPass) {
+            thisPassLabel.classList.remove('profile-info__fieldname_error');
+            otherPassLabel.classList.remove('profile-info__fieldname_error');
+            this.isPasswordValidated = true;
+        } else {
+            thisPassLabel.classList.add('profile-info__fieldname_error');
+            otherPassLabel.classList.add('profile-info__fieldname_error');
+            this.isEmailValidated = false;
+        }
     }
 
     /**

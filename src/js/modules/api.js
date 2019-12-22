@@ -85,13 +85,10 @@ export default class Api {
      * @param {string} Password
      * @returns {Promise<Response>}
      */
-    static editProfile({Email, Firstname, Surname, Password}) {
-        return Network.doPut('/users/', {
-            Email,
-            Firstname,
-            Surname,
-            Password,
-        });
+    static editProfile(profile) {
+        console.log("PROFILE");
+        console.log(profile);
+        return Network.doPut('/profile', profile);
     }
 
     /**
