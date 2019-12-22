@@ -8,12 +8,13 @@ export class MenuView extends View{
         this._globalEventBus.subscribeToEvent(AUTH.checkAuthResponse, this._onAuthResponse.bind(this));
     }
 
-    render = (data = {}) => {
+    render = (data) => {
         this._globalEventBus.triggerEvent(AUTH.checkAuth);
     }
 
     _onAuthResponse (data) {
         super.render(data);
+        console.log(data);
         if (data.Auth) {
             this._logoutButton = document.getElementById("logout");
             this._logoutButton.addEventListener("click", this._onLogout.bind(this));

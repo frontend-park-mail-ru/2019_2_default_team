@@ -12,10 +12,12 @@ class MenuModel {
         api.authCheck()
             .then(res =>{
                 if (res.ok){
-                    this._globalEventBus.triggerEvent(AUTH.checkAuthResponse, {Auth: true});
+                    res.json().then(data =>{
+                    this._globalEventBus.triggerEvent(AUTH.checkAuthResponse, data);
+                    })
                 }
                 else{
-                    this._globalEventBus.triggerEvent(AUTH.checkAuthResponse, {Auth: false});
+                    this._globalEventBus.triggerEvent(AUTH.checkAuthResponse, {Auth: true});
             }
     })
             .catch(err => {

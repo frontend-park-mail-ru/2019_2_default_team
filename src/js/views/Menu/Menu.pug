@@ -12,9 +12,9 @@ ul.menu
 	+item-left('Афиша', '/', 'poster')
 	+item-left('О нас', '/about', 'about')
 	//- if authorized
-	if Auth
+	if !Auth
 		+item-right('logout', 'Выход', '/logout', 'logout')
-		+item-right('profile', 'Профиль', '/profile', 'profile')
+		+item-right('profile', `${username}`, '/profile', 'profile')
 	//- unless authorized
 	else
 		+item-right('register','Регистрация', '/register', 'register')
