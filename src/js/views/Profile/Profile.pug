@@ -9,7 +9,7 @@ if isAuthorized
             .profile__title.profile_margin-big Редактирование профиля
             .profile-avatar.profile_margin-big
                 .profile-avatar__avatar
-                    img.profile-avatar__image(src=avatar, alt=avatarURL)
+                    img.profile-avatar__image(src=avatarURL, alt=`${avatarURL}`)
                 .profile-avatar__buttons.profile_margin-small
                     input(type="file", name="Выберите файл")
             .profile-info
