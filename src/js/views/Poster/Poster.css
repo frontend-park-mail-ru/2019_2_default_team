@@ -15,10 +15,33 @@ h1 {
 }
 
 .card-item{
+    position: relative;
     background-color: aliceblue;
     width: 360px;
     height: 360px;
+    overflow: hidden;
 }
+
+.square {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+img {
+    position: absolute;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50%);
+}
+img.landscape {
+    height: 100%;
+    width: auto;
+}
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
