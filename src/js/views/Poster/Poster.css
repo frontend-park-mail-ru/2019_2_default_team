@@ -156,12 +156,13 @@ th {
     width: 90px;
     text-align: center;
     color: white;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family:  Roboto, sans-serif;
     font-weight: normal;
     text-decoration: none;
 }
 
 table {
     border: 1px solid #dddddd;
+    background-color: #2F3640;
     width: 100%;
 }

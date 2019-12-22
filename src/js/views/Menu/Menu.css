@@ -3,6 +3,8 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
+    background-color: #2F3640;
+    font-family:  Roboto, sans-serif;
 }
 
 .menu-el-right {
@@ -16,7 +18,6 @@
 .inner-menu-element {
     display: block;
     color: white;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
