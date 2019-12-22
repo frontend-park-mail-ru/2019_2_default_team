@@ -53,7 +53,6 @@ export class Router {
 
         //получаем корневой путь
         const routePath = this._getRoutePath(path);
-
         if (this.routes.has(routePath)) {
             // получаем назначенного контроллера
             const controller = this.routes.get(routePath);
