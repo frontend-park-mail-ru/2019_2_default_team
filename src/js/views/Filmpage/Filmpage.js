@@ -86,5 +86,7 @@ export class FilmpageView extends View{
     _onPlusRatingSuccess() {
         let ratingCounter = document.getElementById("ratingCounter");
         ratingCounter.innerText = Number(ratingCounter.innerText) + 1;
+        this.ratingPlusButton = document.getElementById("ratingPlusButton");
+        this.ratingPlusButton.classList.add('ratingBtn_voted');
     }
 }
