@@ -22,7 +22,38 @@ import {LogoutController} from "./controllers/logoutController";
 import {FilterController} from "./controllers/filterController";
 
 
+function renderHTML () {
+    let metaViewport = document.createElement('meta');
+    metaViewport.name = 'viewport';
+    metaViewport.content = 'width=device-width, initial-scale=1';
+    document.head.appendChild(metaViewport);
+
+    const body = document.querySelector('body');
+    body.classList.add('page');
+
+    body.innerHTML = `
+      <header class="header"></header>
+      <div class="main-content"></div>
+      <div id="mainLayer" class="main-content"></div>
+      <div id="middleLayer" class="middle-layer"></div>
+      <div id="popupLayer" class="frame-content"></div>
+  `;
+  }
+
 document.addEventListener('DOMContentLoaded', () => {
+    renderHTML();
+
+    // Проверим, что эта технология доступна в браузере
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then((reg) => {
+                // регистрация сработала
+                console.log('Registration succeeded. Scope is ' + reg.scope);
+            }).catch((error) => {
+            // регистрация прошла неудачно
+            console.log('Registration failed with ' + error);
+        });
+    }
     const body = document.querySelector('.page');
     const header = document.querySelector('header');
     const content = document.querySelector('.main-content');

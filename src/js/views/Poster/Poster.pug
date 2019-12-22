@@ -3,9 +3,8 @@ style
 
 mixin card-deck(poster, title, genre, id)
     div(class='card')
-        a(class='card-item' href= `film/${id}`)
-            img(src= poster)
-        div(class = "card-item-blur" src = poster)
+        a(class='card-item' href= `film/${id}` style=`background-image: url(${poster})`)
+        div(class = "card-item-blur")
             h1 #{title}
             a(href= `film/${id}` data-section="films") Подробнее
 
