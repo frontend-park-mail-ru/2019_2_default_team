@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     const content = document.querySelector('.main-content');
     const frame = document.querySelector('.frame-content');
-    const globalEventBus = new EventBus([AUTH, PROFILE, FILM, CINEMA, FILTER, POPUP].map(model => Object.values(model)).flat());
+    const globalEventBus = new EventBus([AUTH, PROFILE, FILM, CINEMA, FILTER, POPUP, ACTIONS].map(model => Object.values(model)).flat());
     const models = {
         poster: PosterModel,
         film: FilmModel,
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     router.add('/profile', profileController);
     router.add('/filmoverlay', popupController);
     router.start();
-
+ 
     globalEventBus.subscribeToEvent(ACTIONS.goTo, (info) => {
         router.redirect({ path: info.path, data: info.data });
     });
