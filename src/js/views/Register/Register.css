@@ -28,6 +28,11 @@ input {
 
 #btn:active {
     background-color: #2a1010;
+
+}
+
+*:focus {
+    outline: none;
 }
 
 .field {

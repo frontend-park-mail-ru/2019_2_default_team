@@ -11,7 +11,7 @@ mixin film()
                 p #{genre}
         div(class="row")
             div(class="column-left")
-                img(src= imgHref)
+                img(class='square' src= imgHref)
             div(class="column-right")
                 p
                     span.tip Продолжительность:
@@ -42,7 +42,7 @@ mixin film()
         div.recommendations-block.recommendations-block_dark
             if recommendations
                 each item, idx in recommendations
-                    a(href=`/film/${item.id}`)
+                    a( href=`/film/${item.id}`)
                         img.recommendations-block__poster(src=`${item.poster_popup}`)
 
             
