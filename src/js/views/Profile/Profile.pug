@@ -32,21 +32,35 @@ if isAuthorized
                 button#saveProfileButton.profile__button_margin Сохранить
     else
         .profile
-                .profile__title.profile_margin-big Профиль
-                .profile-avatar__avatar.profile_margin-big
-                        img.profile-avatar__image(src=avatarURL, alt=`${avatarURL}`)
-                .profile-info
-                    .profile-info-left
-                        .profile-info__fieldname.profile_margin-small    Никнейм
-                        .profile-info__fieldname.profile_margin-small    Имя
-                        .profile-info__fieldname.profile_margin-small    Фамилия
-                        .profile-info__fieldname.profile_margin-small    Email
-                    .profile-info-right
-                        .profile-info__value.profile_margin-small #{ nickname }
-                        .profile-info__value.profile_margin-small #{ first_name }
-                        .profile-info__value.profile_margin-small #{ last_name }
-                        .profile-info__value.profile_margin-small #{ email }
-                button#editProfileButton.profile__button_margin Редактировать
+            .profile__title.profile_margin-big Профиль
+            .profile-avatar__avatar.profile_margin-big
+                    img.profile-avatar__image(src=avatarURL, alt=`${avatarURL}`)
+            .profile-info
+                .profile-info-left
+                    .profile-info__fieldname.profile_margin-small    Никнейм
+                    .profile-info__fieldname.profile_margin-small    Имя
+                    .profile-info__fieldname.profile_margin-small    Фамилия
+                    .profile-info__fieldname.profile_margin-small    Email
+                .profile-info-right
+                    .profile-info__value.profile_margin-small #{ nickname }
+                    .profile-info__value.profile_margin-small #{ first_name }
+                    .profile-info__value.profile_margin-small #{ last_name }
+                    .profile-info__value.profile_margin-small #{ email }
+            button#editProfileButton.profile__button_margin Редактировать
+            if tickets.length
+                .profile__title.profile_margin-big Заказанные билеты
+                .ticket-group
+                    each item, idx in tickets
+                        .ticket-block
+                            img.ticket-block__poster(src=item.poster_popup)
+                            .ticket-information
+                                h2 #{ item.title }
+                                .ticket-information__row    Цена: #{ item.price }
+                                .ticket-information__row    Номер места: #{ item.seat_id }
+                                .ticket-information__row    Дата: #{ item.start_datetime.match(/\d{4}-\d{2}-\d{2}/)[0] }
+                                .ticket-information__row    Время: #{ item.start_datetime.match(/\d{2}:\d{2}/)[0] }
+            else
+                .profile__title.profile_margin-big Нет заказанных билетов
 else
     .profile
         h1 Вы не авторизованы!                
