@@ -110,8 +110,8 @@ export class RegisterView extends View {
                 email: email.value,
                 password: password.value,
                 nickname: nickname.value,
-                firstname: firstname.value,
-                secondname: secondname.value,
+                first_name: firstname.value,
+                last_name: secondname.value,
             };
             console.log("before trigger");
             this._globalEventBus.triggerEvent(AUTH.signUpCustomer, user);

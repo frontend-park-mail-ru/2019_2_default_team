@@ -41,8 +41,8 @@
     "username": "string",
     "password": "string",
     "email": "string",
-    "firstname": "string",
-    "lastname": "string"
+    "first_tname": "string",
+    "last_name": "string"
 }
 ```
 | Ключ          | Значение                |
