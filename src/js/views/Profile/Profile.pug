@@ -55,10 +55,11 @@ if isAuthorized
                             img.ticket-block__poster(src=item.poster_popup)
                             .ticket-information
                                 h2 #{ item.title }
-                                .ticket-information__row    Цена: #{ item.price }
-                                .ticket-information__row    Номер места: #{ item.seat_id }
+                                .ticket-information__row    Зал: #{ item.hall_name }
+                                .ticket-information__row    Номер места: #{ item.seat_number }
                                 .ticket-information__row    Дата: #{ item.start_datetime.match(/\d{4}-\d{2}-\d{2}/)[0] }
                                 .ticket-information__row    Время: #{ item.start_datetime.match(/\d{2}:\d{2}/)[0] }
+                                .ticket-information__row    Цена: #{ item.price }
             else
                 .profile__title.profile_margin-big Нет заказанных билетов
 else
