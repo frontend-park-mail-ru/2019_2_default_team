@@ -32,9 +32,12 @@ export class FilmpageView extends View{
                     if(res.ok) {
                         res.json().then(profile => {
                             this._sendCommentary({
-                                Username: profile.nickname,
-                                FilmTitle: data.title,
-                                Text: commentaryText
+                                filmID: data.id,
+                                commentInfo: {
+                                    Username: profile.nickname,
+                                    FilmTitle: data.title,
+                                    Text: commentaryText
+                                }
                             });
                             // TODO: Добавить кастомный тултип о том, что комментарий отправлен
                             this.addCommentArea.value = '';
