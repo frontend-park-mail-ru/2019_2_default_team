@@ -28,9 +28,21 @@ export const FILM = {
     createFilmSuccess: 'createFilmS',
     createFilmFailed: 'createFilmF',
 
+    getFilmsSearch: 'getFilmsSearch',
+    getFilmsSearchSuccess: 'getFilmsSearchS',
+    getFilmsSearchFailed: 'getFilmsSearchFailed',
+
     getFilm: 'getFilm',
     getFilmSuccess: 'getFilmS',
     getFilmFailed: 'getFilmF',
+
+    getFavFilms: 'getFavFilms',
+    getFavFilmsSuccess: 'getFavFilmsS',
+    getFavFilmsFailed: 'getFavFilmsF',
+
+    getTop: 'getTop',
+    getTopSuccess: 'getTopS',
+    getTopFailed: 'getTopF',
 
     getCinemas : 'getCinemas',
     getCinemasSuccess : 'getCinemasS',

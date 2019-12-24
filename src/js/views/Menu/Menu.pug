@@ -3,19 +3,22 @@ style
 mixin item-right(id, title, href, section)
 	li.menu-el-right
 		a.inner-menu-element(id=id href=href data-section=section)= title
-mixin item-left(title, href, section)
+mixin item-left(title, href, section, id)
 	li.menu-el-left
-		a.inner-menu-element(href=href data-section=section)= title
+		a.inner-menu-element(href=href data-section=section id = id)= title
 
 
 ul.menu
-	+item-left('Афиша', '/', 'poster')
-	+item-left('О нас', '/about', 'about')
+	+item-left('Афиша', '/', 'poster', 'poster')
+	+item-left('О нас', '/about', 'about', 'about')
+	+item-left(	'Топ', '/allfilms?top','top', 'top')
 	//- if authorized
 	if !Auth
 		+item-right('logout', 'Выход', '/logout', 'logout')
 		+item-right('profile', `${username}`, '/profile', 'profile')
+		+item-right('Favorite_genres', 'Любимые жанры', '/allfilms?genres','genre')
 	//- unless authorized
 	else
 		+item-right('register','Регистрация', '/register', 'register')
 		+item-right('login','Вход', '/login', 'login')
+

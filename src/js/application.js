@@ -1,12 +1,14 @@
 import {Router} from './modules/router';
 import {EventBus} from './modules/eventbus';
 import '../css/main.css';
+
 import PosterModel from './models/posterModel'
 import FilmModel from "./models/filmModel";
 import LoginModel from './models/authModel';
 import ProfileModel from './models/profileModel';
 import PopupModel from "./models/popupModel";
 import MenuModel from "./models/menuModel"
+import SearchModel from "./models/searchModel"
 
 import {AUTH, FILM, PROFILE, CINEMA, FILTER, POPUP, ACTIONS} from "./modules/events";
 
@@ -20,6 +22,7 @@ import {ProfileController} from "./controllers/profileController";
 import {PopupController} from "./controllers/popupController";
 import {LogoutController} from "./controllers/logoutController";
 import {FilterController} from "./controllers/filterController";
+import {SearchController} from "./controllers/searchController";
 
 
 function renderHTML () {
@@ -66,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         profile: ProfileModel,
         popup: PopupModel,
         menu: MenuModel,
+        search: SearchModel,
     };
     Object.values(models).forEach(model => model.setGlobalEventBus(globalEventBus));
 
@@ -81,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupController = new PopupController(frame, globalEventBus, router);
     const logoutController = new LogoutController(content, globalEventBus, router);
     const filterController = new FilterController(content, globalEventBus, router);
+    const searchController = new SearchController(content, globalEventBus, router);
 
     menuController.openWithData();
     router.add('/', posterController);
@@ -90,8 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
     router.add('/register', registerController);
     router.add('/profile', profileController);
     router.add('/filmoverlay', popupController);
+    router.add('/search', searchController);
     router.start();
- 
+
     globalEventBus.subscribeToEvent(ACTIONS.goTo, (info) => {
         router.redirect({ path: info.path, data: info.data });
     });

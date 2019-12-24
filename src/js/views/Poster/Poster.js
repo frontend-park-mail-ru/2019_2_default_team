@@ -8,6 +8,8 @@ export class PosterView extends View {
 
         this._globalEventBus.subscribeToEvent(AUTH.checkAuthResponse, this._onAuthResponse.bind(this));
         this._globalEventBus.subscribeToEvent(FILM.getFilmsSuccess, this._onGetFilmsSuccess.bind(this));
+        this._globalEventBus.subscribeToEvent(FILM.getTopSuccess, this._onGetFilmsSuccess.bind(this));
+        this._globalEventBus.subscribeToEvent(FILM.getFavFilmsSuccess, this._onGetFilmsSuccess.bind(this));
     }
 
     render(data = {}) {
@@ -55,4 +57,6 @@ export class PosterView extends View {
         let data = document.getElementById('search-input').value;
         this._globalEventBus.triggerEvent(FILTER.search, data);
     };
+
+
 }

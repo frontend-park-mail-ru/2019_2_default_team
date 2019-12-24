@@ -128,3 +128,8 @@ input {
 .addBtn:hover {
     background-color: #bbb;
 }
+
+p {
+    color: white;
+    font-weight: bold;
+}
