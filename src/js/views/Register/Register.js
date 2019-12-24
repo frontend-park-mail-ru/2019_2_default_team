@@ -17,7 +17,12 @@ export class RegisterView extends View {
 
         this._signupForm = this._root.querySelector('form');
         this._signupForm.addEventListener('submit', this._onSubmit.bind(this), false);
-
+        let list = document.querySelector('.register-el');
+        list.addEventListener('click', function(ev) {
+            if (ev.target.tagName === 'LI') {
+                ev.target.classList.toggle('checked');
+            }
+        }, false);
         this.setValidationOnChangeListeners();
     }
 
@@ -106,12 +111,18 @@ export class RegisterView extends View {
             password.value = '';
 
         } else {
+            const  genre_elements = document.querySelectorAll('.row-el.checked');
+            let genres = [];
+            genre_elements.forEach(function (elem) {
+                genres.push(elem.innerText);
+            });
             const user = {
                 email: email.value,
                 password: password.value,
                 nickname: nickname.value,
-                firstname: firstname.value,
-                secondname: secondname.value,
+                first_name: firstname.value,
+                last_name: secondname.value,
+                genre: genres,
             };
             console.log("before trigger");
             this._globalEventBus.triggerEvent(AUTH.signUpCustomer, user);
