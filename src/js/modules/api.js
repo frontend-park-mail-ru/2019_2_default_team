@@ -51,13 +51,14 @@ export default class Api {
      * @param {string} username
      * @returns {Promise<Response>}
      */
-    static register({email, password, nickname, first_name, last_name}) {
+    static register({email, password, nickname, first_name, last_name, genre = {}}) {
         return Network.doPost('/profile', {
             email,
             password,
             nickname,
             first_name,
             last_name,
+            genre,
         });
     }
 
@@ -229,5 +230,25 @@ export default class Api {
     // TODO: Сделать описание
     static voteForFilm(data) {
         return Network.doPost('/film_vote', data);
+    }
+
+    /**
+     * API Get films with favorite genres
+     * GET /allfilms/genre
+     * @static
+     * @returns {Promise<Response>}
+     */
+    static getFavFilms() {
+        return Network.doGet('/allfilms/genre');
+    }
+
+    /**
+     * API Get top films
+     * GET /allfilms/top
+     * @static
+     * @returns {Promise<Response>}
+     */
+    static getTop(){
+        return Network.doGet('/allfilms/top');
     }
 }
