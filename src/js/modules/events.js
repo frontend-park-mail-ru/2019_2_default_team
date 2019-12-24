@@ -24,6 +24,10 @@ export const FILM = {
     getFilmsSuccess: 'getFilmsS',
     getFilmsFailed: 'getFilmsF',
 
+    wideSearch: 'wideSearch',
+    wideSearchSuccess: 'wideSearchS',
+    wideSearchFailed: 'wideSearchF',
+
     createFilm: 'createFilm',
     createFilmSuccess: 'createFilmS',
     createFilmFailed: 'createFilmF',
