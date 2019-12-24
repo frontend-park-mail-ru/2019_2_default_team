@@ -232,6 +232,10 @@
     border-radius: 40px;
 }
 
+.ratingBtn_voted {
+    color: red;
+}
+
 .ratingBtn:active {
     color: red;
 }

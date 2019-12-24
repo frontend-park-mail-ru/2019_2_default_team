@@ -32,7 +32,10 @@ mixin film()
                     div.ratingText
                         span.tip Рейтинг:
                         div#ratingCounter #{rating}
-                    button#ratingPlusButton.ratingBtn ♥
+                    if is_voted
+                        button#ratingPlusButton.ratingBtn.ratingBtn_voted ♥
+                    else
+                        button#ratingPlusButton.ratingBtn ♥
                 p
                     div
                         tr #{description}

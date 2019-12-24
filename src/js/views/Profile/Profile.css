@@ -83,3 +83,33 @@
 .profile__button_margin {
     margin-top: 40px;
 }
+
+.ticket-block {
+    display: flex;
+    flex-direction: row;
+    margin: 25px;
+    padding: 10px;
+    border: 1px solid white;
+}
+
+.ticket-block__poster {
+    height: 200px;
+    margin-right: 15px;
+}
+
+.ticket-information {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-information__row {
+    margin: 5px;
+}
+
+.ticket-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
