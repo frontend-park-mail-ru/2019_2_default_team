@@ -39,7 +39,11 @@ mixin film()
                 p
                     div
                         tr #{description}
-                button#buyTicketButton Купить билет
+                if isAuthorized
+                    button#buyTicketButton Купить билет
+                else
+                    button#buyTicketButton(disabled) Купить билет
+                    span(style="color: red") Требуется авторизация
     .container
         h1 Смотрите также:
         div.recommendations-block.recommendations-block_dark
@@ -57,11 +61,15 @@ mixin film()
     .container
         div#commentsSectionWrapper.comments-section-wrapper
             h2  Написать комментарий
-            div#addCommentSection.add-comment-section
-                textarea#addCommentArea.add-comment-area
-                div.add-comment-buttons-section
-                    button#submitCommentButton.submit-comment-button Отправить
-                    button#clearCommentButton.clear-comment-button Очистить
+            if isAuthorized
+                div#addCommentSection.add-comment-section
+                    textarea#addCommentArea.add-comment-area
+                    div.add-comment-buttons-section
+                        button#submitCommentButton.submit-comment-button Отправить
+                        button#clearCommentButton.clear-comment-button Очистить
+            else
+                div(style="color:red")
+                    h3 Чтобы оставить комментарий нужно авторизоваться!
             h2  Комментарии
             div#commentsSection.comments-section
                 if comments

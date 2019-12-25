@@ -33,9 +33,9 @@ export class PopupView extends View {
             this.backPopupSeatsButton = document.getElementById('backPopupSeatsButton');
             this.backPopupSeatsButton.addEventListener('click', this._backPopup.bind(this));
             // Назначаем функции на кнопку с выбором места
-            for(let i = 1; i < data.maxSeatNumber; i++) {
+            for(let i = 1; i <= data.maxSeatNumber; i++) {
                 this.seatButton = document.getElementById(`popup-seat-${i}`);
-                if(this.seatButton.disabled) {
+                if(this.seatButton.classList.contains("popup-seat-item-disabled")) {
                     continue;
                 }
                 // Получаем seatId для данного seatNumber

@@ -13,8 +13,11 @@ export class FilmpageController extends Controller{
     }
 
     _onSendCommentary(data) {
-        api.sendComment(data.commentInfo);
-        this._globalEventBus.triggerEvent(FILM.getFilm, {id: data.filmID});
+        api.sendComment(data.commentInfo).then(() => {
+            this._globalEventBus.triggerEvent(FILM.getFilm, {id: data.filmID});
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     _onPlusRating(filmId) {

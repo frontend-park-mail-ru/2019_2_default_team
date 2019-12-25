@@ -112,13 +112,15 @@ export class PopupController extends Controller {
                 layoutMap.get(seatsJSON[i].row).push({
                     seatNumber: seatsJSON[i].seat_number,
                     isTaken: seatsJSON[i].is_taken,
-                    seatId: seatsJSON[i].seat_id
+                    seatId: seatsJSON[i].seat_id,
+                    price: seatsJSON[i].price
                 });
             } else {
                 layoutMap.set(seatsJSON[i].row, [{
                     seatNumber: seatsJSON[i].seat_number,
                     isTaken: seatsJSON[i].is_taken,
-                    seatId: seatsJSON[i].seat_id
+                    seatId: seatsJSON[i].seat_id,
+                    price: seatsJSON[i].price
                 }])
             }
         }

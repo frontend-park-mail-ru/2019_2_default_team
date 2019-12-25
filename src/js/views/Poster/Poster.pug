@@ -21,5 +21,6 @@ div.container
                 form(id = 'search')
                     input(id = 'search-input' type='text' style= "float: right"  placeholder= "Поиск")
     .body
-        each val in items
-            +card-deck(val.poster, val.title, val, val.id)
+        if items
+            each val in items
+                +card-deck(val.poster, val.title, val, val.id)
