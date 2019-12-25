@@ -28,10 +28,10 @@ div.popup-window#popupWindow
                         if seatItem.isTaken
                             .popup-seat-item-disabled(id=`popup-seat-${seatItem.seatNumber}`)
                                 .popup-seat-item__info <b>Место:</b> #{seatItem.seatNumber}
-                                .popup-seat-item__info <b>Цена :</b> 0
+                                .popup-seat-item__info <b>Цена :</b> #{seatItem.price}
                         else
                             .popup-seat-item(id=`popup-seat-${seatItem.seatNumber}`)
                                 .popup-seat-item__info <b>Место:</b> #{seatItem.seatNumber}
-                                .popup-seat-item__info <b>Цена :</b> 0
+                                .popup-seat-item__info <b>Цена :</b> #{seatItem.price}
                     br
         button#backPopupSeatsButton Назад
