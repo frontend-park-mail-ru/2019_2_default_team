@@ -42,12 +42,12 @@ export class FilterController extends Controller{
             } )
     }
 
-    _onSearch = (data) => {
-        console.log(data);
-        api.searchFilm(data)
+    _onSearch = (searchValue) => {
+        api.searchFilm(searchValue)
             .then(res => {
                 if (res.ok) {
                     res.json().then(data => {
+                        data.searchInputValue = searchValue;
                         this._globalEventBus.triggerEvent(FILM.getFilmsSuccess, data);
                     });
                 } else {

@@ -17,7 +17,7 @@ export class PosterView extends View {
 
         this._globalEventBus.triggerEvent(AUTH.checkAuth);
         this._globalEventBus.triggerEvent(FILM.getFilms);
-        super.render(data)
+        super.render(data);
     }
 
     onRender() {
@@ -35,6 +35,12 @@ export class PosterView extends View {
     _onGetFilmsSuccess(data){
         this._data = {items: data};
         super.render(this._data);
+        let searchInput = document.getElementById('search-input');
+        if(data.searchInputValue !== undefined){
+            searchInput.value = data.searchInputValue;
+            searchInput.focus();
+        }
+        searchInput.addEventListener('input', this._onSearch.bind(this));
         this._todayButton = document.getElementById('today');
         this._todayButton.addEventListener('click', this._onTodayFilter.bind(this));
         this._upcomingButton = document.getElementById('upcoming');
