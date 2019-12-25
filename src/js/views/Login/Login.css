@@ -35,6 +35,10 @@ input {
     transition-duration: 0.25s;
 }
 
+.field_error {
+    border: 3px solid red;
+}
+
 .field:focus {
     transform: scale(1.25);
 }

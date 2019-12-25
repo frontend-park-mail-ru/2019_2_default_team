@@ -15,9 +15,7 @@ class AuthModel {
                 if (response.ok) {
                     this._globalEventBus.triggerEvent(AUTH.signInSuccess, {});
                 } else {
-                    response.json().then(data => {
-                        this._globalEventBus.triggerEvent(AUTH.signInFailed, data);
-                    });
+                    this._globalEventBus.triggerEvent(AUTH.signInFailed, {});
                 }
             })
             .catch(error => {

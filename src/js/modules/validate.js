@@ -1,7 +1,7 @@
 const errEmailIsInvalid = 'Invalid email';
 const errInvalidPasswordData =
     'Password must have: 8 symbols, 1 numeral, 1 upper case letter and 1 lowercase.';
-const emailRegexExp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+const emailRegexExp = /^\w[0-9a-zA-Z]*@\w[0-9a-zA-Z]*[.]\w\w+/;
 const passRegexExp = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.{8,})/;
 const validImageSize = 15 * (1 << 20);
 const errImageExtensionIsInvalid = 'Image extension is not valid';

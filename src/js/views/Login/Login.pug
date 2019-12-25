@@ -1,12 +1,24 @@
 style
     include Login.css
 div.container
-    form
-        div.container_login
-            input.field(type="email" name="email" placeholder="e-mail")
-            span.error_login(aria-live='polite')
-        div.container_pass
-            input.field(type="password" name="password" placeholder="Пароль")
-            span.error_pass(aria-live='polite')
-        div.container_sub
-            input#btn(type="submit" value="Войти")
+    if invalidLoginTooltip
+        form
+            div.container_login
+                input.field.field_error(type="email" name="email" placeholder="e-mail")
+                span.error_login(aria-live='polite')
+            div.container_pass
+                input.field.field_error(type="password" name="password" placeholder="Пароль")
+                span.error_pass(aria-live='polite')
+            div.container_sub
+                input#btn(type="submit" value="Войти")
+        h3(style="color: red; font-style: italic;") Неверный email/пароль
+    else
+        form
+            div.container_login
+                input.field(type="email" name="email" placeholder="e-mail")
+                span.error_login(aria-live='polite')
+            div.container_pass
+                input.field(type="password" name="password" placeholder="Пароль")
+                span.error_pass(aria-live='polite')
+            div.container_sub
+                input#btn(type="submit" value="Войти")

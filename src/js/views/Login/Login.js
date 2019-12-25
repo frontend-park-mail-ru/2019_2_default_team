@@ -32,11 +32,13 @@ export class LoginView extends View {
             } else {
                 event.target.className = 'input invalid';
                 error.innerHTML = 'Некорректный email';
+                error.style = "color: red;";
             }
         }, false);
     }
 
     _onSubmitFailed (data) {
+        this.render({invalidLoginTooltip: true});
     }
 
     _onSubmit (ev) {
