@@ -44,19 +44,19 @@ function renderHTML () {
   }
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderHTML();
+   // renderHTML();
 
     // Проверим, что эта технология доступна в браузере
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js')
-            .then((reg) => {
-                // регистрация сработала
-                console.log('Registration succeeded. Scope is ' + reg.scope);
-            }).catch((error) => {
-            // регистрация прошла неудачно
-            console.log('Registration failed with ' + error);
-        });
-    }
+    // if ('serviceWorker' in navigator) {
+    //     navigator.serviceWorker.register('/sw.js')
+    //         .then((reg) => {
+    //             // регистрация сработала
+    //             console.log('Registration succeeded. Scope is ' + reg.scope);
+    //         }).catch((error) => {
+    //         // регистрация прошла неудачно
+    //         console.log('Registration failed with ' + error);
+    //     });
+    // }
     const body = document.querySelector('.page');
     const header = document.querySelector('header');
     const content = document.querySelector('.main-content');

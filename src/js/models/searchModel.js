@@ -8,7 +8,7 @@ class SearchModel {
         this._globalEventBus.subscribeToEvent(FILM.wideSearch, this._onWideSearch.bind(this));
     }
 
-    _onWideSearch = (search) => {
+    _onWideSearch(search){
       api.wideSearch(search)
           .then(res =>{
               if (res.ok) {

@@ -21,11 +21,14 @@ export class SearchView extends View {
         this._data = {items: data};
         super.render(this._data);
         this._submitButton = this._root.querySelector('.search-form.js-search-form');
-        this._submitButton.addEventListener('submit', this._onSubmit.bind(this));
+        const genreIn = document.getElementById('js-genre-input');
+        console.log(genreIn.value);
+        this._submitButton.addEventListener('submit', this._onSubmit.bind(this), false);
         console.log(this._submitButton);
     };
 
-    _onSubmit = () => {
+    _onSubmit = (ev) => {
+        ev.preventDefault();
       console.log("submit");
       const genreIn = document.getElementById('js-genre-input');
       const actorIn = document.getElementById('js-actor-input');
@@ -36,6 +39,8 @@ export class SearchView extends View {
       const date = document.getElementById('js-date-input');
       const timemin = document.getElementById('js-timemin-input');
       const timemax = document.getElementById('js-timemax-input');
+      const pricemin = document.getElementById('js-pricemin-input');
+      const pricemax = document.getElementById('js-pricemax-input');
       const search = {
           genre: genreIn.value,
           actors: actorIn.value,
@@ -46,7 +51,10 @@ export class SearchView extends View {
           date: date.value,
           time_min: timemin.value,
           time_max: timemax.value,
-      }
+          price_min: pricemin.value,
+          price_max: pricemax.value,
+      };
+      console.log(search);
       this._globalEventBus.triggerEvent(FILM.wideSearch, search);
     }
 }
