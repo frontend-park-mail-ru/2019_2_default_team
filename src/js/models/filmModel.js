@@ -25,7 +25,18 @@ class FilmModel {
                                         if(res.ok) {
                                             res.json().then(json => {
                                                 data.comments = json.comments;
-                                                this._globalEventBus.triggerEvent(FILM.getFilmSuccess, data);
+                                                // NOTE: Зареган ли пользователь? Если да, то res.ok == true и проставляем is_authorized = true
+                                                // NOTE: Если нет, то res.ok == false и проставляем is_authorized = false
+                                                api.authCheck().then(res => {
+                                                    if(res.ok) {
+                                                        data.isAuthorized = true;
+                                                    } else {
+                                                        data.isAuthorized = false;
+                                                    }
+                                                    this._globalEventBus.triggerEvent(FILM.getFilmSuccess, data);
+                                                }).catch(err => {
+                                                    console.log(err);
+                                                });
                                             }).catch(err => {
                                                 console.log(err);
                                             });
