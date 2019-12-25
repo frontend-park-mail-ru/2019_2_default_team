@@ -44,8 +44,6 @@ export class FilmpageView extends View{
                         }).catch(err => {
                             console.log(err);
                         }); 
-                    } else {
-                        alert("Вы не авторизованы!");
                     }
                 }).catch(err => {
                     console.log(err);
