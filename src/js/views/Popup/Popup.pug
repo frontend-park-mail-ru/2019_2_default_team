@@ -23,10 +23,15 @@ div.popup-window#popupWindow
         div(style='font-size: 20px;') Выбор места
         div.popup-session-seats-wrapper#seatsList
             each row, idxRow in locals.seatsArray
-                each seatItem, idxSeat in row
-                    if seatItem.isTaken
-                        button.popup-seat-item(id=`popup-seat-${seatItem.seatNumber}` disabled) #{seatItem.seatNumber}
-                    else
-                        button.popup-seat-item(id=`popup-seat-${seatItem.seatNumber}`) #{seatItem.seatNumber}
-                br
+                .popup-session-seats-wrapper__row
+                    each seatItem, idxSeat in row
+                        if seatItem.isTaken
+                            .popup-seat-item-disabled(id=`popup-seat-${seatItem.seatNumber}`)
+                                .popup-seat-item__info <b>Место:</b> #{seatItem.seatNumber}
+                                .popup-seat-item__info <b>Цена :</b> 0
+                        else
+                            .popup-seat-item(id=`popup-seat-${seatItem.seatNumber}`)
+                                .popup-seat-item__info <b>Место:</b> #{seatItem.seatNumber}
+                                .popup-seat-item__info <b>Цена :</b> 0
+                    br
         button#backPopupSeatsButton Назад

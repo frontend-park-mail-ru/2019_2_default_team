@@ -50,16 +50,61 @@
 }
 
 .popup-seat-item {
-    height: 35px;
-    width: 35px;
+    display: flex;
+    flex-direction: column;
+    height: 75px;
+    width: 75px;
     font-size: 10px;
     margin: 10px;
     align-content: center;
     justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.popup-seat-item-disabled {
+    display: flex;
+    flex-direction: column;
+    height: 75px;
+    width: 75px;
+    font-size: 10px;
+    margin: 10px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    opacity: 0.5;
+}
+
+
+.popup-seat-item:hover {
+    cursor: pointer;
+    background-color: #cccccc;
+}
+
+.popup-seat-item:active {
+    background-color: #777777;
+}
+
+.popup-seat-item:disabled {
+    opacity: 0.5;
+    cursor: none;
+}
+
+.popup-seat-item__info {
+    color: black;
+    justify-self: center;
 }
 
 .popup-session-seats-wrapper {
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-session-seats-wrapper__row {
+    display: flex;
+    flex-direction: row;
 }
 
 .text {
