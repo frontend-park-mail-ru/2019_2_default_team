@@ -114,7 +114,7 @@ export class RegisterView extends View {
             const  genre_elements = document.querySelectorAll('.row-el.checked');
             let genres = [];
             genre_elements.forEach(function (elem) {
-                genres.push(elem.innerText);
+                genres.push({genre: elem.innerText});
             });
             const user = {
                 email: email.value,
@@ -122,9 +122,9 @@ export class RegisterView extends View {
                 nickname: nickname.value,
                 first_name: firstname.value,
                 last_name: secondname.value,
-                genre: genres,
+                genres: genres,
             };
-            console.log("before trigger");
+            console.log(genres);
             this._globalEventBus.triggerEvent(AUTH.signUpCustomer, user);
         }
     }
