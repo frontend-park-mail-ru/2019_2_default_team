@@ -33,6 +33,9 @@ export class SearchView extends View {
       const countryIn = document.getElementById('js-country-input');
       const yearMin = document.getElementById('js-yearmin-input');
       const yearMax = document.getElementById('js-yearmax-input');
+      const date = document.getElementById('js-date-input');
+      const timemin = document.getElementById('js-timemin-input');
+      const timemax = document.getElementById('js-timemax-input');
       const search = {
           genre: genreIn.value,
           actors: actorIn.value,
@@ -40,6 +43,9 @@ export class SearchView extends View {
           country: countryIn.value,
           year_min: yearMin.value,
           year_max: yearMax.value,
+          date: date.value,
+          time_min: timemin.value,
+          time_max: timemax.value,
       }
       this._globalEventBus.triggerEvent(FILM.wideSearch, search);
     }

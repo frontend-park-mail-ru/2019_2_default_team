@@ -252,7 +252,7 @@ export default class Api {
         return Network.doGet('/allfilms/top');
     }
     //TODO Description
-    static wideSearch({genre, actors, ratingmin, country, year_min, year_max}){
-        return Network.doGet(`/allfilms?genre=${genre}?actors=${actors}?ratingmin=${ratingmin}?country=${country}?start_year=${year_min}?last_year=${year_max}`)
+    static  wideSearch({genre, actors, ratingmin, country, year_min, year_max, date, time_min, time_max}){
+        return Network.doGet(`/search?genre=${genre}?actors=${actors}?ratingmin=${ratingmin}?country=${country}?start_year=${year_min}?last_year=${year_max}?date=${date}?time_min=${time_min}?time_max=${time_max}`);
     }
 }

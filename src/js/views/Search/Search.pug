@@ -44,6 +44,21 @@ div.container
                                 input#js-yearmin-input.input(name='yearmin' type='text' placeholder='1997' value='')
                                 div до
                                 input#js-yearmax-input.input(name='yearmax' type='text' placeholder='2015' value='')
+                            .search-form__input
+                                div Цена от
+                                input#js-pricemin-input.input(name='yearmin' type='text' placeholder='100' value='')
+                                div до
+                                input#js-pricemax-input.input(name='yearmax' type='text' placeholder='800' value='')
+                            .search-form__input
+                                p
+                                    | Дата
+                                    input#js-date-input.input(type='date' name='calendar')
+                            .search-form__input
+                                p
+                                    | Время сеанса от
+                                    input#js-timemin-input.input(type='time' name='calendar')
+                                    | До
+                                    input#js-timemax-input.input(type='time' name='calendar')
                             input#js-search-params.button(type='submit' value='Применить')
 
                 th
