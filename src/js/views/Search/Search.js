@@ -18,20 +18,25 @@ export class SearchView extends View {
 
 
     _onGetFilmsSearchSuccess = (data) => {
-        this._data = {items: data};
-        super.render(this._data);
-        let searchInput = document.getElementById('search-input');
-        console.log(searchInput);
-        if(data.searchInputValue !== undefined){
-            searchInput.value = data.searchInputValue;
-            searchInput.focus();
+        if (!data){
+            data = {};
+            super.render(data);
+        } else {
+            this._data = {items: data};
+            super.render(this._data);
+            let searchInput = document.getElementById('search-input');
+            console.log(searchInput);
+            if (data.searchInputValue !== undefined) {
+                searchInput.value = data.searchInputValue;
+                searchInput.focus();
+            }
+            searchInput.addEventListener('input', this._onSearch.bind(this));
+            this._submitButton = this._root.querySelector('.search-form.js-search-form');
+            const genreIn = document.getElementById('js-genre-input');
+            console.log(genreIn.value);
+            this._submitButton.addEventListener('submit', this._onSubmit.bind(this), false);
+            console.log(this._submitButton);
         }
-        searchInput.addEventListener('input', this._onSearch.bind(this));
-        this._submitButton = this._root.querySelector('.search-form.js-search-form');
-        const genreIn = document.getElementById('js-genre-input');
-        console.log(genreIn.value);
-        this._submitButton.addEventListener('submit', this._onSubmit.bind(this), false);
-        console.log(this._submitButton);
     };
 
     _onSubmit = (ev) => {
@@ -49,7 +54,7 @@ export class SearchView extends View {
       const pricemin = document.getElementById('js-pricemin-input');
       const pricemax = document.getElementById('js-pricemax-input');
       let fulldate = "";
-      if (!date.value) {
+      if (!date.value && !timemin.value && !timemax.value) {
           let year = new Date().getFullYear();
           let day = new Date().getUTCDate();
           let month = new Date().getMonth() + 1;
@@ -61,8 +66,9 @@ export class SearchView extends View {
       }
       let tmax = "";
       let tmin = "";
+
       if (!timemax.value){
-          tmax = "00:00";
+          tmax = "23:59";
       } else {
           tmax = timemax.value;
       }
