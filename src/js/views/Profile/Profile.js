@@ -43,21 +43,38 @@ export class ProfileView extends View {
         this.editProfileButton = document.getElementById('editProfileButton');
         if(this.editProfileButton) {
             this.editProfileButton.addEventListener('click', () => {
-                data.isEditingMode = true;
+                data.isMode = 'editing';
                 this._onLoadProfileSuccess(data);
             });
         }
-        if(data.isEditingMode) {
+        this.historyProfileButton = document.getElementById('historyProfileButton');
+        if(this.historyProfileButton) {
+            this.historyProfileButton.addEventListener('click', () => {
+                data.isMode = 'history';
+                this._onLoadProfileSuccess(data);
+            });
+        }
+        if(data.isMode === 'editing') {
             this.addEditingModeEventListeners(data);
+        } else if(data.isMode === 'history') {
+            this.addHistoryModeEventListeners(data);
         }
     }
 
+    addHistoryModeEventListeners(data) {
+        this.backProfileButton = document.getElementById('backProfileButton');
+        this.backProfileButton.addEventListener('click', () => {
+            data.isMode = 'profile';
+            this._onLoadProfileSuccess(data);
+        })
+    }
+    
     addEditingModeEventListeners(data) {
         // Кнопки управления в режиме редактирования
         // Кнопка назад (без сохранения)
         this.backProfileButton = document.getElementById('backProfileButton');
         this.backProfileButton.addEventListener('click', () => {
-            data.isEditingMode = false;
+            data.isMode = 'profile';
             this._onLoadProfileSuccess(data);
         })
         // Кнопка сохранить 
@@ -76,7 +93,7 @@ export class ProfileView extends View {
                     profileJSON.email = inputsArray[4].value;
                 }
                 this._globalEventBus.triggerEvent(PROFILE.saveProfile, profileJSON);
-                data.isEditingMode = false;
+                data.isMode = 'profile';
                 this._globalEventBus.triggerEvent(PROFILE.loadProfile);
             }
         });
