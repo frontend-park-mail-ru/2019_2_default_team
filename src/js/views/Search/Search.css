@@ -153,3 +153,21 @@ table {
     width: 100%;
 }
 
+.left-menu {
+    width: 20%;
+    color: white;
+    align-items: center;
+    text-align: -webkit-center;
+}
+
+.right-menu {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-form__input {
+    padding: 6px;
+}

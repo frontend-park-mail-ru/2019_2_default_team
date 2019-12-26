@@ -20,6 +20,13 @@ export class SearchView extends View {
     _onGetFilmsSearchSuccess = (data) => {
         this._data = {items: data};
         super.render(this._data);
+        let searchInput = document.getElementById('search-input');
+        console.log(searchInput);
+        if(data.searchInputValue !== undefined){
+            searchInput.value = data.searchInputValue;
+            searchInput.focus();
+        }
+        searchInput.addEventListener('input', this._onSearch.bind(this));
         this._submitButton = this._root.querySelector('.search-form.js-search-form');
         const genreIn = document.getElementById('js-genre-input');
         console.log(genreIn.value);
@@ -56,5 +63,13 @@ export class SearchView extends View {
       };
       console.log(search);
       this._globalEventBus.triggerEvent(FILM.wideSearch, search);
-    }
+    };
+
+    _onSearch = (ev) => {
+        ev.preventDefault();
+        console.log("CALL");
+        let data = document.getElementById('search-input').value;
+        this._globalEventBus.triggerEvent(FILTER.search, data);
+    };
+
 }
