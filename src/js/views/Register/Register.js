@@ -125,6 +125,7 @@ export class RegisterView extends View {
                 genres: genres,
             };
             console.log(genres);
+            console.log(user);
             this._globalEventBus.triggerEvent(AUTH.signUpCustomer, user);
         }
     }
