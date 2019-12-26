@@ -133,3 +133,7 @@ p {
     color: white;
     font-weight: bold;
 }
+
+.red_border {
+    border: 3px solid red;
+}
