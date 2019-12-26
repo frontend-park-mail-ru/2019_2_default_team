@@ -16,6 +16,10 @@
     margin: 15px;
 }
 
+.profile_margin-input {
+    margin: 11px;
+}
+
 .profile__title {
     font-weight: 600;
     font-size: 30px;

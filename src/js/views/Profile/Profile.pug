@@ -21,12 +21,12 @@ if isAuthorized
                     .profile-info__fieldname.profile_margin-small    Новый пароль
                     .profile-info__fieldname.profile_margin-small    Подтверждение
                 .profile-info-right
-                    input.profile_margin-small(type="text", name="nickname" value=nickname) 
-                    input.profile_margin-small(type="text", name="first_name" value=first_name) 
-                    input.profile_margin-small(type="text", name="last_name" value=last_name)
-                    input.profile_margin-small(type="text", name="email" value=email)
-                    input.profile_margin-small(type="password", name="new_password" value="password")
-                    input.profile_margin-small(type="password", name="second_password" value="password")
+                    input.profile_margin-input(type="text", name="nickname" value=nickname) 
+                    input.profile_margin-input(type="text", name="first_name" value=first_name) 
+                    input.profile_margin-input(type="text", name="last_name" value=last_name)
+                    input.profile_margin-input(type="text", name="email" value=email)
+                    input.profile_margin-input(type="password", name="new_password" value="password")
+                    input.profile_margin-input(type="password", name="second_password" value="password")
             .profile-info__buttons-group
                 button#backProfileButton.profile__button_margin Назад
                 button#saveProfileButton.profile__button_margin Сохранить
