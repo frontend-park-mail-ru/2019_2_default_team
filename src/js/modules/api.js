@@ -239,7 +239,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static getFavFilms() {
-        return Network.doGet('/allfilms/genre');
+        return Network.doGet('/allfilms/lovely');
     }
 
     /**
