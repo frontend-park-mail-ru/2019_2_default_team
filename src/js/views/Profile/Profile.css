@@ -38,25 +38,21 @@
 .profile-avatar__buttons {
     display: flex;
     flex-direction: column;
-    align-self: center;
 }
 
 .profile-info {
     display: flex;
     flex-direction: row;
-    align-self: center;
 }
 
 .profile-info-left {
     display: flex;
     flex-direction: column;
-    align-self: left;
 }
 
 .profile-info-right {
     display: flex;
     flex-direction: column;
-    align-self: left;
 }
 
 .profile-info__fieldname {
