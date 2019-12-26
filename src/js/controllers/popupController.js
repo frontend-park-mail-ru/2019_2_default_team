@@ -82,7 +82,6 @@ export class PopupController extends Controller {
         api.bookSeat(data.apiInfo).then(res => {
             if(res.ok) {
                 this._onClosePopup();
-                // alert('Вы заказали билет ' + data.seatNumber);
             } else {
                 console.log("Could't book a ticket");
             }
