@@ -53,14 +53,44 @@ export class RegisterView extends View {
                 error.innerHTML = 'Некорректный email';
             }
         }, false);
+
+        nickname.addEventListener('input', function(event) {
+            const error = event.target.nextElementSibling;
+            event.target.className = 'input';
+            error.innerHTML = '';
+            error.className = 'error';
+        }, false);
     }
 
-    _onSubmitFailed(data) {
-        const login = this._signupForm.querySelector('[name="email"]');
-        login.classList.add('invalid');
-
-        const error = login.nextElementSibling;
-        error.innerHTML = data.error;
+    _onSubmitFailed(errorList) {
+        const emailInput = this._signupForm.querySelector('[name="email"]');
+        const passwordInput = this._signupForm.querySelector('[name="password"]');
+        const nicknameInput = this._signupForm.querySelector('[name="nickname"]');
+        if(errorList.includes('invalid_pass')) {
+            passwordInput.classList.add('red_border');
+            let passwordLabel = document.getElementById('passwordLabel');
+            passwordLabel.innerText = 'Пароль не удовлетворяет требованиям безопасности';
+        }
+        if(errorList.includes('email_registered')) {
+            emailInput.classList.add('red_border');
+            let emailLabel = document.getElementById('emailLabel');
+            emailLabel.innerText = 'Данный email уже зарегестрирован';
+        }
+        if(errorList.includes('email_invalid')) {
+            emailInput.classList.add('red_border');
+            let emailLabel = document.getElementById('emailLabel');
+            emailLabel.innerText = 'Данный email некорректен';
+        }
+        if(errorList.includes('nick_registered')) {
+            nicknameInput.classList.add('red_border');
+            let nicknameLabel = document.getElementById('nicknameLabel');
+            nicknameLabel.innerText = 'Данный никнейм уже зарегестрирован';
+        }
+        if(errorList.includes('invalid_length')) {
+            nicknameInput.classList.add('red_border');
+            let nicknameLabel = document.getElementById('nicknameLabel');
+            nicknameLabel.innerText = 'Никнейм слишком короткий';
+        }
     }
 
     _onSubmit(ev) {

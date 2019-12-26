@@ -31,14 +31,24 @@ class AuthModel {
                     localStorage.setItem('token', token);
                         this._globalEventBus.triggerEvent(AUTH.signUpSuccess, {});
                 } else {
-                    res.json().then(data => {
-                        this._globalEventBus.triggerEvent(AUTH.signUpFailed, data);
+                    res.json().then(body => {
+                        let errorList = this._parseErrors(body);
+                        this._globalEventBus.triggerEvent(AUTH.signUpFailed, errorList);
                     });
                 }
             })
             .catch(error => {
                 console.error(error);
             });
+    }
+
+    _parseErrors(errorsJSON) {
+        let errorsArr = errorsJSON.error;
+        let errorList = [];
+        for(let i = 0; i < errorsArr.length; i++) {
+            errorList.push(errorsArr[i].text);
+        }
+        return errorList;
     }
 }
 
