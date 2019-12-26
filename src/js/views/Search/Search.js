@@ -54,7 +54,7 @@ export class SearchView extends View {
       const pricemin = document.getElementById('js-pricemin-input');
       const pricemax = document.getElementById('js-pricemax-input');
       let fulldate = "";
-      if (!date.value && !timemin.value && !timemax.value) {
+      if (!date.value) {
           let year = new Date().getFullYear();
           let day = new Date().getUTCDate();
           let month = new Date().getMonth() + 1;
@@ -67,15 +67,15 @@ export class SearchView extends View {
       let tmax = "";
       let tmin = "";
 
-      if (!timemax.value){
-          tmax = "23:59";
-      } else {
-          tmax = timemax.value;
+      if (timemax.value){
+          tmax = fulldate + "T" + timemax.value + ":00.000Z";
       }
-      if (!timemin.value){
-          tmin = "00:00";
-      } else {
-          tmin = timemin.value;
+      if (timemin.value){
+          tmin = fulldate + "T" + timemin.value + ":00.000Z";
+      }
+      if (!timemin.value && !timemax.value && date.value){
+          tmax = fulldate + "T" + "23:59" + ":00.000Z";
+          tmin = fulldate + "T" + "00:00" + ":00.000Z";
       }
       const search = {
           genre: genreIn.value,
@@ -84,8 +84,8 @@ export class SearchView extends View {
           country: countryIn.value,
           year_min: yearMin.value,
           year_max: yearMax.value,
-          time_min: fulldate + "T" + tmin + ":00.000Z",
-          time_max: fulldate + "T" + tmax + ":00.000Z",
+          time_min: tmin,
+          time_max: tmax,
           price_min: pricemin.value,
           price_max: pricemax.value,
       };
