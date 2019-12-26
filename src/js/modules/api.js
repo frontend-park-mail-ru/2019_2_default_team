@@ -258,6 +258,6 @@ export default class Api {
     }
     //TODO Description
     static  wideSearch({genre, actors, ratingmin, country, year_min, year_max, time_min, time_max, price_min, price_max}){
-        return Network.doGet(`/search?genre=${genre}&actor=${actors}&ratingmin=${ratingmin}&country=${country}&start_year=${year_min}&last_year=${year_max}&time_min=${time_min}&time_max=${time_max}&min_price=${price_min}&max_price=${price_max}`);
+        return Network.doGet(`/search?genre=${genre}&actor=${actors}&ratingmin=${ratingmin}&country=${country}&start_year=${year_min}&last_year=${year_max}&start_time=${time_min}&last_time=${time_max}&min_price=${price_min}&max_price=${price_max}`);
     }
 }
