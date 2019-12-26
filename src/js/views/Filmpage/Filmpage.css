@@ -189,8 +189,7 @@
 .recommendations-block {
     display: flex;
     flex-direction: row;
-    overflow: hidden;
-    overflow-x: hidden;
+    flex-wrap: wrap;
     padding-top: 5vh;
     padding-bottom: 5vh;
 }
@@ -201,9 +200,8 @@
 }
 
 .recommendations-block__poster {
-    margin-left: 5vh;
-    height: 40vh;
-    width: 27vh;
+    margin-left: 50px;
+    width: 200px;
     transition: transform .5s;
 }
 
