@@ -48,6 +48,29 @@ export class SearchView extends View {
       const timemax = document.getElementById('js-timemax-input');
       const pricemin = document.getElementById('js-pricemin-input');
       const pricemax = document.getElementById('js-pricemax-input');
+      let fulldate = "";
+      if (!date.value) {
+          let year = new Date().getFullYear();
+          let day = new Date().getUTCDate();
+          let month = new Date().getMonth() + 1;
+          fulldate = year + "-" + month + "-" + day;
+          console.log(month);
+          console.log(fulldate);
+      } else {
+          fulldate = date.value;
+      }
+      let tmax = "";
+      let tmin = "";
+      if (!timemax.value){
+          tmax = "00:00";
+      } else {
+          tmax = timemax.value;
+      }
+      if (!timemin.value){
+          tmin = "00:00";
+      } else {
+          tmin = timemin.value;
+      }
       const search = {
           genre: genreIn.value,
           actors: actorIn.value,
@@ -55,9 +78,8 @@ export class SearchView extends View {
           country: countryIn.value,
           year_min: yearMin.value,
           year_max: yearMax.value,
-          date: date.value,
-          time_min: timemin.value,
-          time_max: timemax.value,
+          time_min: fulldate + "T" + tmin + ":00.000Z",
+          time_max: fulldate + "T" + tmax + ":00.000Z",
           price_min: pricemin.value,
           price_max: pricemax.value,
       };
