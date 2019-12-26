@@ -19,8 +19,11 @@ div.container
                 a(id = 'wide-search' onclik = '/search' href= '/search') Расширенный поиск
             th(style="float: none")
                 form(id = 'search')
-                    input(id = 'search-input' type='text' style= "float: right"  placeholder= "Поиск")
+                    input(id = 'search-input' type='text' style= "float: right"  placeholder= "Поиск" autocomplete="off")
     .body
         if items
-            each val in items
-                +card-deck(val.poster, val.title, val, val.id)
+            if items.length
+                each val in items
+                    +card-deck(val.poster, val.title, val, val.id)
+            else 
+                h3(style="color:white; fonst-style: italic;") По вашему запросу фильмов не найдено!
