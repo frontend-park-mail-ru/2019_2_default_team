@@ -12,7 +12,6 @@ export class ProfileModel {
     }
 
     _onLoadProfile () {
-        console.log("LOAD PROFILE");
         api.getProfileInfo()
             .then(res => {
                 if (res.ok) {

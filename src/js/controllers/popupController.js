@@ -54,7 +54,7 @@ export class PopupController extends Controller {
         let body = document.getElementsByTagName('body')[0];
         body.classList.remove('no-scroll');
     }
-    
+
     _onChangeLayout(data) {
         if(data.sessionIndex !== undefined) {
             // TODO: Переделать callback'и на async/await
@@ -82,7 +82,7 @@ export class PopupController extends Controller {
         api.bookSeat(data.apiInfo).then(res => {
             if(res.ok) {
                 this._onClosePopup();
-                alert('Вы заказали билет ' + data.seatNumber);
+                // alert('Вы заказали билет ' + data.seatNumber);
             } else {
                 console.log("Could't book a ticket");
             }
@@ -164,5 +164,5 @@ export class PopupController extends Controller {
         // Убираем стиль с основной страницы, чтобы она снова скроллилась
         let body = document.getElementsByTagName('body')[0];
         body.classList.remove('no-scroll');
-    }  
+    }
 }

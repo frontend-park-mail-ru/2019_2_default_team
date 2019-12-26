@@ -70,10 +70,15 @@ export default class Api {
      * @param {string} userID
      * @returns {Promise<Response>}
      */
-    static editAvatar({avatar}) {
+    static editAvatar(avatar) {
         const formData = new FormData();
-        formData.append('file', avatar.avatar);
-        return Network.doPostFormData('/users/images/', formData);
+        console.log(avatar);
+        formData.append('file', avatar[0]);
+        console.log(formData);
+        return fetch('http://127.0.0.1:8080/api/avatar', {
+            method: 'PUT',
+            body: FormData
+        })
     }
 
     /**
@@ -252,7 +257,7 @@ export default class Api {
         return Network.doGet('/allfilms/top');
     }
     //TODO Description
-    static  wideSearch({genre, actors, ratingmin, country, year_min, year_max, date, time_min, time_max, price_min, price_max}){
-        return Network.doGet(`/search?genre=${genre}&actor=${actors}&ratingmin=${ratingmin}&country=${country}&start_year=${year_min}&last_year=${year_max}&date=${date}&time_min=${time_min}&time_max=${time_max}&min_price=${price_min}&max_price=${price_max}`);
+    static  wideSearch({genre, actors, ratingmin, country, year_min, year_max, time_min, time_max, price_min, price_max}){
+        return Network.doGet(`/search?genre=${genre}&actor=${actors}&ratingmin=${ratingmin}&country=${country}&start_year=${year_min}&last_year=${year_max}&start_time=${time_min}&last_time=${time_max}&min_price=${price_min}&max_price=${price_max}`);
     }
 }

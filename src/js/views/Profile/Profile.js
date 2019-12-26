@@ -22,10 +22,8 @@ export class ProfileView extends View {
     }
 
     render (data = {}) {
-        console.log("RENDER");
         this.isViewClosed=false;
         this._globalEventBus.triggerEvent(PROFILE.loadProfile);
-        console.log("done");
     }
 
     /**
@@ -39,7 +37,7 @@ export class ProfileView extends View {
             return;
         }
         super.render(data);
-        // Переход в режим редактирования   
+        // Переход в режим редактирования
         this.editProfileButton = document.getElementById('editProfileButton');
         if(this.editProfileButton) {
             this.editProfileButton.addEventListener('click', () => {
@@ -68,7 +66,7 @@ export class ProfileView extends View {
             this._onLoadProfileSuccess(data);
         })
     }
-    
+
     addEditingModeEventListeners(data) {
         // Кнопки управления в режиме редактирования
         // Кнопка назад (без сохранения)
@@ -76,14 +74,20 @@ export class ProfileView extends View {
         this.backProfileButton.addEventListener('click', () => {
             data.isMode = 'profile';
             this._onLoadProfileSuccess(data);
-        })
-        // Кнопка сохранить 
+        });
+        this._saveAvatarButton = document.getElementById('js-avatar-input');
+        if (this._saveAvatarButton){
+            this._saveAvatarButton.addEventListener('change', this._onHandleFileSelect.bind(this), false);
+            this._avatar = document.querySelector('.profile-avatar__image');
+        }
+        // Кнопка сохранить
         this.saveProfileButton = document.getElementById('saveProfileButton');
         this.saveProfileButton.addEventListener('click', () => {
             let inputsArray = document.getElementsByTagName('input');
-            
+
             if(this._validateProfileData()) {
                 let profileJSON = {
+                    avatar: inputsArray[0].value,
                     nickname: inputsArray[1].value,
                     first_name: inputsArray[2].value,
                     last_name: inputsArray[3].value,
@@ -178,11 +182,9 @@ export class ProfileView extends View {
      * @private
      */
     _onLoadProfileFailed (data) {
-        console.log("infailed");
         if(this.isViewClosed){
             return;
         }
-        console.log("AFter if");
         super.render(data);
         this._role = data.role;
     }
@@ -200,7 +202,6 @@ export class ProfileView extends View {
         if (err) {
             errMsg.innerHTML = err;
         } else {
-            errMsg.innerHTML = '';
             let reader = new FileReader();
 
             this._avatar.title = file.name;
@@ -210,10 +211,10 @@ export class ProfileView extends View {
             }.bind(this);
 
             reader.readAsDataURL(file);
-
-            this._avatarButton.removeAttribute('disabled');
-            this._avatarButton.classList.remove('button_disabled');
-            this._avatarButton.classList.add('button_blue');
+            this._globalEventBus.triggerEvent(PROFILE.saveAvatar, file);
+            this._saveAvatarButton.removeAttribute('disabled');
+            this._saveAvatarButton.classList.remove('button_disabled');
+            this._saveAvatarButton.classList.add('button_blue');
         }
     }
 
@@ -275,7 +276,6 @@ export class ProfileView extends View {
             //     wasfail = true;
             // }
         }
-        console.log("HERE!!!!!!!!");
         if (wasfail) {
             passwordConfirm.value = '';
             password.value = '';
@@ -287,7 +287,6 @@ export class ProfileView extends View {
                 }
             });
             profile['path_to_img'] = this._avatar.src;
-            console.log("HERE!!!!!!!!");
             this._globalEventBus.triggerEvent(PROFILE.saveProfile, profile);
         }
     }

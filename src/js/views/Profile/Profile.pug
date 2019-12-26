@@ -11,7 +11,7 @@ if isAuthorized
                 .profile-avatar__avatar
                     img.profile-avatar__image(src=avatarURL, alt=`${avatarURL}`)
                 .profile-avatar__buttons.profile_margin-small
-                    input(type="file", name="Выберите файл")
+                    input#js-avatar-input.input(type="file", name="Выберите файл")
             .profile-info
                 .profile-info-left
                     .profile-info__fieldname.profile_margin-small    Никнейм
@@ -21,8 +21,8 @@ if isAuthorized
                     .profile-info__fieldname.profile_margin-small    Новый пароль
                     .profile-info__fieldname.profile_margin-small    Подтверждение
                 .profile-info-right
-                    input.profile_margin-input(type="text", name="nickname" value=nickname) 
-                    input.profile_margin-input(type="text", name="first_name" value=first_name) 
+                    input.profile_margin-input(type="text", name="nickname" value=nickname)
+                    input.profile_margin-input(type="text", name="first_name" value=first_name)
                     input.profile_margin-input(type="text", name="last_name" value=last_name)
                     input.profile_margin-input(type="text", name="email" value=email)
                     input.profile_margin-input(type="password", name="new_password" value="password")
@@ -83,5 +83,4 @@ if isAuthorized
             button#historyProfileButton.profile__button_margin История заказанных билетов
 else
     .profile
-        h1 Вы не авторизованы!                
-        
+        h1 Вы не авторизованы!

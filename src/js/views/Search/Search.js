@@ -18,13 +18,25 @@ export class SearchView extends View {
 
 
     _onGetFilmsSearchSuccess = (data) => {
-        this._data = {items: data};
-        super.render(this._data);
-        this._submitButton = this._root.querySelector('.search-form.js-search-form');
-        const genreIn = document.getElementById('js-genre-input');
-        console.log(genreIn.value);
-        this._submitButton.addEventListener('submit', this._onSubmit.bind(this), false);
-        console.log(this._submitButton);
+        if (!data){
+            data = {};
+            super.render(data);
+        } else {
+            this._data = {items: data};
+            super.render(this._data);
+            let searchInput = document.getElementById('search-input');
+            console.log(searchInput);
+            if (data.searchInputValue !== undefined) {
+                searchInput.value = data.searchInputValue;
+                searchInput.focus();
+            }
+            searchInput.addEventListener('input', this._onSearch.bind(this));
+            this._submitButton = this._root.querySelector('.search-form.js-search-form');
+            const genreIn = document.getElementById('js-genre-input');
+            console.log(genreIn.value);
+            this._submitButton.addEventListener('submit', this._onSubmit.bind(this), false);
+            console.log(this._submitButton);
+        }
     };
 
     _onSubmit = (ev) => {
@@ -41,6 +53,30 @@ export class SearchView extends View {
       const timemax = document.getElementById('js-timemax-input');
       const pricemin = document.getElementById('js-pricemin-input');
       const pricemax = document.getElementById('js-pricemax-input');
+      let fulldate = "";
+      if (!date.value) {
+          let year = new Date().getFullYear();
+          let day = new Date().getUTCDate();
+          let month = new Date().getMonth() + 1;
+          fulldate = year + "-" + month + "-" + day;
+          console.log(month);
+          console.log(fulldate);
+      } else {
+          fulldate = date.value;
+      }
+      let tmax = "";
+      let tmin = "";
+
+      if (timemax.value){
+          tmax = fulldate + "T" + timemax.value + ":00.000Z";
+      }
+      if (timemin.value){
+          tmin = fulldate + "T" + timemin.value + ":00.000Z";
+      }
+      if (!timemin.value && !timemax.value && date.value){
+          tmax = fulldate + "T" + "23:59" + ":00.000Z";
+          tmin = fulldate + "T" + "00:00" + ":00.000Z";
+      }
       const search = {
           genre: genreIn.value,
           actors: actorIn.value,
@@ -48,13 +84,20 @@ export class SearchView extends View {
           country: countryIn.value,
           year_min: yearMin.value,
           year_max: yearMax.value,
-          date: date.value,
-          time_min: timemin.value,
-          time_max: timemax.value,
+          time_min: tmin,
+          time_max: tmax,
           price_min: pricemin.value,
           price_max: pricemax.value,
       };
       console.log(search);
       this._globalEventBus.triggerEvent(FILM.wideSearch, search);
-    }
+    };
+
+    _onSearch = (ev) => {
+        ev.preventDefault();
+        console.log("CALL");
+        let data = document.getElementById('search-input').value;
+        this._globalEventBus.triggerEvent(FILTER.search, data);
+    };
+
 }
