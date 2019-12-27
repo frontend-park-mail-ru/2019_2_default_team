@@ -40,9 +40,9 @@ mixin film()
                     div
                         tr #{description}
                 if isAuthorized
-                    button#buyTicketButton Купить билет
+                    button.button_green#buyTicketButton Купить билет
                 else
-                    button#buyTicketButton(disabled) Купить билет
+                    button.button_grey#buyTicketButton(disabled) Купить билет
                     span(style="color: red") Требуется авторизация
     .container
         h1 Смотрите также:
@@ -57,7 +57,7 @@ mixin film()
         div(class="row")
             h1 Trailers
         div(class="row film-trailer")
-            iframe(src=videosrc, allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture', allowfullscreen='', width='560', height='315', frameborder='0')
+            iframe.frame-trailer(src=videosrc, allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture', allowfullscreen='', frameborder='0')
     .container
         div#commentsSectionWrapper.comments-section-wrapper
             h2  Написать комментарий
@@ -65,8 +65,8 @@ mixin film()
                 div#addCommentSection.add-comment-section
                     textarea#addCommentArea.add-comment-area
                     div.add-comment-buttons-section
-                        button#submitCommentButton.submit-comment-button Отправить
-                        button#clearCommentButton.clear-comment-button Очистить
+                        button.button_green#submitCommentButton.submit-comment-button Отправить
+                        button.button_grey#clearCommentButton.clear-comment-button Очистить
             else
                 div(style="color:red")
                     h3 Чтобы оставить комментарий нужно авторизоваться!

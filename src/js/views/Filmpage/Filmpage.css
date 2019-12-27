@@ -1,15 +1,28 @@
+.column-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 
 .column-left {
-    float: left;
-    width: 45%;
+    /* float: left; */
+    display: flex;
+    flex-direction: column;
+    width: 45vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
     margin-top: 30px;
     text-align: right;
 }
 
 .column-right{
-    float: right;
-    width: 45%;
+    /* float: right; */
+    display: flex;
+    flex-direction: column;
+    width: 45vw;
     margin-top: 30px;
+    padding-left: 1vw;
+    padding-right: 1vw;
     text-align: left;
     color: white;
 }
@@ -20,19 +33,30 @@
     margin-right: 0.7em;
 }
 .title {
-    text-align: center;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     color: white;
+    align-content: center;
+    justify-content: center;
 }
 
 .wrapper {
-    margin-right: auto;
-    margin-left: auto;
+    display: flex;
+    flex-direction: column;
     padding: 15px;
-    height: 800px;
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+    align-content: center;
+    justify-content: center;
     /*background-color: #5d2d2e;*/
     /*background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpolygon fill='%23b86969' fill-opacity='.1' points='120 0 120 60 90 30 60 0 0 0 0 0 60 60 0 120 60 120 90 90 120 60 120 0'/%3E%3C/svg%3E");*/
 }
@@ -46,9 +70,10 @@
 
 .square {
     position: relative;
-    width: 440px;
-    height: 650px;
     overflow: hidden;
+    max-width: 45vw;
+    height: auto;
+    object-fit: contain;
 }
 
 .square-rec {
@@ -236,4 +261,15 @@
 
 .ratingBtn:active {
     color: red;
+}
+
+.film-trailer {
+    width: 80vw;
+    height: 80vw;
+}
+
+.frame-trailer {
+    margin-left: 18vw;
+    width: 80vw;
+    height: 45vw;
 }
