@@ -75,7 +75,7 @@ export default class Api {
         console.log(avatar);
         formData.append('file', avatar[0]);
         console.log(formData);
-        return fetch('http://127.0.0.1:8080/api/avatar', {
+        return fetch('/api/avatar', {
             method: 'PUT',
             body: FormData
         })

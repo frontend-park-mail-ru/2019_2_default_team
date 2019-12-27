@@ -45,14 +45,12 @@ img.landscape {
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
-    font-family: arial;
     max-width: 380px;
     align-self: stretch;
     /*-webkit-transition: all 0.3s ease;;*/
     /*-moz-transition: all 0.3s ease;;*/
     /*-o-transition: all 0.3s ease;;*/
     /*transition: all 0.3s ease;*/
-    background-color: #c7ecee;
     display: flex;
     grid-template-rows: 10px 10px;
     position: relative;
