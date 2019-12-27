@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ServiceWorkerWebpackPlugin = require('serviceworker-webpack-plugin');
 
 module.exports = {
     entry: './src/js/application.js',
@@ -17,6 +18,9 @@ module.exports = {
         new MiniCssExtractPlugin({
             path: path.resolve(__dirname, './dist'),
             filename: 'bundle.style.[name]-[hash].css',
+        }),
+        new ServiceWorkerWebpackPlugin({
+            entry: path.join(__dirname, 'src/js/sw.js'),
         }),
     ],
     module: {

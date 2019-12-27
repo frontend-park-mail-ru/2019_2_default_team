@@ -1,5 +1,6 @@
 import {Router} from './modules/router';
 import {EventBus} from './modules/eventbus';
+
 import '../css/main.css';
 
 import PosterModel from './models/posterModel'
@@ -44,8 +45,6 @@ function renderHTML () {
   }
 
 document.addEventListener('DOMContentLoaded', () => {
-   renderHTML();
-
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./sw.js')
             .then((reg) => {
