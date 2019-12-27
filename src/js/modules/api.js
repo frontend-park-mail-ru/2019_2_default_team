@@ -52,7 +52,7 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static register({email, password, nickname, first_name, last_name, genres = {}}) {
-        return Network.doPost('/profile', {
+        return Network.doPost('/profile_reg', {
             email,
             password,
             nickname,
