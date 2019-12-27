@@ -78,10 +78,27 @@ export class PopupController extends Controller {
         }
     }
 
+    _onBookTicketSuccess(apiInfo) {
+        let popupLayer = document.getElementById("popupLayer");
+        popupLayer.innerHTML = `<div style="position: fixed; top: 45vh; left: 35vw;"><h3 style="color: #00ff00;">Спасибо за покупку билета!</h3></div>`;
+        // this._removePopupStyles(); FIXME: For whatever reason binding is not working & this therefore this function is undefined
+        // TODO: Убрать код ниже после решения проблемы
+        setTimeout(() => {
+            popupLayer.innerHTML = '';
+            // Убираем промежуточный слой с затемнением
+            let middleLayer = document.getElementById('middleLayer');
+            middleLayer.classList.remove("middle-layer-dark");
+            // Убираем стиль с основной страницы, чтобы она снова скроллилась
+            let body = document.getElementsByTagName('body')[0];
+            body.classList.remove('no-scroll');
+        }, 2000);
+    }
+
     _onBookTicket(data) {
+        console.log(data);
         api.bookSeat(data.apiInfo).then(res => {
             if(res.ok) {
-                this._onClosePopup();
+                this._onBookTicketSuccess(data.apiInfo);
             } else {
                 console.log("Could't book a ticket");
             }
