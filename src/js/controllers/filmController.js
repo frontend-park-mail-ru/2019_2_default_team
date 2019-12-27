@@ -38,8 +38,6 @@ export class FilmpageController extends Controller{
                 }).catch(err => {
                     console.log(err);
                 })
-            } else {
-                alert('Вы не авторизованы!');
             }
         }).catch(err => {
             console.log(err);

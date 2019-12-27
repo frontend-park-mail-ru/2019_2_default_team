@@ -15,7 +15,7 @@ class FilmModel {
                 if (res.ok) {
                     res.json().then(data => {
                         // NOTE: Получаем рекомендации для текущего фильма
-                        api.getRecommendations(data.genre).then(res => {
+                        api.getRecommendations(data).then(res => {
                             if (res.ok) {
                                 res.json().then(recomJSON => {
                                     data.recommendations = recomJSON;
