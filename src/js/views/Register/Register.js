@@ -69,12 +69,12 @@ export class RegisterView extends View {
         if(errorList.includes('invalid_pass')) {
             passwordInput.classList.add('red_border');
             let passwordLabel = document.getElementById('passwordLabel');
-            passwordLabel.innerText = 'Пароль не удовлетворяет требованиям безопасности';
+            passwordLabel.innerText = 'Пароль должен содержать минимум 8 символов';
         }
         if(errorList.includes('email_registered')) {
             emailInput.classList.add('red_border');
             let emailLabel = document.getElementById('emailLabel');
-            emailLabel.innerText = 'Данный email уже зарегестрирован';
+            emailLabel.innerText = 'Данный email уже зарегистрирован';
         }
         if(errorList.includes('email_invalid')) {
             emailInput.classList.add('red_border');
@@ -84,12 +84,12 @@ export class RegisterView extends View {
         if(errorList.includes('nick_registered')) {
             nicknameInput.classList.add('red_border');
             let nicknameLabel = document.getElementById('nicknameLabel');
-            nicknameLabel.innerText = 'Данный никнейм уже зарегестрирован';
+            nicknameLabel.innerText = 'Данный никнейм уже зарегистрирован';
         }
         if(errorList.includes('invalid_length')) {
             nicknameInput.classList.add('red_border');
             let nicknameLabel = document.getElementById('nicknameLabel');
-            nicknameLabel.innerText = 'Никнейм слишком короткий';
+            nicknameLabel.innerText = 'Никнейм должен содержать минимум 4 символа';
         }
     }
 
