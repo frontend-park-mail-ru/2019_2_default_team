@@ -56,13 +56,17 @@ if isAuthorized
             .profile-info
                 .profile-info-left
                     .profile-info__fieldname.profile_margin-small    Никнейм
-                    .profile-info__fieldname.profile_margin-small    Имя
-                    .profile-info__fieldname.profile_margin-small    Фамилия
+                    if first_name
+                        .profile-info__fieldname.profile_margin-small    Имя
+                    if last_name
+                        .profile-info__fieldname.profile_margin-small    Фамилия
                     .profile-info__fieldname.profile_margin-small    Email
                 .profile-info-right
                     .profile-info__value.profile_margin-small #{ nickname }
-                    .profile-info__value.profile_margin-small #{ first_name }
-                    .profile-info__value.profile_margin-small #{ last_name }
+                    if first_name
+                        .profile-info__value.profile_margin-small #{ first_name }
+                    if last_name
+                        .profile-info__value.profile_margin-small #{ last_name }
                     .profile-info__value.profile_margin-small #{ email }
             button#editProfileButton.profile__button_margin Редактировать
             if tickets.length
