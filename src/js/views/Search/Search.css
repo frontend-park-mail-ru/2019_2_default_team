@@ -51,7 +51,6 @@ img.landscape {
     /*-moz-transition: all 0.3s ease;;*/
     /*-o-transition: all 0.3s ease;;*/
     /*transition: all 0.3s ease;*/
-    background-color: #c7ecee;
     display: flex;
     grid-template-rows: 10px 10px;
     position: relative;
