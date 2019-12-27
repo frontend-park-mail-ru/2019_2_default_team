@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     router.add('/profile', profileController);
     router.add('/filmoverlay', popupController);
     router.add('/search', searchController);
+    router.add('/allfilms', posterController);
     router.start();
 
     globalEventBus.subscribeToEvent(ACTIONS.goTo, (info) => {
