@@ -259,6 +259,7 @@
     height: 40px;
     border: none;
     border-radius: 40px;
+    outline: none;
 }
 
 .ratingBtn_voted {
