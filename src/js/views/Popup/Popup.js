@@ -16,9 +16,9 @@ export class PopupView extends View {
         window.onpopstate = () => {
             this._globalEventBus.triggerEvent(POPUP.closePopup);
         };
-        this.closePopupButton = document.getElementById("closePopupButton");
-        this.closePopupButton.addEventListener("click", this._closePopup.bind(this));
         if(data.timeLayout) {
+            this.closePopupButton = document.getElementById("closePopupButton");
+            this.closePopupButton.addEventListener("click", this._closePopup.bind(this));
             // Назначаем функции на кнопку с выбором времени
             for(let i = 0; i < data.sessions.length; i++) {
                 this.timeButton = document.getElementById(`popup-time-${i}`);

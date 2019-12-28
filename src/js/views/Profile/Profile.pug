@@ -1,5 +1,6 @@
 style
     include Profile.css
+    include ../../../css/buttons.css
 
 - let avatarURL = "https://yt3.ggpht.com/a/AGF-l79J268L8ezHGDGnFh57D0wyFA-ltncqGF3cVA=s900-c-k-c0xffffffff-no-rj-mo";
 
@@ -28,8 +29,8 @@ if isAuthorized
                     input.profile_margin-input(type="password", name="new_password" value="password")
                     input.profile_margin-input(type="password", name="second_password" value="password")
             .profile-info__buttons-group
-                button#backProfileButton.profile__button_margin Назад
-                button#saveProfileButton.profile__button_margin Сохранить
+                button#backProfileButton.profile__button_margin.button_red Назад
+                button#saveProfileButton.profile__button_margin.button_green Сохранить
     else if isMode === 'history'
         .profile
             .profile__title.profile_margin-big История заказанных билетов
@@ -47,7 +48,7 @@ if isAuthorized
                                     .ticket-information__row    Цена: #{ item.price }
             else
                 h3(style = "color: white; font-style: italic;") История заказанных билетов пуста!
-            button#backProfileButton.profile__button_margin Назад
+            button#backProfileButton.profile__button_margin.button_red Назад
     else
         .profile
             .profile__title.profile_margin-big Профиль
@@ -68,7 +69,7 @@ if isAuthorized
                     if last_name
                         .profile-info__value.profile_margin-small #{ last_name }
                     .profile-info__value.profile_margin-small #{ email }
-            button#editProfileButton.profile__button_margin Редактировать
+            button#editProfileButton.profile__button_margin.button_green Редактировать
             if tickets.length
                 .profile__title.profile_margin-big Заказанные билеты
                 .ticket-group
@@ -84,7 +85,7 @@ if isAuthorized
                                 .ticket-information__row    Цена: #{ item.price }
             else
                 .profile__title.profile_margin-big Нет заказанных билетов
-            button#historyProfileButton.profile__button_margin История заказанных билетов
+            button#historyProfileButton.profile__button_margin.button_green История заказанных билетов
 else
     .profile
         h1 Вы не авторизованы!
