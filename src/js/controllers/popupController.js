@@ -16,7 +16,8 @@ export class PopupController extends Controller {
     }
 
     _onOpenPopup(data) {
-        let filmId = data["0"];
+        let filmId = data["id"];
+        console.log(data["id"]);
         // TODO: Переделать эти callback'и на async/await
         api.getFilmInfo(filmId).then(res => {
             if(res.ok) {
