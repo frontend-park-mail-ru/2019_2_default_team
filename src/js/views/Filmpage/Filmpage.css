@@ -62,6 +62,11 @@
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
     color: white;
     text-align: center;
     padding-bottom: 50px;
@@ -173,7 +178,7 @@
 }
 
 .add-comment-area {
-    width: 50%;
+    width: 50vw;
     height: 25vh;
 }
 
@@ -192,8 +197,7 @@
     flex-flow: column;
     align-items: flex-start;
     padding: 5px 10px 5px 10px;
-    min-width: 60%;
-    max-width: 60%;
+    width: 60vw;
     border: 2px solid white;
     margin-bottom: 10px;
 }
@@ -264,12 +268,11 @@
 }
 
 .film-trailer {
-    width: 80vw;
-    height: 80vw;
+    width: 70vw;
+    height: 50vw;
 }
 
 .frame-trailer {
-    margin-left: 18vw;
     width: 80vw;
-    height: 45vw;
+    height: 40vw;
 }
