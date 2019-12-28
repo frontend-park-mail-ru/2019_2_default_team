@@ -1,5 +1,6 @@
 style
     include Popup.css
+    include ../../../css/buttons.css
 
 - let posterURL = poster_popup;
 - let layouts = []
@@ -13,7 +14,10 @@ div.popup-window#popupWindow
             p Время:    #{locals.length} минут
             p Год:      #{locals.year}
             p Актёры:   #{locals.mainactor}
-            button#closePopupButton Закрыть
+            if locals.timeLayout
+                button.button_red#closePopupButton Закрыть
+            else
+                button.button_green#backPopupSeatsButton Назад
     if locals.timeLayout
         div(style='font-size: 20px;') Выбор времени
         div.popup-sessions-list-wrapper#sessionsList
@@ -34,4 +38,3 @@ div.popup-window#popupWindow
                                 .popup-seat-item__info <b>Место:</b> #{seatItem.seatNumber}
                                 .popup-seat-item__info <b>Цена :</b> #{seatItem.price}
                     br
-        button#backPopupSeatsButton Назад

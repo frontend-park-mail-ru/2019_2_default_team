@@ -1,5 +1,6 @@
 style
     include Filmpage.css
+    include ../../../css/buttons.css
 -var imgHref =  poster_popup
 -var videosrc = trailer
 
@@ -66,7 +67,7 @@ mixin film()
                     textarea#addCommentArea.add-comment-area
                     div.add-comment-buttons-section
                         button.button_green#submitCommentButton.submit-comment-button Отправить
-                        button.button_grey#clearCommentButton.clear-comment-button Очистить
+                        button.button_red#clearCommentButton.clear-comment-button Очистить
             else
                 div(style="color:red")
                     h3 Чтобы оставить комментарий нужно авторизоваться!
