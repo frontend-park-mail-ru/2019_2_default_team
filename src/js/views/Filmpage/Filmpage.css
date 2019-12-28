@@ -222,6 +222,7 @@
     flex-wrap: wrap;
     padding-top: 5vh;
     padding-bottom: 5vh;
+    width: 100%;
 }
 
 .recommendations-block_dark {
