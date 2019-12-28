@@ -76,7 +76,8 @@
 .square {
     position: relative;
     overflow: hidden;
-    max-width: 45vw;
+    max-width: 33vw;
+    max-height: 50vh;
     height: auto;
     object-fit: contain;
 }
