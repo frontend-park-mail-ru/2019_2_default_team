@@ -17,11 +17,9 @@ export class LogoutController extends Controller{
         api.logout()
             .then(res => {
                     if (res.ok) {
-                    console.log("Logged out");
                     this._globalEventBus.triggerEvent(AUTH.logoutSuccess, {});
                 }
                 else {
-                    console.log("Logout Failed")
                 }
             })
             .catch(err => {

@@ -25,7 +25,6 @@ export class SearchView extends View {
             this._data = {items: data};
             super.render(this._data);
             let searchInput = document.getElementById('search-input');
-            console.log(searchInput);
             if (data.searchInputValue !== undefined) {
                 searchInput.value = data.searchInputValue;
                 searchInput.focus();
@@ -33,15 +32,12 @@ export class SearchView extends View {
             searchInput.addEventListener('input', this._onSearch.bind(this));
             this._submitButton = this._root.querySelector('.search-form.js-search-form');
             const genreIn = document.getElementById('js-genre-input');
-            console.log(genreIn.value);
             this._submitButton.addEventListener('submit', this._onSubmit.bind(this), false);
-            console.log(this._submitButton);
         }
     };
 
     _onSubmit = (ev) => {
         ev.preventDefault();
-      console.log("submit");
       const genreIn = document.getElementById('js-genre-input');
       const actorIn = document.getElementById('js-actor-input');
       const ratingminIn = document.getElementById('js-ratingmin-input');
@@ -59,8 +55,6 @@ export class SearchView extends View {
           let day = new Date().getUTCDate();
           let month = new Date().getMonth() + 1;
           fulldate = year + "-" + month + "-" + day;
-          console.log(month);
-          console.log(fulldate);
       } else {
           fulldate = date.value;
       }
@@ -89,13 +83,11 @@ export class SearchView extends View {
           price_min: pricemin.value,
           price_max: pricemax.value,
       };
-      console.log(search);
       this._globalEventBus.triggerEvent(FILM.wideSearch, search);
     };
 
     _onSearch = (ev) => {
         ev.preventDefault();
-        console.log("CALL");
         let data = document.getElementById('search-input').value;
         this._globalEventBus.triggerEvent(FILTER.search, data);
     };

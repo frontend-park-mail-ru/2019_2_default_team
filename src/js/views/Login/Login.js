@@ -44,7 +44,6 @@ export class LoginView extends View {
     _onSubmit (ev) {
         ev.preventDefault();
         let wasfail = false;
-        console.log('PRESS ME!');
         const email = this._loginForm.elements['email'];
         const password = this._loginForm.elements['password'];
 
@@ -57,7 +56,6 @@ export class LoginView extends View {
                 email: email.value,
                 password: password.value,
             };
-            console.log('Here');
             this._globalEventBus.triggerEvent(AUTH.signIn, user);
         }
     }

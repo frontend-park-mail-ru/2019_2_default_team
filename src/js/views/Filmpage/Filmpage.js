@@ -13,7 +13,6 @@ export class FilmpageView extends View{
     render(data = {}) {
         super.render(data);
         this._data = data.id;
-        console.log(data);
         this._globalEventBus.triggerEvent(FILM.getFilm, data);
     }
 
@@ -73,9 +72,7 @@ export class FilmpageView extends View{
      * @private
      */
     _onLoadFilmSuccess (data) {
-        console.log(this._data);
         this._data = { ...data, ...this._data };
-        console.log(this._data);
         super.render(data);
         this._addEventListeners(data);
     }

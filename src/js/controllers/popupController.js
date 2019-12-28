@@ -6,7 +6,6 @@ import api from '../modules/api';
 export class PopupController extends Controller {
     constructor (root, globalEventBus, router) {
         super(root, globalEventBus, router);
-        console.log('I AM HERE');
         this._view = new PopupView(this._root, this._globalEventBus);
 
         this._globalEventBus.subscribeToEvent(POPUP.openPopup, this._onOpenPopup.bind(this));
@@ -17,7 +16,6 @@ export class PopupController extends Controller {
 
     _onOpenPopup(data) {
         let filmId = data["id"];
-        console.log(data["id"]);
         // TODO: Переделать эти callback'и на async/await
         api.getFilmInfo(filmId).then(res => {
             if(res.ok) {
@@ -101,7 +99,6 @@ export class PopupController extends Controller {
             if(res.ok) {
                 this._onBookTicketSuccess(data.apiInfo);
             } else {
-                console.log("Could't book a ticket");
             }
         }).catch(err => {
             console.log(err);

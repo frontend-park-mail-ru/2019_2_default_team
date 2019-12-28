@@ -72,9 +72,7 @@ export default class Api {
      */
     static editAvatar(avatar) {
         const formData = new FormData();
-        console.log(avatar);
         formData.append('file', avatar[0]);
-        console.log(formData);
         return fetch('/api/avatar', {
             method: 'PUT',
             body: FormData
@@ -92,8 +90,6 @@ export default class Api {
      * @returns {Promise<Response>}
      */
     static editProfile(profile) {
-        console.log("PROFILE");
-        console.log(profile);
         return Network.doPut('/profile', profile);
     }
 

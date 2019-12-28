@@ -32,7 +32,6 @@ export class ProfileView extends View {
      * @private
      */
     _onLoadProfileSuccess (data) {
-        console.log(data);
         if(this.isViewClosed){
             return;
         }
