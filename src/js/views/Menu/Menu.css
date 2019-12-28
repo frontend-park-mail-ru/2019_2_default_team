@@ -1,0 +1,34 @@
+.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #2F3640;
+    font-family:  Roboto, sans-serif;
+}
+
+.menu-el-right {
+    float: right;
+}
+
+.menu-el-left {
+    float: left;
+}
+
+.inner-menu-element {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition-property: transform;
+    transition-duration: 0.25s;
+}
+
+.inner-menu-element:hover {
+    transform: translateY(-5px);
+}
+
+.inner-menu-element:active {
+    transform: translateY(-5px) scale(1.33);
+}

@@ -1,0 +1,158 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /*background-color: #5d2d2e;*/
+    /*background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpolygon fill='%23b86969' fill-opacity='.1' points='120 0 120 60 90 30 60 0 0 0 0 0 60 60 0 120 60 120 90 90 120 60 120 0'/%3E%3C/svg%3E");*/
+    padding: 15px;
+}
+
+h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.card-item{
+    position: relative;
+    background-color: aliceblue;
+    width: 360px;
+    height: 360px;
+    overflow: hidden;
+}
+
+.square {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+}
+img {
+    position: absolute;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50%);
+}
+img.landscape {
+    height: 100%;
+    width: auto;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 380px;
+    align-self: stretch;
+    /*-webkit-transition: all 0.3s ease;;*/
+    /*-moz-transition: all 0.3s ease;;*/
+    /*-o-transition: all 0.3s ease;;*/
+    /*transition: all 0.3s ease;*/
+    display: flex;
+    grid-template-rows: 10px 10px;
+    position: relative;
+}
+
+/*.card:hover {*/
+/*    -webkit-transform: scale(1.2);*/
+/*    -ms-transform: scale(1.2);*/
+/*    transform: scale(1.2);*/
+/*}*/
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button {
+    display: flex;
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #222f3e;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    flex-direction: column;
+}
+
+.card button:hover {
+    opacity: 0.7;
+}
+
+.card-deck {
+    /* max-height: 550px; */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    margin: 10px;
+}
+
+h1{
+    margin-bottom: auto;
+}
+
+.card-item-blur {
+    align-self: end;
+    height: 120px;
+    background: rgba(1,0,0,0.6);
+    position: absolute;
+    width: 360px;
+    color: #dff9fb;
+}
+
+.card-item-blur:hover {
+    display: block;
+}
+
+html {
+    height: 100%;
+}
+
+
+
+.body {
+    /* display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-items: center;
+    align-self: center;
+    padding: 10px; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+a {
+    transition-property: transform;
+    transition-duration: 0.1s;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+
+th {
+    padding: 14px 16px;
+    float: left;
+    text-align: center;
+    color: white;
+    font-family:  Roboto, sans-serif;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+table {
+    border: 1px solid #dddddd;
+    background-color: #2F3640;
+    width: 100%;
+}

@@ -1,0 +1,29 @@
+style
+    include Poster.css
+
+mixin card-deck(poster, title, genre, id)
+    div(class='card')
+        a(class='card-item' href= `film/${id}` style=`background-image: url(${poster})`)
+        div(class = "card-item-blur")
+            h1 #{title}
+            a(href= `film/${id}` data-section="films") Подробнее
+
+div.container
+    table
+        tr
+            th
+                a(id = 'today' onclik = '/allfilms&today' href= '/allfilms&today') Сегодня
+            th
+                a(id = 'upcoming' onclik = '/allfilms&upcoming' href= '/allfilms&upcoming') Скоро
+            th
+                a(id = 'wide-search' onclik = '/search' href= '/search') Расширенный поиск
+            th(style="float: none")
+                form(id = 'search')
+                    input(id = 'search-input' type='text' style= "float: right"  placeholder= "Поиск" autocomplete="off")
+    .body
+        if items
+            if items.length
+                each val in items
+                    +card-deck(val.poster, val.title, val, val.id)
+            else 
+                h3(style="color:white; fonst-style: italic;") По вашему запросу фильмов не найдено!

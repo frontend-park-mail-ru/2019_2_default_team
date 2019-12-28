@@ -1,0 +1,116 @@
+.profile {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100vw - 100px);
+    padding: 50px;
+    color: white;
+}
+
+.profile_margin-big {
+    margin: 25px;
+}
+
+.profile_margin-small {
+    margin: 15px;
+}
+
+.profile_margin-input {
+    margin: 11px;
+}
+
+.profile__title {
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.profile-avatar__avatar {
+    height: 150px;
+}
+
+.profile-avatar__image {
+    height: 150px;
+    border-radius: 200px;
+}
+
+.profile-avatar {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-avatar__buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-info-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info__fieldname {
+    font-weight: 800;
+    font-style: italic;
+    border-bottom: 2px solid white;
+    padding-top: 3px;
+}
+
+.profile-info__fieldname_error {
+    border-bottom: 2px solid red;
+    color: red;
+}
+
+.profile-info__value {
+    padding-top: 5px;
+}
+
+.profile-info__buttons-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile__button_margin {
+    margin-top: 40px;
+}
+
+.ticket-block {
+    display: flex;
+    flex-direction: row;
+    margin: 25px;
+    padding: 10px;
+    border: 1px solid white;
+    width: 450px;
+}
+
+.ticket-block__poster {
+    height: 200px;
+    margin-right: 15px;
+}
+
+.ticket-information {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-information__row {
+    margin: 5px;
+}
+
+.ticket-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}

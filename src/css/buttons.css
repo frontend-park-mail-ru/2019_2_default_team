@@ -1,0 +1,43 @@
+
+.button_green {
+    outline: none;
+    border: none;
+    background-color: rgb(0, 128, 0);
+    height: 30px;
+    width: 150px;
+    color: white;
+}
+
+.button_green:hover {
+    background-color: rgb(0, 112, 0);
+}
+
+.button_green:active {
+    background-color: rgb(0, 64, 0);
+}
+
+.button_red {
+    outline: none;
+    border: none;
+    background-color: rgb(128, 0, 0);
+    height: 30px;
+    width: 150px;
+    color: white;
+}
+
+.button_red:hover {
+    background-color: rgb(112, 0, 0);
+}
+
+.button_red:active {
+    background-color: rgb(64, 0, 0);
+}
+
+
+.button_grey {
+    outline: none;
+    border: none;
+    background-color: rgb(128, 128, 128);
+    height: 30px;
+    width: 150px;
+}

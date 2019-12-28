@@ -1,0 +1,40 @@
+style
+    include Popup.css
+    include ../../../css/buttons.css
+
+- let posterURL = poster_popup;
+- let layouts = []
+
+div.popup-window#popupWindow
+    div.popup-desc-wrapper
+        img.popup-poster(src=`${posterURL}`)
+        div.popup-desc
+            p Название: #{locals.title}
+            p Жанр:     #{locals.genre}
+            p Время:    #{locals.length} минут
+            p Год:      #{locals.year}
+            p Актёры:   #{locals.mainactor}
+            if locals.timeLayout
+                button.button_red#closePopupButton Закрыть
+            else
+                button.button_green#backPopupSeatsButton Назад
+    if locals.timeLayout
+        div(style='font-size: 20px;') Выбор времени
+        div.popup-sessions-list-wrapper#sessionsList
+            each item, idx in locals.sessions
+                button.popup-session-item(id=`popup-time-${idx}`) #{item.time}
+    else
+        div(style='font-size: 20px;') Выбор места
+        div.popup-session-seats-wrapper#seatsList
+            each row, idxRow in locals.seatsArray
+                .popup-session-seats-wrapper__row
+                    each seatItem, idxSeat in row
+                        if seatItem.isTaken
+                            .popup-seat-item-disabled(id=`popup-seat-${seatItem.seatNumber}`)
+                                .popup-seat-item__info <b>Место:</b> #{seatItem.seatNumber}
+                                .popup-seat-item__info <b>Цена :</b> #{seatItem.price}
+                        else
+                            .popup-seat-item(id=`popup-seat-${seatItem.seatNumber}`)
+                                .popup-seat-item__info <b>Место:</b> #{seatItem.seatNumber}
+                                .popup-seat-item__info <b>Цена :</b> #{seatItem.price}
+                    br
