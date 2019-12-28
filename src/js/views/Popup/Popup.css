@@ -7,8 +7,8 @@
     max-height: 80vh;
     padding: 10px;
     z-index: 100;
-    background: rgba(13, 13, 13, 0) linear-gradient(135deg, rgb(115, 32, 27) 0%, rgb(74, 27, 104) 70%);
-    border: 2px solid white;
+    background-color: rgba(45,48,52,1);
+    border: 1px solid #3f4247;
     color: white;
     overflow: hidden;
     overflow-y: auto;
