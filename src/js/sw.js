@@ -15,10 +15,6 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request)
             .then((cachedResponse) => {
-                if (cachedResponse && !navigator.onLine) {
-                    return cachedResponse;
-                }
-
                 return fetch(event.request)
                     .then((response) => {
                         return caches.open(cacheName).then((cache) => {
@@ -27,6 +23,10 @@ self.addEventListener('fetch', (event) => {
                             }
                             return response;
                         });
+                    }).catch(err => {
+                        if (cachedResponse) {
+                            return cachedResponse;
+                        }
                     });
             })
             .catch(() => {
