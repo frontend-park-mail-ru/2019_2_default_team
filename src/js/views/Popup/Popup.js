@@ -72,6 +72,6 @@ export class PopupView extends View {
 
     //  Возврат из выбора места в выбор времени
     _backPopup() {
-        this._globalEventBus.triggerEvent(POPUP.openPopup, {0: this.filmId});
+        this._globalEventBus.triggerEvent(POPUP.openPopup, {id: this.filmId});
     }
 }

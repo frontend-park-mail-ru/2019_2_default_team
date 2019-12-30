@@ -59,7 +59,6 @@ class FilmModel {
                     });
                 } else {
                     res.json().then(data => {
-                        console.log(data.title);
                         this._globalEventBus.triggerEvent(FILM.getFilmFailed, data);
                     });
                 }

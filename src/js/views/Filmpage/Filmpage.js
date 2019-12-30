@@ -13,7 +13,6 @@ export class FilmpageView extends View{
     render(data = {}) {
         super.render(data);
         this._data = data.id;
-        console.log(data);
         this._globalEventBus.triggerEvent(FILM.getFilm, data);
     }
 
@@ -23,44 +22,50 @@ export class FilmpageView extends View{
         this.buyTicketButton.addEventListener('click', this._openPopup.bind(this));
         // Добавить комментарий
         this.submitCommentButton = document.getElementById("submitCommentButton");
-        this.submitCommentButton.addEventListener('click', () => {
-            this.addCommentArea = document.getElementById("addCommentArea");
-            let commentaryText = this.addCommentArea.value;
-            // Получение профиля для проставления username комменатотора
-            if(commentaryText) {
-                Api.getProfileInfo().then(res => {
-                    if(res.ok) {
-                        res.json().then(profile => {
-                            this._sendCommentary({
-                                filmID: data.id,
-                                commentInfo: {
-                                    Username: profile.nickname,
-                                    FilmTitle: data.title,
-                                    Text: commentaryText
-                                }
-                            });
-                            // TODO: Добавить кастомный тултип о том, что комментарий отправлен
-                            this.addCommentArea.value = '';
-                        }).catch(err => {
-                            console.log(err);
-                        }); 
-                    }
-                }).catch(err => {
-                    console.log(err);
-                })
-            }
-        });
+        if(this.submitCommentButton) {
+            this.submitCommentButton.addEventListener('click', () => {
+                this.addCommentArea = document.getElementById("addCommentArea");
+                let commentaryText = this.addCommentArea.value;
+                // Получение профиля для проставления username комменатотора
+                if(commentaryText) {
+                    Api.getProfileInfo().then(res => {
+                        if(res.ok) {
+                            res.json().then(profile => {
+                                this._sendCommentary({
+                                    filmID: data.id,
+                                    commentInfo: {
+                                        Username: profile.nickname,
+                                        FilmTitle: data.title,
+                                        Text: commentaryText
+                                    }
+                                });
+                                // TODO: Добавить кастомный тултип о том, что комментарий отправлен
+                                this.addCommentArea.value = '';
+                            }).catch(err => {
+                                console.log(err);
+                            }); 
+                        }
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                }
+            });
+        }
         // Очистить комментарий
         this.clearCommentButton = document.getElementById("clearCommentButton");
-        this.clearCommentButton.addEventListener('click', () => {
-            this.addCommentArea = document.getElementById("addCommentArea");
-            this.addCommentArea.value = '';
-        });
+        if(this.clearCommentButton) {
+            this.clearCommentButton.addEventListener('click', () => {
+                this.addCommentArea = document.getElementById("addCommentArea");
+                this.addCommentArea.value = '';
+            });
+        }
         // Плюсануть рейтинг
         this.ratingPlusButton = document.getElementById("ratingPlusButton");
-        this.ratingPlusButton.addEventListener('click', () => {
-            this._globalEventBus.triggerEvent(FILM.plusRating, data.id);
-        });
+        if(this.ratingPlusButton) {
+            this.ratingPlusButton.addEventListener('click', () => {
+                this._globalEventBus.triggerEvent(FILM.plusRating, data.id);
+            });
+        }
     }
 
     _sendCommentary(data) {
@@ -73,9 +78,7 @@ export class FilmpageView extends View{
      * @private
      */
     _onLoadFilmSuccess (data) {
-        console.log(this._data);
         this._data = { ...data, ...this._data };
-        console.log(this._data);
         super.render(data);
         this._addEventListeners(data);
     }

@@ -56,7 +56,6 @@ export class PosterView extends View {
 
     _onSearch = (ev) => {
         ev.preventDefault();
-        console.log("CALL");
         let data = document.getElementById('search-input').value;
         this._globalEventBus.triggerEvent(FILTER.search, data);
     };

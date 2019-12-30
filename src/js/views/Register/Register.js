@@ -94,7 +94,6 @@ export class RegisterView extends View {
     }
 
     _onSubmit(ev) {
-        console.log("Register");
         ev.preventDefault();
         let wasfail = false;
 
@@ -154,8 +153,6 @@ export class RegisterView extends View {
                 last_name: secondname.value,
                 genres: genres,
             };
-            console.log(genres);
-            console.log(user);
             this._globalEventBus.triggerEvent(AUTH.signUpCustomer, user);
         }
     }

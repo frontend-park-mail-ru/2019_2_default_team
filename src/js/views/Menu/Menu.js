@@ -14,7 +14,6 @@ export class MenuView extends View{
 
     _onAuthResponse (data) {
         super.render(data);
-        console.log(data);
         if (!data.Auth) {
             this._logoutButton = document.getElementById("logout");
             this._logoutButton.addEventListener("click", this._onLogout.bind(this));

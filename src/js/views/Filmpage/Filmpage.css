@@ -222,6 +222,7 @@
     flex-wrap: wrap;
     padding-top: 5vh;
     padding-bottom: 5vh;
+    width: 100%;
 }
 
 .recommendations-block_dark {
@@ -258,6 +259,7 @@
     height: 40px;
     border: none;
     border-radius: 40px;
+    outline: none;
 }
 
 .ratingBtn_voted {
