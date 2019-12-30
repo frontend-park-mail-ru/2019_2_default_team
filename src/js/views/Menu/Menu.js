@@ -23,6 +23,8 @@ export class MenuView extends View{
         }
         this._topButton = document.getElementById("top");
         this._topButton.addEventListener("click", this._onGetTop.bind(this));
+        this._mainButton = document.getElementById("poster");
+        this._mainButton.addEventListener("click", this._onGetPoster.bind(this));
     }
 
     _onLogout = (data = {}) => {
@@ -35,5 +37,9 @@ export class MenuView extends View{
 
     _onGetFavFilms = (data = {}) => {
         this._globalEventBus.triggerEvent(FILM.getFavFilms)
+    }
+
+    _onGetPoster = (data = {}) => {
+        this._globalEventBus.triggerEvent(FILM.getFilms);
     }
 }

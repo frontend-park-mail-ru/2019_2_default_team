@@ -10,13 +10,11 @@ export class PosterView extends View {
         this._globalEventBus.subscribeToEvent(FILM.getFilmsSuccess, this._onGetFilmsSuccess.bind(this));
         this._globalEventBus.subscribeToEvent(FILM.getTopSuccess, this._onGetFilmsSuccess.bind(this));
         this._globalEventBus.subscribeToEvent(FILM.getFavFilmsSuccess, this._onGetFilmsSuccess.bind(this));
+        this._globalEventBus.triggerEvent(FILM.getFilms);
     }
 
     render(data = {}) {
         this.isViewClosed = false;
-
-        this._globalEventBus.triggerEvent(AUTH.checkAuth);
-        this._globalEventBus.triggerEvent(FILM.getFilms);
         super.render(data);
     }
 
@@ -27,9 +25,8 @@ export class PosterView extends View {
         if (this.isViewClosed) {
             return;
         } else {
-            this.merge(data);
+            // this.merge(data);
         }
-        super.render(this._data);
     }
 
     _onGetFilmsSuccess(data){
