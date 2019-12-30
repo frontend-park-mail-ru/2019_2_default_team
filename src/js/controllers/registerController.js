@@ -1,6 +1,6 @@
 import { EventBus } from '../modules/eventbus';
 import {RegisterView} from "../views/Register/Register";
-import {AUTH} from "../modules/events";
+import {AUTH, FILM} from "../modules/events";
 import {Controller} from "../modules/controller";
 
 export class RegisterController extends Controller{
@@ -9,6 +9,7 @@ export class RegisterController extends Controller{
 
         this._globalEventBus.subscribeToEvent(AUTH.signUpSuccess, (data) => {
             this._router.redirect('/');
+            this._globalEventBus.triggerEvent(AUTH.checkAuth);
         });
 
         this._view = new RegisterView(this._root, this._globalEventBus);

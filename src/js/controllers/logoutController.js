@@ -1,5 +1,5 @@
 import {Controller} from "../modules/controller";
-import {AUTH} from "../modules/events";
+import {AUTH, FILM} from "../modules/events";
 import api from "../modules/api";
 import {PosterView} from "../views/Poster/Poster";
 
@@ -9,6 +9,7 @@ export class LogoutController extends Controller{
         this._globalEventBus.subscribeToEvent(AUTH.logout, this._onLogout.bind(this));
         this._globalEventBus.subscribeToEvent(AUTH.logoutSuccess, (data) => {
             this._router.redirect('/');
+            this._globalEventBus.triggerEvent(AUTH.checkAuth);
         });
         this._view = new  PosterView(this._root, this._globalEventBus);
     }
